@@ -1,0 +1,1877 @@
+[
+ {
+  "id": "review-and-recall",
+  "kind": "Activity",
+  "family": "Building knowledge",
+  "name": "Review and recall",
+  "summary": "Retrieve what was learned in earlier lessons from memory so it sticks and is ready to build on.",
+  "step": "RECALL",
+  "verbs": [
+   "RETRIEVE",
+   "LIST",
+   "QUIZ"
+  ],
+  "mode": "Class / Individual",
+  "ways": [
+   "Quick quiz",
+   "Brain dump",
+   "Flashcards",
+   "Quiz-quiz-trade",
+   "Last lesson, last week, last term",
+   "Label from memory",
+   "Starter activity",
+   "Online quiz game",
+   "Bingo",
+   "Matching activity",
+   "Recall list on board",
+   "Prior knowledge mind map",
+   "Team trivia sheet",
+   "Scattergories race",
+   "Sequence reconstruction",
+   "Pre-test",
+   "Three facts and a fib",
+   "ABC list",
+   "Find someone who",
+   "Loop cards",
+   "Dice questions",
+   "Vocabulary clue pairs",
+   "Swat the answer",
+   "Running relay quiz",
+   "Two-way crossword",
+   "Pre-assessment set"
+  ],
+  "levels": {
+   "supplementary": "Give a word bank with visuals and offer matching or labelled-diagram recall instead of open writing. Allow extra time and check in after the instructions; fewer items covering the same content.",
+   "substantial": "Provide a pre-prepared recall sheet (cloze, picture matching or sort cards) and have a teacher or LSO read questions aloud and prompt. Accept oral or pointed answers in place of written ones.",
+   "extensive": "Run recall one-to-one with real tools, samples or photo cards; the student responds by pointing, selecting or using their communication system. Record responses against personalised goals.",
+   "extension": "Pre-test with the most difficult questions first; students showing mastery (about 85%) skip the drill and instead write hinge questions or explain why a common wrong answer is tempting.",
+   "life_skills": "Student recalls by matching photos to real tools or materials, or sorting safe and unsafe pictures, alongside peers and with prompts. Record against their Life Skills outcomes."
+  }
+ },
+ {
+  "id": "instruction",
+  "kind": "Activity",
+  "family": "Building knowledge",
+  "name": "Instruction",
+  "summary": "Take in new knowledge through a clear explanation, video or reading, and record the key ideas.",
+  "step": "LEARN",
+  "verbs": [
+   "WATCH",
+   "LISTEN",
+   "NOTE"
+  ],
+  "mode": "Class",
+  "ways": [
+   "Video then notes",
+   "Teacher explanation with checks",
+   "Guided notes",
+   "Frayer diagram",
+   "Vocabulary pre-teach",
+   "Concept map",
+   "Presentation with booklet pages",
+   "Video with worksheet",
+   "Cloze passage",
+   "Glossary",
+   "Read and summarise",
+   "Hook question",
+   "Keyword unpacking",
+   "Unplugged activity",
+   "Contrasting image prompt",
+   "Show samples and past work",
+   "Viewing retrieval chart",
+   "Concept metaphor",
+   "Structured overview",
+   "Vocabulary cline",
+   "Cooperative cloze",
+   "Writing frames",
+   "Stop-and-yarn reading",
+   "Read-aloud keyword stops",
+   "Story sharing",
+   "Symbol and image summary"
+  ],
+  "levels": {
+   "supplementary": "Pre-teach key vocabulary with a visual glossary and give guided notes with gaps rather than blank pages. Chunk the explanation, pause videos at set points and check in after each step.",
+   "substantial": "Supply significantly modified notes: mostly complete, large print, one idea per box with images beside the text. Teacher or LSO re-teaches in a small group and scribes or accepts labelled sketches as the notes.",
+   "extensive": "Deliver the key content one-to-one using real objects, symbols or the student's communication system, in short blocks. Teach to personalised goals drawn from the same lesson.",
+   "extension": "Compact the explanation after a pre-test and replace repeated content with a conceptual question (patterns, ethics, change over time) that students investigate and bring back to the class.",
+   "life_skills": "Teach two or three functional ideas from the lesson using real materials and photo cards, with the student seated among peers. Assess against Life Skills outcomes, not the class notes."
+  }
+ },
+ {
+  "id": "demonstration",
+  "kind": "Activity",
+  "family": "Practical skills and performance",
+  "name": "Demonstration",
+  "summary": "Watch a skill or process shown step by step before trying it yourself.",
+  "step": "LEARN",
+  "verbs": [
+   "WATCH",
+   "OBSERVE",
+   "NOTE THE STEPS"
+  ],
+  "mode": "Class / Group",
+  "ways": [
+   "Live demonstration",
+   "Camera demonstration",
+   "Video demonstration",
+   "Small-group repeat",
+   "Silent demonstration",
+   "Fault-finding demonstration",
+   "Demonstrate back",
+   "Masterclass rotation",
+   "Questioned re-demonstration",
+   "Guest expert workshop"
+  ],
+  "levels": {
+   "supplementary": "Seat the student at the front with a clear sightline, give a photo step card to follow and warn before machines start. Repeat the demonstration in a small group and check understanding.",
+   "substantial": "Provide a simplified, large-print step sequence and a video to replay. Teacher or LSO repeats the demonstration individually, one step at a time, with the student handling the equipment.",
+   "extensive": "Demonstrate one-to-one in a low-noise setting, one step per turn, using objects, symbols or key word sign. Hearing protection and close supervision at all times.",
+   "extension": "After a verified safety induction, students who show mastery skip repeat demonstrations, tackle the fault-finding version or prepare an advanced technique to demonstrate to others.",
+   "life_skills": "Student watches from a safe, close position and copies one or two steps with support. Assessed against Life Skills outcomes such as following a demonstrated step safely."
+  }
+ },
+ {
+  "id": "worked-example",
+  "kind": "Activity",
+  "family": "Building knowledge",
+  "name": "Worked example",
+  "summary": "Study a completed example step by step to see how a task is done and what quality looks like.",
+  "step": "LEARN",
+  "verbs": [
+   "FOLLOW",
+   "ANNOTATE",
+   "COPY"
+  ],
+  "mode": "Class / Individual",
+  "ways": [
+   "Annotated exemplar",
+   "Strong and weak comparison",
+   "What a good one looks like",
+   "Faded example",
+   "Think-aloud",
+   "Whole-class walkthrough",
+   "Simple-scenario modelling",
+   "Past student work",
+   "Deconstruct then reconstruct"
+  ],
+  "levels": {
+   "supplementary": "Give a printed copy of the exemplar with the key features already numbered and a short checklist of what to look for. Use a faded example so the student completes the last steps only.",
+   "substantial": "Provide a simplified exemplar with colour-coded annotations and a matching physical sample to handle. Teacher or LSO talks through each feature and the student responds orally or by pointing.",
+   "extensive": "Work one-to-one with a real finished sample and a single quality feature at a time; the student indicates the stronger of two samples using their communication system.",
+   "extension": "Have students rank several exemplars, justify the ranking against the criteria and then write the annotations for an unannotated piece, including what would lift it beyond the A range.",
+   "life_skills": "Student compares two real samples (finished and unfinished, neat and untidy) and chooses which is better, with prompts, working beside peers. Record against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "exploration",
+  "kind": "Activity",
+  "family": "Building knowledge",
+  "name": "Exploration",
+  "summary": "Look at, handle or try out examples and materials to build curiosity and first ideas about a topic.",
+  "step": "LEARN",
+  "verbs": [
+   "OBSERVE",
+   "HANDLE",
+   "DISCOVER"
+  ],
+  "mode": "Class / Individual",
+  "ways": [
+   "Gallery of examples",
+   "Object handling",
+   "See, think, wonder",
+   "Inspiration collage",
+   "Image carousel",
+   "Excursion or virtual tour",
+   "KWLH chart",
+   "Scavenger hunt",
+   "Tactile sample selection",
+   "Carousel stations",
+   "Outdoor texture hunt",
+   "Microscope look",
+   "Simulator",
+   "Software free-play",
+   "Y-chart",
+   "Floorstorming",
+   "Graffiti wall",
+   "Guided collecting walk",
+   "Shared experience"
+  ],
+  "levels": {
+   "supplementary": "Give a reduced set of clearly labelled examples and a see-think-wonder scaffold with sentence starters. Allow a quieter viewing spot and extra time; preview any excursion with photos or a map.",
+   "substantial": "Pre-select and pre-print the images or objects and provide a tick-box or picture-choice recording sheet. Teacher or LSO supports viewing, describes visual detail and scribes the student's responses.",
+   "extensive": "Explore one-to-one through object handling and sensory examples; the student shows preference by choosing between two items or symbols. An adult records responses against personalised goals.",
+   "extension": "Ask students to curate their own reference set around a concept (a trend, a paradox, a design movement over time) and justify each inclusion to a real or simulated client.",
+   "life_skills": "Student handles real objects and chooses favourites for a simple collage or likes board, with support and alongside peers. Assessed on Life Skills outcomes such as making and communicating choices."
+  }
+ },
+ {
+  "id": "revision",
+  "kind": "Activity",
+  "family": "Building knowledge",
+  "name": "Revision",
+  "summary": "Go back over a topic in an organised way to strengthen memory and prepare for a test or exam.",
+  "step": "RECALL",
+  "verbs": [
+   "SUMMARISE",
+   "SELF-TEST",
+   "RETRIEVE"
+  ],
+  "mode": "Individual / Class",
+  "ways": [
+   "Summary sheet",
+   "Flashcards",
+   "Practice questions",
+   "Past paper questions",
+   "Topic mind map",
+   "Quiz game",
+   "Study guide",
+   "Workbook practice questions",
+   "Past questions with marking criteria",
+   "Running glossary",
+   "Timed past paper",
+   "Student-written test items",
+   "Choice board"
+  ],
+  "levels": {
+   "supplementary": "Provide a part-completed summary sheet, a glossary and practice questions broken into steps with a worked answer first. Schedule short check-ins and note any approved extra time or rest breaks for the test.",
+   "substantial": "Give significantly modified revision materials: visual summary cards, audio or read-aloud questions and scaffolded answer frames. Revise in a small group with a teacher or LSO most lessons.",
+   "extensive": "Revise one-to-one in short, highly structured sessions using objects, photos and the student's communication system, focused only on their personalised goals.",
+   "extension": "Skip rote review after demonstrated mastery. Students write and mark an exam-style question with marking guidelines, or apply the content to an unfamiliar case and evaluate their own response.",
+   "life_skills": "Student revisits functional content with a photo book or matching game about tools, materials and safety, beside peers. Assessed on personalised Life Skills outcomes, not the class test."
+  }
+ },
+ {
+  "id": "discussion",
+  "kind": "Activity",
+  "family": "Investigating and analysing",
+  "name": "Discussion",
+  "summary": "Share and test ideas by talking with others to deepen understanding and hear other views.",
+  "step": "PRACTISE",
+  "verbs": [
+   "DISCUSS",
+   "SHARE",
+   "DEBATE"
+  ],
+  "mode": "Class / Group",
+  "ways": [
+   "Think-pair-share",
+   "Mini-whiteboard responses",
+   "Cold call",
+   "Socratic questioning",
+   "Four corners",
+   "Debate",
+   "PMI",
+   "Class discussion",
+   "Questioning game",
+   "Structured discussion",
+   "Yarning circle",
+   "What-if questioning",
+   "Statement debate",
+   "Scenario analysis",
+   "Board-recorded discussion",
+   "Opinion line-up",
+   "Agreement circle",
+   "Judge and jury",
+   "Save the last word",
+   "Inside-outside circle",
+   "Numbered heads together",
+   "Basketball questioning",
+   "Question box",
+   "Fishbowl",
+   "Journal jumpstart",
+   "Six thinking hats",
+   "Class vote"
+  ],
+  "levels": {
+   "supplementary": "Preview the questions, give thinking time and let the student rehearse with a partner or write on a mini-whiteboard first. Provide sentence starters and agree in advance when they will be asked.",
+   "substantial": "Give the questions the lesson before with visual prompts and a prepared response card. Teacher or LSO supports a small-group discussion and relays or records the student's contribution.",
+   "extensive": "Student contributes through their communication device, symbols or choice cards with one-to-one support, answering one prepared closed question. Peers are taught to wait and respond.",
+   "extension": "Pose provocative questions with no settled answer and have students argue from multiple perspectives or lead the Socratic questioning. Ask what makes you say that to demand justification.",
+   "life_skills": "Student joins the pair or group and answers a concrete question (like or dislike, yes or no, which one) using speech, pictures or gesture. Record against Life Skills communication outcomes."
+  }
+ },
+ {
+  "id": "research",
+  "kind": "Activity",
+  "family": "Investigating and analysing",
+  "name": "Research",
+  "summary": "Find, select and record information from sources to answer a question.",
+  "step": "APPLY",
+  "verbs": [
+   "FIND",
+   "GATHER",
+   "RECORD"
+  ],
+  "mode": "Individual",
+  "ways": [
+   "Source pack",
+   "Jigsaw",
+   "Fact file",
+   "Annotated source list",
+   "Interview or survey",
+   "Library or database search",
+   "Timeline",
+   "Infographic",
+   "Case study questions",
+   "Client survey",
+   "Research scaffold",
+   "Designer profile",
+   "Career research",
+   "Statistics report",
+   "Magazine article",
+   "Source sort",
+   "Interview grid",
+   "Five Ws and H",
+   "Empathy map",
+   "User persona",
+   "End-use hunt",
+   "Skim and scan"
+  ],
+  "levels": {
+   "supplementary": "Provide a source pack at an accessible reading level with key words highlighted, plus a note-taking scaffold and a simple referencing template. Chunk the task into dated steps with check-ins.",
+   "substantial": "Supply two or three pre-selected, simplified or audio sources and a fact-file frame with picture prompts. Teacher or LSO reads with the student and scribes, or the student uses speech-to-text.",
+   "extensive": "Research one-to-one from a single image-rich or symbolated source; the student selects pictures or symbols to build a fact page. An adult records choices against personalised goals.",
+   "extension": "Set an open question that needs original research (an interview, survey or industry contact) and have students weigh conflicting sources and report to an authentic audience.",
+   "life_skills": "Student finds and sorts pictures on a practical topic (for example, fabrics we wear, tools we use) into a simple poster, with support. Assessed against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "investigation",
+  "kind": "Activity",
+  "family": "Investigating and analysing",
+  "name": "Investigation",
+  "summary": "Test a question or idea first-hand by collecting and recording evidence.",
+  "step": "APPLY",
+  "verbs": [
+   "INVESTIGATE",
+   "MEASURE",
+   "RECORD"
+  ],
+  "mode": "Individual / Group",
+  "ways": [
+   "Fair test",
+   "Materials testing",
+   "Product teardown",
+   "Survey and data collection",
+   "User observation",
+   "Predict, observe, explain",
+   "Client interview",
+   "Race or performance testing",
+   "Scientific-method experiment",
+   "Fibre identification tests",
+   "Class survey and graphs",
+   "Challenge series",
+   "Technique cards",
+   "Material properties table",
+   "Independent learning task"
+  ],
+  "levels": {
+   "supplementary": "Give a step card with photos, a pre-drawn results table and a prediction sentence starter. Pair with a steady partner, check in after each step and allow extra time to record.",
+   "substantial": "Pre-prepare and pre-measure the test materials and reduce the recording to ticks, photos or a simple scale. Teacher or LSO guides each step and the student gives conclusions orally.",
+   "extensive": "The student directs the test while an adult handles the equipment; they observe and indicate results by choosing between two options. One-to-one support and a personalised goal throughout.",
+   "extension": "Students design their own fair test, choose the variables, analyse multiple variables and critique the reliability of the method. Present findings as a recommendation to a client or manufacturer.",
+   "life_skills": "Student takes part in a concrete test (which fabric soaks up water, which join holds) and says or shows what happened, with support. Record against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "analysis",
+  "kind": "Activity",
+  "family": "Investigating and analysing",
+  "name": "Analysis",
+  "summary": "Break something into its parts to explain how it works or why it has the effect it does.",
+  "step": "APPLY",
+  "verbs": [
+   "ANALYSE",
+   "EXAMINE",
+   "BREAK DOWN"
+  ],
+  "mode": "Individual / Group",
+  "ways": [
+   "Annotated diagram",
+   "Elements and principles analysis",
+   "Frames analysis",
+   "SWOT analysis",
+   "Hexagonal thinking",
+   "Deconstruct a response",
+   "PMI chart",
+   "Success factors mind map",
+   "PEEL paragraph",
+   "Unpack an infographic",
+   "Response plan",
+   "Functional and aesthetic labelling",
+   "Data graphing",
+   "3-2-1 image analysis",
+   "Website or app analysis",
+   "Group product analysis",
+   "Extent barometer",
+   "Problem unpacking",
+   "Evidence strength sort",
+   "Four-step problem solving",
+   "Card sort",
+   "Design factors table",
+   "Manufacturing scaffold"
+  ],
+  "levels": {
+   "supplementary": "Provide a part-labelled diagram or analysis frame with a word bank of elements, principles or frames terms and sentence starters. Model one part first, then check in.",
+   "substantial": "Use a significantly modified scaffold: cloze annotations, picture-matched vocabulary and fewer parts covering the same outcome. Teacher or LSO works through it and accepts oral or annotated-sketch responses.",
+   "extensive": "Analyse one feature at a time one-to-one using the real object; the student identifies parts by pointing, matching or their communication system. Record against personalised goals.",
+   "extension": "Apply Kaplan lenses (patterns, ethics, multiple perspectives) or hexagonal thinking to link the parts to a bigger idea. Students justify which factor matters most and why.",
+   "life_skills": "Student names or matches the main parts of a real product (handle, seam, switch) and what each is for, with prompts. Assessed against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "comparison",
+  "kind": "Activity",
+  "family": "Investigating and analysing",
+  "name": "Comparison",
+  "summary": "Set two or more things side by side to identify what is similar and what is different.",
+  "step": "APPLY",
+  "verbs": [
+   "COMPARE",
+   "CONTRAST",
+   "RANK"
+  ],
+  "mode": "Individual / Group",
+  "ways": [
+   "Comparison table",
+   "Venn diagram",
+   "Pros and cons",
+   "Diamond ranking",
+   "Same and different sort",
+   "Before and after",
+   "Benefits and limitations table",
+   "Industry and classroom comparison",
+   "Old and new comparison",
+   "Decision-making matrix",
+   "Tournament prioritiser",
+   "T-chart",
+   "Spot the difference pairs"
+  ],
+  "levels": {
+   "supplementary": "Give a comparison table with the criteria and first row completed, plus a word bank. Limit to two items, allow extra time and check in after the instructions.",
+   "substantial": "Provide pre-made picture or statement cards to sort into same and different, with the teacher or LSO reading them aloud. Accept the sorted cards, photographed, as the response.",
+   "extensive": "Compare two real objects one-to-one on a single criterion; the student indicates which is bigger, softer or stronger by choosing. An adult records against personalised goals.",
+   "extension": "Students set and weight their own criteria, compare across disciplines or contexts (industry and classroom) and argue where the comparison breaks down.",
+   "life_skills": "Student sorts real items or photos into two groups (same or different, hard or soft) with support, beside peers. Record against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "interpretation",
+  "kind": "Activity",
+  "family": "Investigating and analysing",
+  "name": "Interpretation",
+  "summary": "Work out what something means and explain your reading of it with evidence.",
+  "step": "APPLY",
+  "verbs": [
+   "INTERPRET",
+   "INFER",
+   "EXPLAIN"
+  ],
+  "mode": "Individual / Group",
+  "ways": [
+   "Frames viewpoint",
+   "Conceptual framework lens",
+   "See, think, wonder",
+   "Critic or curator role play",
+   "Catalogue entry",
+   "Compare interpretations",
+   "Describe and draw",
+   "Sign and symbol interpretation",
+   "Reading workshop drawings",
+   "Chart and data interpretation",
+   "Three-level guide",
+   "Conflicting sources"
+  ],
+  "levels": {
+   "supplementary": "Provide a see-think-wonder frame with sentence starters and a short glossary for the frame being used. Allow a spoken rehearsal with a partner before writing.",
+   "substantial": "Give a simplified prompt sheet with picture cues and two or three guiding questions per frame. Teacher or LSO discusses the work with the student and scribes or records their spoken interpretation.",
+   "extensive": "Respond to the artwork one-to-one through sensory or tactile versions, choice cards and the student's communication system. Record reactions and choices against personalised goals.",
+   "extension": "Have students interpret the same work through competing frames or as a critic and a curator, then explain how the viewpoint changes the meaning. Publish as a catalogue entry for a real exhibition.",
+   "life_skills": "Student says or shows what they see and how the artwork makes them feel using picture or feeling cards, with support. Assessed against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "product-evaluation",
+  "kind": "Activity",
+  "family": "Investigating and analysing",
+  "name": "Evaluation against criteria",
+  "summary": "Judge a product, performance, text, solution or piece of work against set criteria and support the judgement with evidence.",
+  "step": "APPLY",
+  "verbs": [
+   "JUDGE",
+   "JUSTIFY",
+   "RATE"
+  ],
+  "mode": "Individual / Group",
+  "ways": [
+   "Criteria rating scale",
+   "PMI",
+   "User testing",
+   "SWOT analysis",
+   "Blind comparison",
+   "Teardown evaluation",
+   "Audience survey",
+   "Existing products table",
+   "Criteria for success evaluation",
+   "Target-market appraisal",
+   "Test and record",
+   "Pitch show case study",
+   "Like, frustrate, improve",
+   "Pairing grid and contrast audit"
+  ],
+  "levels": {
+   "supplementary": "Supply a criteria rating scale with each criterion explained in plain language and a sentence starter for the judgement. Model one criterion, then check in.",
+   "substantial": "Reduce to two or three criteria with a visual scale (faces, stars or ticks) and have the product in hand. Teacher or LSO reads criteria and scribes the student's spoken reasons.",
+   "extensive": "Student trials the product one-to-one and indicates like or dislike and one reason using symbols or their communication device. An adult records against personalised goals.",
+   "extension": "Students write their own criteria from user research, evaluate for a specific stakeholder and recommend a redesign, weighing trade-offs between function, cost and environmental impact.",
+   "life_skills": "Student tries a real product and answers concrete questions (does it work, is it comfortable, would I use it) with picture supports. Record against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "idea-generation",
+  "kind": "Activity",
+  "family": "Developing ideas",
+  "name": "Idea generation",
+  "summary": "Come up with many possible ideas quickly before choosing which to develop.",
+  "step": "APPLY",
+  "verbs": [
+   "GENERATE",
+   "IMAGINE",
+   "COMBINE"
+  ],
+  "mode": "Class / Group / Individual",
+  "ways": [
+   "Brainstorm",
+   "Mind map",
+   "SCAMPER",
+   "Crazy eights",
+   "Thumbnail sketches",
+   "Mood board",
+   "Forced association",
+   "Design brief starter",
+   "Concept sketches",
+   "Lateral thinking challenge",
+   "Nine-image inspiration grid",
+   "Divergent then convergent",
+   "Sketch alone, pair, group",
+   "MASC",
+   "Placemat",
+   "Sticky-note storm",
+   "Personal symbol design"
+  ],
+  "levels": {
+   "supplementary": "Give a design brief starter with image prompts and a thumbnail template with a set number of boxes. Allow thinking time, accept quick sketches or words and check in early.",
+   "substantial": "Provide a reduced-choice idea kit (image cards, shape templates, material swatches) to combine into ideas. Teacher or LSO prompts and records the ideas; accept collage or spoken ideas.",
+   "extensive": "Offer two or three concrete options at a time one-to-one; the student chooses and combines them using their communication system. An adult draws or assembles at the student's direction.",
+   "extension": "Tighten or open the brief with real constraints (client, budget, sustainability). Use forced association or SCAMPER to push for original, risky ideas, then justify which idea best answers the need.",
+   "life_skills": "Student chooses colours, shapes or materials they like from real samples to build one idea, with support and alongside peers. Assessed on Life Skills outcomes about making choices."
+  }
+ },
+ {
+  "id": "design-development",
+  "kind": "Activity",
+  "family": "Developing ideas",
+  "name": "Developing and refining ideas",
+  "summary": "Take a first idea and improve it through drafting, feedback and changes.",
+  "step": "APPLY",
+  "verbs": [
+   "ITERATE",
+   "ADAPT",
+   "SELECT"
+  ],
+  "mode": "Individual",
+  "ways": [
+   "Iterative sketching",
+   "Rendering",
+   "Annotated drawings",
+   "CAD modelling",
+   "Storyboard",
+   "Variations",
+   "Critique and refine",
+   "Rendering workshop",
+   "Rendered illustration",
+   "Production drawing",
+   "Three ideas with PMI",
+   "Paper mock-up",
+   "Wireframes",
+   "Design proposal",
+   "Redesign one feature",
+   "Starter plans",
+   "Constraint challenge"
+  ],
+  "levels": {
+   "supplementary": "Provide templates, underlays or grid paper and a short annotation word bank with sentence starters. Break refinement into numbered steps with a visual step card and extra time on CAD.",
+   "substantial": "Supply pre-drawn outlines or a part-built CAD file so the student refines rather than starts blank. Teacher or LSO gives frequent individual instruction; accept spoken or recorded annotations.",
+   "extensive": "The student directs changes one-to-one and an adult draws or operates the software at their direction, with choices made through their communication system. Personalised goals apply.",
+   "extension": "Require iterations that respond to user testing or expert critique, with each change justified against design principles and the brief. Add advanced techniques once core skills are shown.",
+   "life_skills": "Student improves one thing about their design by choosing between options (colour, size, decoration) using templates or stencils, with support. Record against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "experimentation",
+  "kind": "Activity",
+  "family": "Developing ideas",
+  "name": "Experimentation",
+  "summary": "Try out different techniques, materials or approaches and record what happens to inform later choices.",
+  "step": "PRACTISE",
+  "verbs": [
+   "TRIAL",
+   "SAMPLE",
+   "VARY"
+  ],
+  "mode": "Individual / Group",
+  "ways": [
+   "Technique samples",
+   "Material trials",
+   "One-variable testing",
+   "Media exploration",
+   "Sample board",
+   "Process trials",
+   "Samples folder",
+   "Stitch settings samples",
+   "Dye experimentation",
+   "Process taster samples",
+   "Settings practical",
+   "Colour mixing exercises",
+   "Type specimen sheet"
+  ],
+  "levels": {
+   "supplementary": "Give a photo step card at each station, a pre-ruled record sheet with tick boxes and one variable to change. Seat away from noise and check in after each sample.",
+   "substantial": "Pre-cut, pre-mark and pre-thread materials and machines so the student trials the technique itself. Teacher or LSO works alongside most of the time; results recorded by photo and spoken comment.",
+   "extensive": "Student experiences each material or technique one-to-one, with hand-over-hand support or the teacher operating equipment at their direction. Record sensory responses and choices against personalised goals.",
+   "extension": "Students plan their own one-variable trials, predict outcomes and explain unexpected results. Extend into techniques beyond the unit or combine processes to solve a design problem.",
+   "life_skills": "Student tries two or three safe materials or techniques with support and shows which they prefer and why. Assessed against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "prototyping",
+  "kind": "Activity",
+  "family": "Developing ideas",
+  "name": "Modelling and prototyping",
+  "summary": "Build a quick model, draft or mock-up of an idea to test it and find what needs to change.",
+  "step": "APPLY",
+  "verbs": [
+   "MODEL",
+   "PROTOTYPE",
+   "MOCK UP"
+  ],
+  "mode": "Individual / Group",
+  "ways": [
+   "Toile",
+   "Scale model",
+   "Cardboard mock-up",
+   "Paper prototype or wireframe",
+   "Test print or test cut",
+   "User trial",
+   "Low-fidelity prototype",
+   "Paper build challenge",
+   "Second prototype from feedback",
+   "Simulator then physical test",
+   "Flipbook"
+  ],
+  "levels": {
+   "supplementary": "Provide a visual sequence, pre-marked materials for tricky measurements and a checklist of what the prototype must test. Allow extra time and a quiet bench.",
+   "substantial": "Supply pre-cut pieces, a jig or a kit so the student assembles and tests. Teacher or LSO gives regular direct support and the student reports fit and function orally or by photo.",
+   "extensive": "Student directs assembly while an adult handles tools, or uses hand-over-hand support and adaptive equipment. Testing is one-to-one against a personalised goal.",
+   "extension": "Students prototype to answer a specific question, test with real users, record data and justify changes. Encourage low-fidelity risk-taking and a second iteration, not a neater first one.",
+   "life_skills": "Student builds a simple mock-up from a kit and checks one concrete thing (does it fit, does it stand up) with support. Record against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "guided-practice",
+  "kind": "Activity",
+  "family": "Practical skills and performance",
+  "name": "Guided practice",
+  "summary": "Practise a new skill with the teacher's support, which is reduced as confidence grows.",
+  "step": "PRACTISE",
+  "verbs": [
+   "FOLLOW",
+   "TRY",
+   "REPEAT"
+  ],
+  "mode": "Class / Group",
+  "ways": [
+   "I do, we do, you do",
+   "Step and check",
+   "Mirror the teacher",
+   "Paired practice",
+   "Station rotation",
+   "Follow-along on projector",
+   "Half-class rotation",
+   "Video draw-along",
+   "Work out the method"
+  ],
+  "levels": {
+   "supplementary": "Place the student near the teacher, give the step card and check each step before moving on. Chunk into single instructions, written and spoken, and allow extra practice time.",
+   "substantial": "Use pre-prepared materials (pre-threaded machine, pre-marked timber, starter file) so practice targets the new step. Teacher or LSO works beside the student for most of the session.",
+   "extensive": "Practise one-to-one with hand-over-hand support, tools preset and additional guards or PPE, or the teacher operates the tool at the student's direction. Personalised goals guide each step.",
+   "extension": "Release students to the you do stage early after a quick mastery check, then set a harder application of the same technique or a problem with no modelled answer.",
+   "life_skills": "Student completes selected steps of the technique with physical or visual prompts beside peers, on a simplified practice piece. Record against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "tutorial",
+  "kind": "Activity",
+  "family": "Practical skills and performance",
+  "name": "Tutorial",
+  "summary": "Follow a set of written, printed or recorded instructions at your own pace to learn a skill or process.",
+  "step": "PRACTISE",
+  "verbs": [
+   "FOLLOW",
+   "BUILD",
+   "USE"
+  ],
+  "mode": "Individual",
+  "ways": [
+   "Step card",
+   "Video tutorial",
+   "Written tutorial",
+   "Screen-recorded walkthrough",
+   "Flipped tutorial",
+   "Online course modules",
+   "Tool identification sheet",
+   "Shortcut sheet",
+   "Machine settings card",
+   "Recipe or method card"
+  ],
+  "levels": {
+   "supplementary": "Provide a printed step card with photos beside each instruction and tick boxes. Allow pausing and replaying of video, extra time and scheduled check-ins at set steps.",
+   "substantial": "Give a significantly modified tutorial: fewer words, one photo per step, large print or captioned and narrated video. Teacher or LSO sits with the student and prompts each step.",
+   "extensive": "An adult works through a symbol or photo sequence one-to-one, one step at a time, with the student indicating next using their communication system.",
+   "extension": "Compact tutorials students can already do. They attempt the advanced tutorial, troubleshoot a deliberately broken file or sample, or write a step card for a real class to use.",
+   "life_skills": "Student follows a short visual sequence of three or four photo steps for a functional task, with prompts. Assessed on Life Skills outcomes such as following a visual procedure."
+  }
+ },
+ {
+  "id": "skill-practice",
+  "kind": "Activity",
+  "family": "Practical skills and performance",
+  "name": "Skill practice",
+  "summary": "Repeat a skill until it becomes accurate and fluent.",
+  "step": "PRACTISE",
+  "verbs": [
+   "REPEAT",
+   "DRILL",
+   "MASTER"
+  ],
+  "mode": "Individual",
+  "ways": [
+   "Sample making",
+   "Practice piece",
+   "Stations",
+   "Timed drill",
+   "Challenge ladder",
+   "Skills checklist",
+   "Paper sewing",
+   "Mini skills project",
+   "Speed drill",
+   "Sketching skills booklet",
+   "Debugging exercise",
+   "Mini software tasks",
+   "Graded material progression",
+   "Tiered technique menu",
+   "Partner measuring",
+   "Error find and fix",
+   "Challenge stamp card"
+  ],
+  "levels": {
+   "supplementary": "Give a skills checklist with a done looks like photo, break practice into short timed blocks and check in after each sample. Remove timed-drill pressure; allow extra attempts.",
+   "substantial": "Provide pre-marked practice pieces, jigs or guides and adapted tools. Teacher or LSO gives regular direct feedback during practice; evidence is the sample plus a photo, not a written record.",
+   "extensive": "Practise one-to-one with preset tools, adaptive grips and hand-over-hand support, or direct the teacher to operate equipment where manipulation isn't the outcome. Track progress against personalised goals.",
+   "extension": "Once the standard is met, stop repetition. Move to the top of the challenge ladder: an advanced variation, a combination of techniques or applying the skill in an unfamiliar material.",
+   "life_skills": "Student practises one functional skill (threading, sanding, saving a file) on a simplified piece with prompts, working alongside peers. Record against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "production",
+  "kind": "Activity",
+  "family": "Practical skills and performance",
+  "name": "Making and producing",
+  "summary": "Use sustained work time to make a product, artwork, performance piece, composition or extended text.",
+  "step": "APPLY",
+  "verbs": [
+   "ASSEMBLE",
+   "BUILD",
+   "FINISH"
+  ],
+  "mode": "Individual",
+  "ways": [
+   "Production session",
+   "Checkpoint production",
+   "Workshop stations",
+   "Studio time",
+   "Catch-up clinic",
+   "Staged construction",
+   "Assessment work lesson",
+   "Flat-pack build",
+   "Race or competition day"
+  ],
+  "levels": {
+   "supplementary": "Supply a staged production planner with dated checkpoints and tick boxes, plus photo step cards at each station. Seat at a quieter bench, check in each lesson and allow extra time.",
+   "substantial": "Provide pre-cut or pre-marked components, jigs and reduced-choice kits so the student completes the same project. Teacher or LSO assists for most of each session and records progress by photo.",
+   "extensive": "The student makes design decisions and directs construction while an adult operates equipment, with hand-over-hand support where safe. One-to-one supervision and personalised goals at all times.",
+   "extension": "Keep one open project but stretch it: added constraints, a real client or advanced techniques, with decisions justified in the folio. Aim for the Newman Symposium or an exhibition.",
+   "life_skills": "Student makes a simplified, functional version of the class project using a kit and visual sequence, with support. Assessed against personalised Life Skills outcomes."
+  }
+ },
+ {
+  "id": "peer-teaching",
+  "kind": "Activity",
+  "family": "Practical skills and performance",
+  "name": "Peer teaching",
+  "summary": "Teach a skill or idea to classmates, which strengthens your own understanding.",
+  "step": "CHECK",
+  "verbs": [
+   "TEACH",
+   "EXPLAIN",
+   "COACH"
+  ],
+  "mode": "Pair",
+  "ways": [
+   "Expert partner",
+   "Jigsaw",
+   "Student demonstration",
+   "Student-made step card",
+   "Teach-back",
+   "Teach the class your product",
+   "Group expert report-back",
+   "Reciprocal teaching"
+  ],
+  "levels": {
+   "supplementary": "Pair the student with a patient partner, give a step card to teach from and let them rehearse first. Offer the choice of teaching one step rather than the whole procedure.",
+   "substantial": "Prepare a photo sequence or cue cards for the student to use, with the teacher or LSO supporting the pair. Accept showing the steps rather than explaining them aloud.",
+   "extensive": "Student shows a peer one step using their communication system or by doing it, with one-to-one adult support. Record against a personalised communication or participation goal.",
+   "extension": "Students who have mastered the skill produce a tested step card or tutorial for a real audience, anticipating common errors and explaining why each step matters.",
+   "life_skills": "Student shows a classmate one thing they can do (for example, how to put on safety glasses) with prompts. Assessed against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "safety-induction",
+  "kind": "Activity",
+  "family": "Safety, sustainability and ethics",
+  "name": "Safety induction",
+  "summary": "Learn the rules and safe procedures for a space, activity or piece of equipment before using it.",
+  "step": "LEARN",
+  "verbs": [
+   "OBSERVE",
+   "FOLLOW",
+   "DEMONSTRATE"
+  ],
+  "mode": "Group / Individual",
+  "ways": [
+   "Safety demonstration",
+   "Safety test",
+   "Spot the hazard",
+   "Procedure walk-through",
+   "Supervised first use",
+   "Safety scavenger hunt",
+   "Safety poster",
+   "OnGuard safety modules",
+   "Workshop tour and rules",
+   "Safety quiz",
+   "Machine competency check"
+  ],
+  "levels": {
+   "supplementary": "Provide the safe operating procedure as a photo sequence, pre-teach hazard vocabulary and read safety test questions aloud. Allow extra time and a practical demonstrate-back.",
+   "substantial": "Use a significantly modified, picture-based safety test and repeat the induction individually. Teacher or LSO supervises closely at every use; the student demonstrates each rule on the equipment.",
+   "extensive": "Induct one-to-one with symbols and physical modelling, additional guards and PPE. The student uses equipment only with constant, vigilant supervision, or directs the teacher to operate it.",
+   "extension": "After passing the standard induction, students analyse why each control exists, rank hazards by risk or redesign a procedure or guard. The induction itself is never compacted.",
+   "life_skills": "Student learns two or three key safety behaviours (PPE on, hands clear, stop and ask) with picture cues and practice. Assessed against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "risk-assessment",
+  "kind": "Activity",
+  "family": "Safety, sustainability and ethics",
+  "name": "Risk assessment",
+  "summary": "Identify hazards, judge how serious they are and decide how to control them.",
+  "step": "APPLY",
+  "verbs": [
+   "IDENTIFY",
+   "ASSESS",
+   "CONTROL"
+  ],
+  "mode": "Individual / Group",
+  "ways": [
+   "Hazard hunt",
+   "Risk matrix",
+   "Controls sort",
+   "Safe operating procedure",
+   "Pre-start checklist",
+   "Hazard-spotting worksheet",
+   "PPE scenarios",
+   "Safety role play",
+   "What-could-go-wrong questions"
+  ],
+  "levels": {
+   "supplementary": "Give a part-completed risk matrix with a hazard word bank and one worked row. Use a labelled photo of the workshop for the hazard hunt and check in after instructions.",
+   "substantial": "Provide picture cards of hazards and controls to match, with ratings reduced to a three-colour scale. Teacher or LSO reads and scribes; accept the sorted cards as the response.",
+   "extensive": "Identify hazards one-to-one on the real equipment by pointing or using symbols, choosing safe or not safe. An adult records against personalised safety goals.",
+   "extension": "Students assess a process they have not been taught, weigh likelihood against consequence, debate competing controls and write the safe operating procedure for others to use.",
+   "life_skills": "Student sorts photos into safe and unsafe and matches PPE to a task, with support and beside peers. Record against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "impact-assessment",
+  "kind": "Activity",
+  "family": "Safety, sustainability and ethics",
+  "name": "Impact assessment",
+  "summary": "Weigh up the effects of a decision, product or event on people, society and the environment.",
+  "step": "APPLY",
+  "verbs": [
+   "ASSESS",
+   "WEIGH UP",
+   "CONSIDER"
+  ],
+  "mode": "Class / Group",
+  "ways": [
+   "Life cycle map",
+   "Stakeholder map",
+   "Case study",
+   "Consequence wheel",
+   "Cost and benefit table",
+   "Ethical dilemma",
+   "Positive and negative impact table",
+   "Technology impact report",
+   "Best and worst inventions"
+  ],
+  "levels": {
+   "supplementary": "Provide a part-filled stakeholder map or impact table with sentence starters and a glossary. Use a short, accessible case study and model one positive and one negative impact.",
+   "substantial": "Give a simplified, image-based case study and picture cards to sort into helps and harms. Teacher or LSO reads with the student and scribes the reasons they give orally.",
+   "extensive": "Explore one concrete impact one-to-one using real objects (for example, rubbish and recycling); the student indicates good or bad using their communication system.",
+   "extension": "Set a genuine ethical dilemma with no clear answer. Students map unintended consequences over time, argue from opposing stakeholders and recommend a decision to a real organisation.",
+   "life_skills": "Student sorts pictures of who uses a product and whether a choice is good or bad for people or the environment, with prompts. Assessed against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "documentation",
+  "kind": "Activity",
+  "family": "Documenting and communicating",
+  "name": "Documentation",
+  "summary": "Record the process and decisions behind your work so progress can be seen and explained.",
+  "step": "PRACTISE",
+  "verbs": [
+   "DOCUMENT",
+   "RECORD",
+   "ANNOTATE"
+  ],
+  "mode": "Individual",
+  "ways": [
+   "Photograph and annotate",
+   "Diary entry",
+   "Annotated sample page",
+   "Step-by-step record",
+   "Folio page template",
+   "Video log",
+   "Product photoshoot",
+   "Marketing poster",
+   "Digital notebook entry",
+   "Learning log",
+   "Online design folio",
+   "Record of production",
+   "Management diary",
+   "Screen-recorded process video",
+   "Table to paragraph",
+   "Talk before writing",
+   "Care label design"
+  ],
+  "levels": {
+   "supplementary": "Give a folio page template with photo boxes, prompts and sentence starters, plus a word bank. Build in time each lesson to photograph and annotate; check in at set dates.",
+   "substantial": "Provide a pre-formatted page where the student adds photos and short captions. Teacher or LSO takes or prompts photos and scribes; accept voice or video log entries.",
+   "extensive": "An adult photographs each stage and the student selects and orders images one-to-one, adding comments through their communication system. Record against personalised goals.",
+   "extension": "Annotations must justify decisions against the brief and design principles, evaluate alternatives and propose iterations. Present the process for an authentic audience such as a client or exhibition.",
+   "life_skills": "Student keeps a simple photo record of what they made, sequencing pictures and adding a word or symbol to each, with support. Record against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "technical-drawing",
+  "kind": "Activity",
+  "family": "Documenting and communicating",
+  "name": "Drawing and diagrams",
+  "summary": "Use drawings and diagrams to show information clearly and accurately.",
+  "step": "PRACTISE",
+  "verbs": [
+   "DRAW",
+   "LABEL",
+   "DIAGRAM"
+  ],
+  "mode": "Individual",
+  "ways": [
+   "Orthogonal drawing",
+   "Pictorial drawing",
+   "Production drawing",
+   "Dimensioning exercise",
+   "Pattern markings",
+   "CAD drawing",
+   "Isometric grid sketch",
+   "Scaled plan",
+   "Flowchart",
+   "Paper template",
+   "Annotated sketch",
+   "Sketch completion sheet",
+   "Tech pack or spec sheet",
+   "Figure and flats underlay",
+   "Logo construction grid"
+  ],
+  "levels": {
+   "supplementary": "Provide isometric or grid paper, a part-started drawing and a conventions reference card. Chunk into numbered steps, demonstrate each and allow extra time.",
+   "substantial": "Supply pre-drawn outlines or templates with tools preset (set squares taped, compass fixed, CAD starter file). Teacher or LSO gives frequent individual instruction on each convention.",
+   "extensive": "The student directs the drawing and an adult draws or operates CAD at their direction; alternatively trace or assemble pre-cut shapes with hand-over-hand support. Personalised goals apply.",
+   "extension": "Students draw a more complex object or their own design to full standards, choose the most suitable drawing type for a manufacturer and justify the choice.",
+   "life_skills": "Student traces, matches or measures simple shapes with a ruler or template and labels them, with support. Assessed against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "informal-presentation",
+  "kind": "Activity",
+  "family": "Documenting and communicating",
+  "name": "Informal presentation",
+  "summary": "Share work or ideas briefly with others to practise explaining and to get quick feedback.",
+  "step": "CHECK",
+  "verbs": [
+   "SHARE",
+   "SHOW",
+   "PITCH"
+  ],
+  "mode": "Pair / Class",
+  "ways": [
+   "One-minute pitch",
+   "Show and explain",
+   "Pair share",
+   "Desk critique",
+   "Gallery walk with presenter",
+   "Poster presentation",
+   "Rehearsal presentation",
+   "Ten-minute pitch challenge",
+   "Good and bad design slide",
+   "Video explanation",
+   "Present your partner's design"
+  ],
+  "levels": {
+   "supplementary": "Give a cue card with three prompts, time to rehearse with a partner and warning of when they will present. Offer presenting to a pair or small group.",
+   "substantial": "Allow a pre-recorded video or a presentation to the teacher only, using a prepared script or photo prompts. Teacher or LSO helps rehearse and supports during the presentation.",
+   "extensive": "Student presents through their communication device, a pre-recorded message or by showing the work one-to-one with adult support. Record against personalised communication goals.",
+   "extension": "Students pitch to an authentic or expert audience, field unscripted questions and defend their decisions. Give feedback on reasoning and risk-taking, not polish.",
+   "life_skills": "Student shows their work to a peer or small group and says or indicates one thing about it, with prompts. Record against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "planning",
+  "kind": "Activity",
+  "family": "Planning and managing",
+  "name": "Planning",
+  "summary": "Map out the steps, time and resources needed before starting a task.",
+  "step": "PRACTISE",
+  "verbs": [
+   "SEQUENCE",
+   "SCHEDULE",
+   "MAP OUT"
+  ],
+  "mode": "Individual",
+  "ways": [
+   "Gantt chart",
+   "Flow chart",
+   "Time plan",
+   "Cutting or materials list",
+   "Checklist",
+   "Backward plan",
+   "Action plan and finance plan",
+   "Cutting list and costing",
+   "Ranked criteria for success",
+   "Order of construction",
+   "Statement of intent",
+   "Estimated and actual log",
+   "Costing comparison",
+   "Learning map",
+   "Sample kit cutting list",
+   "Practical order form",
+   "Range plan and line sheet"
+  ],
+  "levels": {
+   "supplementary": "Provide a part-completed time plan or flow chart with dated checkpoints and tick boxes. Model the first steps, give step cards to sequence and review the plan each lesson.",
+   "substantial": "Supply the production steps as picture cards for the student to order and a pre-filled materials list to check. Teacher or LSO builds the plan with the student and reviews it most lessons.",
+   "extensive": "Create a now, next, then visual schedule one-to-one for each session; the student chooses the order of steps where possible. An adult monitors against personalised goals.",
+   "extension": "Students plan backwards from a real deadline, cost materials, identify the critical path and risks, and adjust the plan when a constraint changes. Negotiate their own checkpoints.",
+   "life_skills": "Student puts three or four picture steps in order and ticks them off as they go, with support. Assessed against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "reflection",
+  "kind": "Activity",
+  "family": "Evaluating, reflecting and collaborating",
+  "name": "Reflection",
+  "summary": "Think back over what you did and learned to decide what worked and what to do next.",
+  "step": "CHECK",
+  "verbs": [
+   "LOOK BACK",
+   "NOTICE",
+   "RATE"
+  ],
+  "mode": "Individual",
+  "ways": [
+   "Diary entry",
+   "What went well, even better if",
+   "3-2-1",
+   "Exit reflection",
+   "Traffic-light review",
+   "Goal setting",
+   "Strengths and weaknesses",
+   "Feedback reflection",
+   "Evaluation with prompts",
+   "Class debrief",
+   "Used to think, now know",
+   "Photo prompt reflection",
+   "Circle, triangle, square",
+   "Triangle-square-circle",
+   "5-3-1"
+  ],
+  "levels": {
+   "supplementary": "Give a what went well, even better if frame with sentence starters and photos of their own work to prompt. Allow spoken reflection with a partner first.",
+   "substantial": "Use a traffic-light or rating-scale sheet with picture prompts and a short conference with the teacher or LSO, who scribes. Accept a recorded spoken reflection.",
+   "extensive": "Reflect one-to-one using photos of the session; the student indicates liked, didn't like and next using symbols or their communication device. Record against personalised goals.",
+   "extension": "Students evaluate their process against the brief, identify the decision that most shaped the outcome, explain how their thinking shifted and set their own stretch goal.",
+   "life_skills": "Student chooses a face or symbol to show how the work went and picks one thing to try next time, with prompts. Record against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "peer-self-assessment",
+  "kind": "Activity",
+  "family": "Evaluating, reflecting and collaborating",
+  "name": "Peer & self-assessment",
+  "summary": "Check your own or a classmate's work against the criteria to see what has been achieved and what to improve.",
+  "step": "CHECK",
+  "verbs": [
+   "ASSESS",
+   "GIVE FEEDBACK",
+   "RATE"
+  ],
+  "mode": "Pair / Individual",
+  "ways": [
+   "Two stars and a wish",
+   "Criteria checklist",
+   "Rubric highlighting",
+   "Gallery walk feedback",
+   "Exemplar comparison",
+   "Peer conference",
+   "I love, I wish, I wonder",
+   "Worksheet peer review",
+   "Peer critique",
+   "Self-assessment against the rubric",
+   "Peer play-test",
+   "Class scoring survey",
+   "Work swap",
+   "Choose, swap, choose",
+   "Pre-flight checklist",
+   "Rubric self-placement",
+   "Group contribution rating",
+   "Pair plus observer",
+   "Squint test critique"
+  ],
+  "levels": {
+   "supplementary": "Provide the success criteria as a plain-language checklist with examples and feedback sentence starters. Pair with a trusted partner and model one piece of feedback first.",
+   "substantial": "Reduce to two or three criteria with visual examples of each. Teacher or LSO guides the student through the work, reads the criteria and scribes feedback given orally.",
+   "extensive": "Compare the student's work with one photo criterion one-to-one; they indicate yes or not yet using their communication system. Peer feedback is given with an adult supporting.",
+   "extension": "Students apply the full rubric, justify a grade with evidence, distinguish the top bands and give feedback on how to move the work beyond the A descriptor.",
+   "life_skills": "Student checks their work against a two- or three-item picture checklist and gives a peer a thumbs up or one positive comment, with support. Assessed against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "collaboration",
+  "kind": "Activity",
+  "family": "Evaluating, reflecting and collaborating",
+  "name": "Collaboration",
+  "summary": "Work with others towards a shared goal, with each person contributing a part.",
+  "step": "PRACTISE",
+  "verbs": [
+   "COLLABORATE",
+   "CONTRIBUTE",
+   "NEGOTIATE"
+  ],
+  "mode": "Group",
+  "ways": [
+   "Group roles",
+   "Jigsaw",
+   "Design team challenge",
+   "Round robin",
+   "Shared artwork or product",
+   "Group infographic",
+   "Shared timeline",
+   "Design team roles",
+   "Shared folio",
+   "Back-to-back instructions",
+   "Class competition",
+   "Silent card shuffle",
+   "Draft, combine, publish",
+   "Class protocol setting",
+   "Clock partners",
+   "Conversation roles",
+   "Two stray, one stay"
+  ],
+  "levels": {
+   "supplementary": "Assign a clear role with a role card, set group norms and a timeline for each person's part. Choose the grouping carefully and check in with the group at set points.",
+   "substantial": "Give a defined, structured task within the group and pre-prepared materials for it. Teacher or LSO facilitates the group's meetings and supports the student to contribute.",
+   "extensive": "Student takes a personalised role with one-to-one adult support, contributing through their communication system or by making choices the group acts on. Peers are briefed on how to include them.",
+   "extension": "Group like-ability students for a design team challenge with a real client and complex constraints, or give a leadership or project-manager role with responsibility for the brief.",
+   "life_skills": "Student has a real, concrete job in the group (handing out materials, choosing colours, gluing or pressing) with support. Record against Life Skills outcomes about working with others."
+  }
+ },
+ {
+  "id": "check-for-understanding",
+  "kind": "Activity",
+  "family": "Building knowledge",
+  "name": "Check for understanding",
+  "summary": "Show what you understand so far so the teacher can decide what to reteach or move on from.",
+  "step": "CHECK",
+  "verbs": [
+   "ANSWER",
+   "SHOW",
+   "EXPLAIN"
+  ],
+  "mode": "Class / Individual",
+  "ways": [
+   "Entry ticket",
+   "Exit ticket",
+   "Hinge question",
+   "Mini-whiteboard check",
+   "Terminology check",
+   "Quick write",
+   "Labelled diagram",
+   "Confidence rating",
+   "KWLH chart",
+   "Card match",
+   "Word sort",
+   "Predict first",
+   "Own definition first",
+   "Interactive video questions",
+   "Topic quiz",
+   "ABCD cards",
+   "Misconception check",
+   "Muddiest point",
+   "Always, sometimes, never",
+   "Anticipation guide",
+   "Whip around",
+   "One-sentence summary",
+   "Headline summary",
+   "Analogy prompt",
+   "What's the question",
+   "Hot seat and report",
+   "Consensogram",
+   "Student response cards",
+   "Popsicle sticks"
+  ],
+  "levels": {
+   "supplementary": "Offer a choice of response: tick box, circled picture, labelled diagram or one sentence with a starter. Give thinking time before collecting and check privately rather than calling on the student cold.",
+   "substantial": "Use a pre-prepared ticket with two or three picture or multiple-choice items read aloud by the teacher or LSO. Accept an oral answer or a demonstration at the bench as the check.",
+   "extensive": "Check one-to-one straight after the activity using yes/no cards, symbols, gesture or the student's communication device. Record against the student's personalised goal for the lesson.",
+   "extension": "Add a stretch prompt to the same ticket: what if a variable changed, or why does this hold? Use confident responses to decide who compacts the next lesson.",
+   "life_skills": "Student shows understanding by pointing to, selecting or doing one concrete thing (for example, picking the correct tool) with a prompt. Record against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "feedback-and-conferencing",
+  "kind": "Activity",
+  "family": "Evaluating, reflecting and collaborating",
+  "name": "Feedback and conferencing",
+  "summary": "Meet briefly with the teacher about work in progress to hear what is going well and agree on a next step.",
+  "step": "CHECK",
+  "verbs": [
+   "CONFER",
+   "ASK",
+   "ACT ON IT"
+  ],
+  "mode": "Individual",
+  "ways": [
+   "Progress conference",
+   "Desk check",
+   "Live marking",
+   "Feedback response",
+   "Next-step slip",
+   "One-to-one design conference",
+   "Upload for review",
+   "Three and one marking",
+   "Close-the-gap prompt",
+   "Comment-only marking",
+   "Three questions marking",
+   "Feedback dialogue frame",
+   "Traffic light feedback table",
+   "Community expert feedback",
+   "Prototype check",
+   "Production plan check",
+   "Drawing check",
+   "Diary check",
+   "Milestone checkpoint"
+  ],
+  "levels": {
+   "supplementary": "Give feedback in writing and spoken, as one next step on a slip with a tick box. Hold the conference privately and check back next lesson that it was acted on.",
+   "substantial": "Conference every lesson with the teacher or LSO, using photos or the work itself and a visual next-step card. Model the improvement, then the student attempts it with support.",
+   "extensive": "Give immediate one-to-one feedback during the task using symbols, gesture or the student's communication system, linked to personalised goals and recorded each session.",
+   "extension": "Use the conference to probe reasoning and negotiate a stretch goal or compacting. Praise effort, strategy and risk-taking, and bring in an expert or mentor for critique.",
+   "life_skills": "Teacher gives one simple, concrete next step with a picture or demonstration and the student tries it straight away with support. Record progress against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "reading-and-comprehension",
+  "kind": "Activity",
+  "family": "Building knowledge",
+  "name": "Reading and comprehension",
+  "summary": "Read a text, source or article closely to understand what it says and what it means.",
+  "step": "LEARN",
+  "verbs": [
+   "READ",
+   "ANNOTATE",
+   "SUMMARISE"
+  ],
+  "mode": "Class / Pair / Individual",
+  "ways": [
+   "Close reading",
+   "Annotating a text",
+   "Anticipation guide",
+   "A to Z chart",
+   "Reciprocal teaching",
+   "Skim and scan",
+   "Question-answer relationships",
+   "Paired reading",
+   "Three-level guide",
+   "Stop and jot"
+  ],
+  "levels": {
+   "supplementary": "Give a shorter or chunked version of the text with key words in bold and a word bank. Read the first section together and check in after each chunk.",
+   "substantial": "Provide a simplified text with images and three guiding questions, read aloud by an adult or peer. Allow extra time and spoken answers.",
+   "extensive": "Read a few key sentences aloud with picture support and have the student show understanding by pointing, matching or using AAC. Work one-to-one with an adult.",
+   "extension": "Use a more complex or contrasting text on the same topic and ask students to weigh up the writer's purpose, bias and what is left out.",
+   "life_skills": "Read everyday texts such as signs, labels, timetables or instructions with support and show the meaning by acting on them. Record against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "vocabulary-and-terminology",
+  "kind": "Activity",
+  "family": "Building knowledge",
+  "name": "Vocabulary and terminology",
+  "summary": "Learn, practise and use the key words of the subject so they can be read, said and written correctly.",
+  "step": "LEARN",
+  "verbs": [
+   "DEFINE",
+   "MATCH",
+   "USE"
+  ],
+  "mode": "Class / Group / Pair / Individual",
+  "ways": [
+   "Word wall",
+   "Word of the day",
+   "Morphology (word parts)",
+   "Tiered vocabulary list",
+   "Pictionary",
+   "Password",
+   "Sentence stems",
+   "Total physical response",
+   "Vocabulary in context"
+  ],
+  "levels": {
+   "supplementary": "Limit the list to five words with a picture and a plain definition for each, kept on the desk as a word bank. Check in after the first activity.",
+   "substantial": "Teach three key words with pictures or real objects and practise by matching word to image. Allow spoken answers and extra time.",
+   "extensive": "Focus on one or two words linked to real objects or actions, shown by pointing, signing or using AAC. Work one-to-one with an adult and repeat across lessons.",
+   "extension": "Explore word origins, shades of meaning and how a term changes meaning between subjects, then use the words in a precise explanation.",
+   "life_skills": "Learn functional words for the topic, such as safety signs, tool names or everyday labels, and match them to objects in the room. Record against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "note-making-and-summarising",
+  "kind": "Activity",
+  "family": "Building knowledge",
+  "name": "Note-making and summarising",
+  "summary": "Turn what was read, watched or heard into short notes in your own words.",
+  "step": "LEARN",
+  "verbs": [
+   "NOTE",
+   "SUMMARISE",
+   "ORGANISE"
+  ],
+  "mode": "Pair / Individual",
+  "ways": [
+   "Cornell notes",
+   "Dot-point summary",
+   "Graphic organiser",
+   "One-minute note",
+   "Sketchnotes",
+   "One-sentence summary",
+   "Summary pyramid",
+   "Dictogloss",
+   "Highlight then rewrite",
+   "Study cards"
+  ],
+  "levels": {
+   "supplementary": "Give a note template with headings and the first point completed, plus a word bank. Allow extra time and check in after the first section.",
+   "substantial": "Provide partly completed notes with gaps for key words, and pause the source often. Accept labelled drawings or spoken summaries scribed by an adult.",
+   "extensive": "Have the student choose or match two or three picture cards that show the main ideas, using AAC or pointing. Work one-to-one with an adult.",
+   "extension": "Combine notes from two sources, point out where they agree or differ, and reduce the result to the fewest words that still hold the meaning.",
+   "life_skills": "Record one or two important things from the lesson using photos, symbols or key words, such as a list of steps to follow. Record against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "listening-and-viewing",
+  "kind": "Activity",
+  "family": "Building knowledge",
+  "name": "Listening and viewing",
+  "summary": "Listen to or view a recording, performance, film, podcast or speaker actively to take in key information and ideas.",
+  "step": "LEARN",
+  "verbs": [
+   "LISTEN",
+   "VIEW",
+   "NOTE"
+  ],
+  "mode": "Class / Pair / Individual",
+  "ways": [
+   "Viewing guide",
+   "Listening for key ideas",
+   "Pause and predict",
+   "Guest speaker questions",
+   "Aural analysis",
+   "Film clip analysis",
+   "Podcast notes",
+   "Dictation",
+   "Listening comprehension",
+   "Silent viewing then sound"
+  ],
+  "levels": {
+   "supplementary": "Give the focus questions and key words before playing, use captions and pause more often. Allow a second viewing and check in after the first pause.",
+   "substantial": "Provide a guide with pictures and tick-box or circle answers, and play in very short sections. Allow spoken answers and adult support to record them.",
+   "extensive": "Use a very short clip or sound with one thing to notice, and have the student respond by pointing, choosing a picture or using AAC. Work one-to-one with an adult.",
+   "extension": "Ask students to judge how sound, image and editing choices shape the message, or to compare two versions of the same piece.",
+   "life_skills": "Listen to and follow spoken instructions or announcements, or view a short clip and show one thing learned. Record against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "problem-solving",
+  "kind": "Activity",
+  "family": "Investigating and analysing",
+  "name": "Problem solving",
+  "summary": "Work through an unfamiliar problem by choosing a method, testing it and checking the answer makes sense.",
+  "step": "PRACTISE",
+  "verbs": [
+   "SOLVE",
+   "CALCULATE",
+   "REASON"
+  ],
+  "mode": "Class / Group / Pair / Individual",
+  "ways": [
+   "Worked problem pairs",
+   "Problem-solving steps",
+   "Open-ended task",
+   "Low floor high ceiling task",
+   "Number talk",
+   "Estimation first",
+   "Error analysis",
+   "Real-world modelling problem",
+   "One-minute problem",
+   "Goal-free problem"
+  ],
+  "levels": {
+   "supplementary": "Give the problem in short chunks with a steps checklist and a worked example to refer to. Allow extra time and check in after the first step.",
+   "substantial": "Use smaller numbers or fewer steps, supply a part-completed solution and concrete materials or a diagram. Work alongside an adult or peer for the planning step.",
+   "extensive": "Work on one step of the problem with objects, pictures or a calculator and adult support. Accept a spoken, pointed or AAC response for the answer.",
+   "extension": "Solve the same problem a second way, then generalise it or change one condition and predict what happens.",
+   "life_skills": "Solve an everyday problem such as working out change, reading a timetable or sharing items equally, recorded against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "source-and-data-work",
+  "kind": "Activity",
+  "family": "Investigating and analysing",
+  "name": "Source and data work",
+  "summary": "Read sources, maps, graphs, tables and statistics closely to work out what they show and how far they can be trusted.",
+  "step": "APPLY",
+  "verbs": [
+   "EXAMINE",
+   "GRAPH",
+   "CORROBORATE"
+  ],
+  "mode": "Class / Group / Pair / Individual",
+  "ways": [
+   "Source analysis scaffold",
+   "Different points of view",
+   "Key events timeline",
+   "Graph interpretation",
+   "Map reading and mapping",
+   "Data table to graph",
+   "Photograph analysis",
+   "Corroborating sources",
+   "Statistics investigation",
+   "Political cartoon analysis"
+  ],
+  "levels": {
+   "supplementary": "Give a scaffold with question prompts, a word bank and the first row completed. Use a shorter source or a simplified graph, and allow extra time.",
+   "substantial": "Use one short source or a single graph with key parts highlighted and read aloud. Offer sentence starters and multiple-choice or matching responses.",
+   "extensive": "Explore one image, object or simple picture graph with adult support and respond by pointing, sorting or AAC. Focus on one question such as who or how many.",
+   "extension": "Add a conflicting source or a second data set and judge which is more useful for the question. Explain what further evidence would be needed.",
+   "life_skills": "Read everyday sources such as a timetable, weather chart, map of the local area or product label to find information, recorded against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "fieldwork",
+  "kind": "Activity",
+  "family": "Investigating and analysing",
+  "name": "Fieldwork",
+  "summary": "Collect first-hand information at a site outside the classroom by observing, measuring, recording and asking questions.",
+  "step": "APPLY",
+  "verbs": [
+   "OBSERVE",
+   "COLLECT",
+   "RECORD"
+  ],
+  "mode": "Class / Group / Pair / Individual",
+  "ways": [
+   "Field sketch",
+   "Site survey",
+   "Transect or quadrat sampling",
+   "Observation record",
+   "Questionnaire in the field",
+   "Measuring and recording on site",
+   "Photo documentation",
+   "School grounds investigation",
+   "Virtual fieldwork",
+   "Site study"
+  ],
+  "levels": {
+   "supplementary": "Give a recording sheet with headings, an example entry and a word bank. Pair with a buddy, preview the site with photos and allow extra time at each stop.",
+   "substantial": "Reduce the number of sites or measurements and use tick boxes, photos or labelled diagrams instead of written notes. Provide adult support and a visual schedule of the visit.",
+   "extensive": "Take part in one sensory or observation task with adult support and record by photo, object collection or AAC. Plan access, rest breaks and a familiar routine for the day.",
+   "extension": "Design part of the method, such as the sampling plan, and evaluate how accurate and reliable the data is. Suggest how the method could be improved.",
+   "life_skills": "Take part in the visit to practise functional skills such as following a route, reading signs, staying safe and recording what was seen, recorded against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "learning-games",
+  "kind": "Activity",
+  "family": "Building knowledge",
+  "name": "Learning games",
+  "summary": "Play a short game that makes you recall, explain or use the content you have been learning.",
+  "step": "RECALL",
+  "verbs": [
+   "PLAY",
+   "COMPETE",
+   "RETRIEVE"
+  ],
+  "mode": "Class / Group / Pair",
+  "ways": [
+   "$10,000 pyramid",
+   "Gator games",
+   "Nothing ventured",
+   "White board wipe-out",
+   "Table points",
+   "Taboo",
+   "Jeopardy-style review",
+   "Relay race",
+   "Board game review",
+   "Charades"
+  ],
+  "levels": {
+   "supplementary": "Give a word bank or notes page to use during the game and extra thinking time before answers are called. Pair with a supportive partner and go over the rules with a visual.",
+   "substantial": "Use a smaller set of questions with picture or multiple-choice answers and remove time pressure. Offer a set role such as scorer or card reader alongside playing.",
+   "extensive": "Join the game by matching pictures, objects or symbols with adult support, responding by pointing or AAC. Keep rounds short and the routine predictable.",
+   "extension": "Write the questions or clue cards for the game, including ones that need an explanation or an example. Justify answers instead of only naming them.",
+   "life_skills": "Play a matching or turn-taking game using functional words, signs or symbols, focusing on taking turns and following rules, recorded against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "composing-and-creating",
+  "kind": "Activity",
+  "family": "Developing ideas",
+  "name": "Composing and creating",
+  "summary": "Make an original piece, such as a story, poem, melody, movement phrase, scene or artwork, to turn ideas and techniques into something new.",
+  "step": "APPLY",
+  "verbs": [
+   "COMPOSE",
+   "DESIGN",
+   "INVENT"
+  ],
+  "mode": "Individual / Pair / Group",
+  "ways": [
+   "Free writing",
+   "Writing from a stimulus",
+   "Mentor text imitation",
+   "Story planning",
+   "RAFT writing",
+   "Melody or rhythm composing",
+   "Choreographing a phrase",
+   "Devising a scene",
+   "Scriptwriting",
+   "Blackout poetry",
+   "Build a type system"
+  ],
+  "levels": {
+   "supplementary": "Give a planning template with the first section completed, a word or idea bank and a model to refer to. Break the piece into two short parts with a check-in between them.",
+   "substantial": "Offer a part-made piece to finish, such as a story with the ending missing or a melody with four bars written. Allow spoken, recorded or drawn responses and work alongside an adult for the planning step.",
+   "extensive": "Create through choice-making: the student selects images, sounds, words or movements from a small set using pointing, objects or AAC, and an adult records and assembles the piece with them.",
+   "extension": "Add a constraint that raises the complexity, such as a second voice, a shift in point of view or a set structure, and ask for a short statement justifying the choices.",
+   "life_skills": "Make a short personal piece on a familiar topic using a picture sequence, sentence starters or a simple pattern, recorded against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "role-play-and-simulation",
+  "kind": "Activity",
+  "family": "Developing ideas",
+  "name": "Role play and simulation",
+  "summary": "Act out a situation or run a model of a real process to understand how people, systems and decisions work from the inside.",
+  "step": "PRACTISE",
+  "verbs": [
+   "ROLE PLAY",
+   "SIMULATE",
+   "ACT"
+  ],
+  "mode": "Class / Group / Pair",
+  "ways": [
+   "Hot seating",
+   "Role play scenario",
+   "Mock trial",
+   "Mock parliament or council",
+   "Tableau",
+   "Conscience alley",
+   "Simulation game",
+   "Mock interview",
+   "Market or trading simulation",
+   "Teacher in role",
+   "Production line simulation",
+   "Trade documents set"
+  ],
+  "levels": {
+   "supplementary": "Give a role card with key points and sentence starters, and time to rehearse with a partner first. Offer a smaller role or a pair role and check in after the instructions.",
+   "substantial": "Provide a scripted or part-scripted role with visual cues, pre-teach the situation and allow a non-speaking role such as recorder or timekeeper. An adult rehearses the role with the student beforehand.",
+   "extensive": "Take part through a simplified role with one clear action or choice, using objects, pictures or AAC to respond, with an adult alongside throughout.",
+   "extension": "Take a role with a competing interest or an unexpected complication, then write or speak a short analysis of how the simulation differs from the real process.",
+   "life_skills": "Role play an everyday situation such as buying an item, asking for help or making a phone call, using a visual script, recorded against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "rehearsal-and-performance",
+  "kind": "Activity",
+  "family": "Practical skills and performance",
+  "name": "Rehearsal and performance",
+  "summary": "Practise and present a performed piece or routine, such as music, a scene, a dance, a speech or a spoken task in another language, to build accuracy, control and confidence.",
+  "step": "PRACTISE",
+  "verbs": [
+   "RUN THROUGH",
+   "POLISH",
+   "COACH"
+  ],
+  "mode": "Class / Group / Pair / Individual",
+  "ways": [
+   "Warm-up routine",
+   "Sectional rehearsal",
+   "Slow practice",
+   "Run-through with notes",
+   "Record and review",
+   "Peer coaching",
+   "Cue-to-cue",
+   "Sight-reading",
+   "Improvisation",
+   "Performance for a small audience"
+  ],
+  "levels": {
+   "supplementary": "Break the piece into short marked sections with a visual practice checklist and extra rehearsal time. Allow cue cards and a performance to a smaller audience.",
+   "substantial": "Simplify the part, such as fewer lines, a reduced range or a repeated pattern, and rehearse with an adult or a steady peer. Allow a recorded performance in place of a live one.",
+   "extensive": "Perform one prepared action, sound, word or switch-activated cue within the group piece, practised with adult support and visual or tactile prompts.",
+   "extension": "Take a leading or more exposed part, make and justify interpretive choices, and coach a section of the group on one technique.",
+   "life_skills": "Rehearse and present a short familiar item, such as a greeting, a song chorus or a simple routine, to a known audience, recorded against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "physical-activity-and-movement",
+  "kind": "Activity",
+  "family": "Practical skills and performance",
+  "name": "Physical activity and movement",
+  "summary": "Learn through movement, games and physical skills to build technique, tactical understanding and fitness.",
+  "step": "PRACTISE",
+  "verbs": [
+   "MOVE",
+   "PLAY",
+   "TRAIN"
+  ],
+  "mode": "Class / Group / Pair / Individual",
+  "ways": [
+   "Skill drill",
+   "Small-sided game",
+   "Game sense",
+   "Modified game",
+   "Circuit",
+   "Fitness testing",
+   "Movement sequence",
+   "Reciprocal coaching with a checklist",
+   "Whole-part-whole",
+   "Tactical question break"
+  ],
+  "levels": {
+   "supplementary": "Show the skill with a visual cue card, give more practice turns in a smaller group and allow lighter or larger equipment. Check in after the instructions and offer rest breaks.",
+   "substantial": "Change the task using space, rules and equipment, such as a shorter distance, a stationary ball or a larger target. Provide a peer or adult partner and a clear, predictable routine.",
+   "extensive": "Take part in a parallel movement task with adapted equipment and adult support, working on one movement or choice at a time with visual, verbal or physical prompts.",
+   "extension": "Add a defender, less time or less space so decisions are harder, and ask the student to analyse a tactic and design a variation for the group.",
+   "life_skills": "Take part in movement for enjoyment, health and safety, such as following a simple routine, taking turns or using community sport equipment, recorded against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "structured-writing",
+  "kind": "Activity",
+  "family": "Documenting and communicating",
+  "name": "Structured writing",
+  "summary": "Write extended, organised responses such as paragraphs, essays, reports and procedures to explain ideas clearly and in order.",
+  "step": "PRACTISE",
+  "verbs": [
+   "STRUCTURE",
+   "EXPAND",
+   "LINK"
+  ],
+  "mode": "Class / Pair / Individual",
+  "ways": [
+   "Sentence combining",
+   "Because-but-so sentences",
+   "Model text deconstruction",
+   "Joint construction",
+   "Essay plan",
+   "Writing frames",
+   "Report scaffold",
+   "Timed writing",
+   "Edit and redraft",
+   "Buddy journal"
+  ],
+  "levels": {
+   "supplementary": "Give a planning scaffold with the first paragraph started, sentence starters and a word bank. Reduce the length, allow extra time and check in after the planning step.",
+   "substantial": "Provide a writing frame for each paragraph and build the plan together with an adult. Allow the response to be dictated, typed or recorded and then written up in part.",
+   "extensive": "Compose through supported choices: the student selects and orders words, symbols or sentence strips using pointing or AAC, and an adult scribes the response.",
+   "extension": "Remove the scaffold and ask for a sustained argument that weighs up competing views, with deliberate choices about structure and expression.",
+   "life_skills": "Write or assemble a short functional text, such as a list, a form, a message or a simple set of steps, using visuals and models, recorded against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "speaking-and-conversation",
+  "kind": "Activity",
+  "family": "Documenting and communicating",
+  "name": "Speaking and conversation",
+  "summary": "Practise saying ideas aloud, in English or an additional language, so speaking becomes clear, confident and well organised.",
+  "step": "PRACTISE",
+  "verbs": [
+   "SPEAK",
+   "CONVERSE",
+   "ASK"
+  ],
+  "mode": "Class / Group / Pair",
+  "ways": [
+   "Turn and talk",
+   "Back and forth",
+   "Accountable discussions",
+   "Whip around",
+   "Information gap",
+   "Scripted dialogue then free conversation",
+   "Impromptu speech",
+   "Speed chatting",
+   "Read aloud with expression",
+   "Oral rehearsal before writing"
+  ],
+  "levels": {
+   "supplementary": "Give sentence starters and a word bank on a card, and allow thinking time or a written note before speaking. Pair with a supportive partner.",
+   "substantial": "Shorten the task to one or two rehearsed sentences with a visual prompt. Let the student practise with an adult first and speak to one partner instead of the group.",
+   "extensive": "Offer an alternative response mode such as AAC, picture cards, gesture or a pre-recorded message, with adult support. Keep the same topic and count each response as participation.",
+   "extension": "Ask students to speak without notes, build on or challenge a partner's point, and adjust their language for a different audience or a more formal register.",
+   "life_skills": "Practise a functional conversation such as greeting someone, asking for help or ordering food, using visual scripts. Record against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "visual-representation",
+  "kind": "Activity",
+  "family": "Documenting and communicating",
+  "name": "Visual representation",
+  "summary": "Show information or ideas as a diagram, chart, map, graph or table so the main points and connections are easy to see.",
+  "step": "APPLY",
+  "verbs": [
+   "REPRESENT",
+   "GRAPH",
+   "MAP"
+  ],
+  "mode": "Group / Pair / Individual",
+  "ways": [
+   "Cause and effect diagram (fishbone)",
+   "Graph from a table",
+   "Annotated map",
+   "Storyboard of a process",
+   "Infographic sketch",
+   "Cycle diagram",
+   "Sequence strip",
+   "Table of information",
+   "Labelled cross-section",
+   "Tree diagram",
+   "Argument map",
+   "Palette ratio bar"
+  ],
+  "levels": {
+   "supplementary": "Give a part-completed template with headings and the first section filled in, plus a word bank of labels. Allow extra time and check in after the instructions.",
+   "substantial": "Provide a pre-drawn diagram with labels or pictures to cut and place. Reduce the number of parts and work through the first one with an adult.",
+   "extensive": "Use real objects, photos or symbols that the student matches or sequences with adult support, or have them point or use AAC to direct where each item goes.",
+   "extension": "Ask students to choose and justify the best type of visual, combine two sets of information in one, or redraw it for a different audience.",
+   "life_skills": "Create or read a functional visual such as a picture schedule, a simple map of the school or a step-by-step picture sequence. Record against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "goal-setting-and-study-skills",
+  "kind": "Activity",
+  "family": "Planning and managing",
+  "name": "Goal setting and study skills",
+  "summary": "Plan how to learn, stay organised and prepare for tasks and exams so that work is done on time and study pays off.",
+  "step": "PRACTISE",
+  "verbs": [
+   "ORGANISE",
+   "PRIORITISE",
+   "TRACK"
+  ],
+  "mode": "Class / Pair / Individual",
+  "ways": [
+   "SMART goal",
+   "Study timetable",
+   "Assessment calendar",
+   "Unpacking a task notification",
+   "Homework planner",
+   "Spaced practice plan",
+   "Self-quizzing routine",
+   "Exam technique practice",
+   "Organising notes and folders",
+   "Student conference"
+  ],
+  "levels": {
+   "supplementary": "Give a part-completed planner or goal template with an example, and break the task into dated chunks together. Check in briefly each lesson.",
+   "substantial": "Set one short-term goal at a time with a visual checklist. An adult helps write the plan, and reviews it with the student at the start and end of each lesson.",
+   "extensive": "Use a visual schedule or now and next board with one step at a time, built with adult support. The student shows choices and progress by pointing, symbols or AAC.",
+   "extension": "Ask students to plan across several subjects at once, track which study methods work best for them using their own results, and adjust the plan with reasons.",
+   "life_skills": "Use a personal daily or weekly schedule to prepare for routines, such as packing a bag or getting ready for an activity. Record against Life Skills outcomes."
+  }
+ },
+ {
+  "id": "warm-up-and-connection",
+  "kind": "Activity",
+  "family": "Evaluating, reflecting and collaborating",
+  "name": "Warm-up and connection",
+  "summary": "Take part in a short opening activity that settles the class, builds relationships and gets everyone involved from the first minutes.",
+  "step": "RECALL",
+  "verbs": [
+   "CONNECT",
+   "WARM UP",
+   "SHARE"
+  ],
+  "mode": "Class / Group / Pair",
+  "ways": [
+   "Classroom mingle",
+   "Find someone who",
+   "My other half",
+   "Tell me something good",
+   "Affirmations",
+   "Check-in circle",
+   "Would you rather",
+   "Two truths and a lie about the topic",
+   "Do now task",
+   "Walk, talk, decide"
+  ],
+  "levels": {
+   "supplementary": "Give the prompt on a card ahead of time and allow the student to prepare an answer. Offer a set partner and the choice to pass once.",
+   "substantial": "Reduce the task to one question with a visual prompt and a known partner. Preview the routine beforehand and keep it the same each lesson.",
+   "extensive": "Offer a way to join in using AAC, gesture, a choice card or a pre-recorded message, with adult support. Keep moving and noise predictable or provide a quieter spot.",
+   "extension": "Ask students to write the questions, lead the routine or link their answer to a wider idea or another subject.",
+   "life_skills": "Practise a functional greeting or turn-taking routine, such as saying hello and answering a simple question. Record against Life Skills outcomes."
+  }
+ }
+]

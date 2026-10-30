@@ -1,0 +1,272 @@
+[
+ {
+  "kind": "Formative task",
+  "family": "Quizzes and practice papers",
+  "name": "Quiz",
+  "summary": "A short, marked check of knowledge: multiple choice, labelling, matching and short answers."
+ },
+ {
+  "kind": "Formative task",
+  "family": "Quizzes and practice papers",
+  "name": "Practice exam",
+  "summary": "An exam section or past-paper questions done under timed conditions."
+ },
+ {
+  "kind": "Formative task",
+  "family": "Quizzes and practice papers",
+  "name": "Problem set",
+  "summary": "A set of problems solved with full working, handed in and marked."
+ },
+ {
+  "kind": "Formative task",
+  "family": "Written responses",
+  "name": "Short written response",
+  "summary": "A paragraph or short answer to a question or stimulus, using a directive verb such as explain, compare or justify."
+ },
+ {
+  "kind": "Formative task",
+  "family": "Written responses",
+  "name": "Draft submission",
+  "summary": "A draft of the summative task, or one section of it, handed in for feedback before the final is due."
+ },
+ {
+  "kind": "Formative task",
+  "family": "Written responses",
+  "name": "Annotation task",
+  "summary": "A text, source, image, diagram or work sample annotated to explain its features and what they show."
+ },
+ {
+  "kind": "Formative task",
+  "family": "Written responses",
+  "name": "Practice composition",
+  "summary": "A short original piece written or composed to practise a form before the real task."
+ },
+ {
+  "kind": "Formative task",
+  "family": "Investigations and practical work",
+  "name": "Research task",
+  "summary": "A set research question answered and handed in, with sources recorded."
+ },
+ {
+  "kind": "Formative task",
+  "family": "Investigations and practical work",
+  "name": "Investigation write-up",
+  "summary": "A first-hand test, experiment or fieldwork activity written up as aim, method, results and conclusion."
+ },
+ {
+  "kind": "Formative task",
+  "family": "Investigations and practical work",
+  "name": "Practical task",
+  "summary": "A skill or technique performed or produced to a set standard and marked against criteria."
+ },
+ {
+  "kind": "Formative task",
+  "family": "Investigations and practical work",
+  "name": "Mini project",
+  "summary": "A small task that uses the skills and steps the larger summative project needs."
+ },
+ {
+  "kind": "Formative task",
+  "family": "Investigations and practical work",
+  "name": "Rehearsal showing",
+  "summary": "A work-in-progress performance, piece or routine shown for marked feedback."
+ },
+ {
+  "kind": "Formative task",
+  "family": "Portfolio and presentations",
+  "name": "Portfolio section",
+  "summary": "One section of a portfolio, folio or journal handed in by a set date."
+ },
+ {
+  "kind": "Formative task",
+  "family": "Portfolio and presentations",
+  "name": "Practice presentation",
+  "summary": "A short presentation of work or findings, alone or in a group, marked with written feedback."
+ },
+ {
+  "kind": "Formative task",
+  "family": "Portfolio and presentations",
+  "name": "Poster or visual summary",
+  "summary": "Information presented visually on one page for a set purpose and audience."
+ },
+ {
+  "kind": "Formative task",
+  "family": "Portfolio and presentations",
+  "name": "Progress interview",
+  "summary": "A short one-to-one conversation where the student explains their work, with the teacher's written notes as feedback."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Projects and practical work",
+  "name": "Project",
+  "summary": "A made or produced piece of work with supporting documentation, developed over a unit."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Projects and practical work",
+  "name": "Major work",
+  "summary": "A substantial, sustained piece of individual work, usually in Stage 6."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Projects and practical work",
+  "name": "Negotiated project",
+  "summary": "A project where the student proposes the question, brief or focus, with teacher approval."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Projects and practical work",
+  "name": "Group project",
+  "summary": "A project completed in a team, with an individually assessed part."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Projects and practical work",
+  "name": "Performance or exhibition",
+  "summary": "Resolved work presented live or displayed for an audience."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Projects and practical work",
+  "name": "Creative composition",
+  "summary": "An original piece composed for a purpose and audience, usually with a reflection or rationale."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Folios and documentation",
+  "name": "Portfolio",
+  "summary": "A collection of work gathered over time, assessed as its own task."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Folios and documentation",
+  "name": "Process journal",
+  "summary": "A dated record of the work as it develops: decisions, problems and changes."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Folios and documentation",
+  "name": "Proposal or plan",
+  "summary": "A written and visual plan presented before the main work begins."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Folios and documentation",
+  "name": "Reflection or evaluation",
+  "summary": "A written judgement of the finished work and the process, against the criteria or aims."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Research and analysis",
+  "name": "Research report",
+  "summary": "An inquiry using sources, written up with findings and a conclusion."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Research and analysis",
+  "name": "Practical investigation report",
+  "summary": "A first-hand test or experiment written up with method, results and conclusion."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Research and analysis",
+  "name": "Case study",
+  "summary": "A structured study of one example: a person, organisation, place, event, product or innovation."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Research and analysis",
+  "name": "Source or stimulus analysis",
+  "summary": "A structured analysis of a source, text, artwork, product or data set, seen or unseen."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Research and analysis",
+  "name": "Extended response",
+  "summary": "An essay-length response to a question, using evidence and examples."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Research and analysis",
+  "name": "Investigation or assignment",
+  "summary": "An open task where students apply what they know to a problem or question, completed over time rather than under exam conditions."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Presentations",
+  "name": "Oral presentation",
+  "summary": "A spoken presentation of work or findings to an audience."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Presentations",
+  "name": "Multimodal presentation",
+  "summary": "A presentation combining spoken, visual and digital elements, live or recorded."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Presentations",
+  "name": "Pitch",
+  "summary": "An idea, concept or finished piece presented and justified to a client or panel."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Presentations",
+  "name": "Interview, conversation or viva voce",
+  "summary": "A structured interview in which the student explains and defends their work."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Presentations",
+  "name": "Video or media piece",
+  "summary": "A recorded piece made for an audience: to instruct, inform or promote."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Presentations",
+  "name": "Poster or visual display",
+  "summary": "Findings or ideas presented visually for an audience, often explained in person."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Presentations",
+  "name": "Discussion or seminar",
+  "summary": "An assessed discussion in which each student contributes, responds to others and builds the argument."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Tests and examinations",
+  "name": "Topic test",
+  "summary": "A test on one topic, held in a normal lesson."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Tests and examinations",
+  "name": "Examination",
+  "summary": "A formal timed paper held in an exam block."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Tests and examinations",
+  "name": "In-class written task",
+  "summary": "A written response completed in a lesson under supervised conditions."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Tests and examinations",
+  "name": "Practical test",
+  "summary": "Practical skills shown under observed, timed conditions."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Tests and examinations",
+  "name": "Listening or aural task",
+  "summary": "A task in which students respond to spoken or recorded material."
+ },
+ {
+  "kind": "Summative task",
+  "family": "Tests and examinations",
+  "name": "Competency assessment",
+  "summary": "A task judged as competent or not yet competent against a set standard, used in VET courses."
+ }
+]

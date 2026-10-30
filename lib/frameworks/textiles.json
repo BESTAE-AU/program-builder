@@ -1,0 +1,1931 @@
+{
+ "outcomes": [
+  {
+   "code": "TT5-SAF-01",
+   "text": "applies design processes and safe work practices to develop textile projects"
+  },
+  {
+   "code": "TT5-COM-01",
+   "text": "communicates ideas, concepts and processes for textile design and production"
+  },
+  {
+   "code": "TT5-EVL-01",
+   "text": "investigates and evaluates design inspiration sources and textile products"
+  },
+  {
+   "code": "TT5-IVT-01",
+   "text": "explains industry practices and innovative technologies used in textile design and production"
+  },
+  {
+   "code": "TT5-CDT-01",
+   "text": "investigates and applies construction and decorative techniques to create textile products"
+  },
+  {
+   "code": "TT5-MAT-01",
+   "text": "justifies the selection and use of materials and technologies for textile design and production"
+  },
+  {
+   "code": "TT5-ENV-01",
+   "text": "analyses relationships between textile design, production and sustainability"
+  }
+ ],
+ "focusAreas": {
+  "L": {
+   "name": "Local and global textile perspectives",
+   "outcomes": [
+    "TT5-SAF-01",
+    "TT5-COM-01",
+    "TT5-EVL-01",
+    "TT5-IVT-01",
+    "TT5-MAT-01",
+    "TT5-ENV-01"
+   ]
+  },
+  "D": {
+   "name": "Textile design and product development",
+   "outcomes": [
+    "TT5-SAF-01",
+    "TT5-COM-01",
+    "TT5-EVL-01",
+    "TT5-IVT-01",
+    "TT5-MAT-01",
+    "TT5-ENV-01"
+   ]
+  },
+  "P": {
+   "name": "Textile project work",
+   "outcomes": [
+    "TT5-SAF-01",
+    "TT5-COM-01",
+    "TT5-EVL-01",
+    "TT5-CDT-01",
+    "TT5-MAT-01",
+    "TT5-ENV-01"
+   ]
+  }
+ },
+ "points": {
+  "L1.1": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Aboriginal and Torres Strait Islander Peoples’ textile Practices",
+   "text": "Identify textile art forms created for expression, communication and Storytelling",
+   "example": ""
+  },
+  "L1.2": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Aboriginal and Torres Strait Islander Peoples’ textile Practices",
+   "text": "Describe Aboriginal and Torres Strait Islander textile designer Practices and products",
+   "example": "Aboriginal fashion designer couture, activewear, sporting apparel, textile installations in art and design contexts."
+  },
+  "L1.3": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Aboriginal and Torres Strait Islander Peoples’ textile Practices",
+   "text": "Explore Aboriginal and Torres Strait Islander Peoples’ material sourcing Practices and describe the suitability of the materials for end use",
+   "example": "Wetland grasses and reeds, pandanus as a waterproof material, spinifex cultivation for basket weaving, bark fibre for string, mats, dilly bags and dance belts."
+  },
+  "L1.4": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Aboriginal and Torres Strait Islander Peoples’ textile Practices",
+   "text": "Investigate Aboriginal and Torres Strait Islander customary Practices and outline how they are applied to contemporary designs",
+   "example": "Piinpi fashion, Aboriginal textile designers, symbolism in representative sports jerseys."
+  },
+  "L1.5": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Aboriginal and Torres Strait Islander Peoples’ textile Practices",
+   "text": "Evaluate ethical considerations for the use and appropriation of designs and products",
+   "example": ""
+  },
+  "L1.6": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Aboriginal and Torres Strait Islander Peoples’ textile Practices",
+   "text": "Explore design inspiration sources in the local area to generate textile design ideas and concepts",
+   "example": ""
+  },
+  "L1.7": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Aboriginal and Torres Strait Islander Peoples’ textile Practices",
+   "text": "Apply protocols for designing with respect for Aboriginal and Torres Strait Islander designers, Communities and Cultural Knowledges, including Indigenous Cultural and Intellectual Property (ICIP)",
+   "example": ""
+  },
+  "L2.1": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Historical and cultural influences on textile practices",
+   "text": "Investigate textile designers and textile products from a range of historical periods",
+   "example": ""
+  },
+  "L2.2": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Historical and cultural influences on textile practices",
+   "text": "Identify and describe how historical design features can be applied to contemporary designs",
+   "example": ""
+  },
+  "L2.3": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Historical and cultural influences on textile practices",
+   "text": "Investigate reasons textile design practices have changed over time",
+   "example": ""
+  },
+  "L2.4": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Historical and cultural influences on textile practices",
+   "text": "Evaluate how textile practices have changed over time to improve sustainability",
+   "example": ""
+  },
+  "L2.5": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Historical and cultural influences on textile practices",
+   "text": "Investigate and evaluate textile practices and describe design features of textile products from a range of cultural groups",
+   "example": ""
+  },
+  "L2.6": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Historical and cultural influences on textile practices",
+   "text": "Evaluate how diverse cultural perspectives may influence the work of textile designers",
+   "example": ""
+  },
+  "L2.7": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Historical and cultural influences on textile practices",
+   "text": "Identify historical and cultural design features to apply as sources of design inspiration in the development of textile projects",
+   "example": ""
+  },
+  "L3.1": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Textile industry design and production practices",
+   "text": "Identify fibres cultivated in Australia for use in textile design and production",
+   "example": ""
+  },
+  "L3.2": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Textile industry design and production practices",
+   "text": "Describe local and global techniques used in the cultivation and processing of fibres",
+   "example": ""
+  },
+  "L3.3": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Textile industry design and production practices",
+   "text": "Identify and evaluate sustainable textile materials and practices",
+   "example": "Organic and vegan textiles, organic and chemical-free farming."
+  },
+  "L3.4": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Textile industry design and production practices",
+   "text": "Identify textile supply chain systems to assess future development opportunities",
+   "example": ""
+  },
+  "L3.5": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Textile industry design and production practices",
+   "text": "Explain current challenges that may influence future development of Australian textile industries",
+   "example": "Climate, pest and disease management, market fluctuations, textile imports."
+  },
+  "L3.6": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Textile industry design and production practices",
+   "text": "Discuss emerging opportunities to improve sustainable textile practices",
+   "example": "Commonwealth Scientific and Industrial Research Organisation (CSIRO) sustainably produced fibres, waste management processes."
+  },
+  "L3.7": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Textile industry design and production practices",
+   "text": "Investigate innovative technologies used in textile design and production",
+   "example": ""
+  },
+  "L3.8": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Textile industry design and production practices",
+   "text": "Investigate career opportunities in textile design and production industries",
+   "example": ""
+  },
+  "L3.9": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Textile industry design and production practices",
+   "text": "Describe the influence of globalisation on the Australian textile industry",
+   "example": ""
+  },
+  "L3.10": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Textile industry design and production practices",
+   "text": "Analyse ethical considerations for local and global textile design and production practices",
+   "example": ""
+  },
+  "L3.11": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Textile industry design and production practices",
+   "text": "Investigate community and industry initiatives that promote textile sustainability and consumer awareness",
+   "example": ""
+  },
+  "L3.12": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Textile industry design and production practices",
+   "text": "Explore ways designers and consumers can influence change in textile design and production practices to improve sustainability in the textile industry",
+   "example": ""
+  },
+  "L3.13": {
+   "focusArea": "Local and global textile perspectives",
+   "heading": "Textile industry design and production practices",
+   "text": "Explain relationships between textile design, production and sustainable practices",
+   "example": ""
+  },
+  "D1.1": {
+   "focusArea": "Textile design and product development",
+   "heading": "Textile design for diverse purposes",
+   "text": "Identify and describe different purposes of textile design",
+   "example": ""
+  },
+  "D1.2": {
+   "focusArea": "Textile design and product development",
+   "heading": "Textile design for diverse purposes",
+   "text": "Investigate how textile designers adapt designs in response to consumer demands",
+   "example": ""
+  },
+  "D1.3": {
+   "focusArea": "Textile design and product development",
+   "heading": "Textile design for diverse purposes",
+   "text": "Evaluate adaptive, emerging and innovative textile technologies for specific purposes",
+   "example": "Light-up safety wear, sensory-friendly clothing, temperature control clothing."
+  },
+  "D1.4": {
+   "focusArea": "Textile design and product development",
+   "heading": "Textile design for diverse purposes",
+   "text": "Describe how innovative textile design can improve accessibility, participation and inclusivity for diverse populations",
+   "example": ""
+  },
+  "D1.5": {
+   "focusArea": "Textile design and product development",
+   "heading": "Textile design for diverse purposes",
+   "text": "Assess the functional requirements of textile products for their intended purpose",
+   "example": ""
+  },
+  "D1.6": {
+   "focusArea": "Textile design and product development",
+   "heading": "Textile design for diverse purposes",
+   "text": "Generate textile ideas and concepts for identified needs and diverse purposes",
+   "example": ""
+  },
+  "D2.1": {
+   "focusArea": "Textile design and product development",
+   "heading": "Material selection for textile production and end use",
+   "text": "Identify a range of fibres, yarns and fabrics used in the creation of textile projects",
+   "example": ""
+  },
+  "D2.2": {
+   "focusArea": "Textile design and product development",
+   "heading": "Material selection for textile production and end use",
+   "text": "Outline differences between natural and synthetic fibre production",
+   "example": ""
+  },
+  "D2.3": {
+   "focusArea": "Textile design and product development",
+   "heading": "Material selection for textile production and end use",
+   "text": "Compare characteristics of yarn types, including staple and filament composition, single and plied structure, low and high twist, and other properties, including strength and texture",
+   "example": ""
+  },
+  "D2.4": {
+   "focusArea": "Textile design and product development",
+   "heading": "Material selection for textile production and end use",
+   "text": "Identify properties and structures of fabrics, including woven, knit and non-woven",
+   "example": ""
+  },
+  "D2.5": {
+   "focusArea": "Textile design and product development",
+   "heading": "Material selection for textile production and end use",
+   "text": "Explain how properties of fibres, yarns and fabrics determine their suitability for end use",
+   "example": ""
+  },
+  "D2.6": {
+   "focusArea": "Textile design and product development",
+   "heading": "Material selection for textile production and end use",
+   "text": "Evaluate sustainable material sourcing practices for textile design and production",
+   "example": ""
+  },
+  "D2.7": {
+   "focusArea": "Textile design and product development",
+   "heading": "Material selection for textile production and end use",
+   "text": "Explain the selection and suitability of materials for textile products",
+   "example": ""
+  },
+  "D3.1": {
+   "focusArea": "Textile design and product development",
+   "heading": "Creative textile design and technological applications",
+   "text": "Identify elements of design, including shape, size, colour, value, line, direction and texture",
+   "example": ""
+  },
+  "D3.2": {
+   "focusArea": "Textile design and product development",
+   "heading": "Creative textile design and technological applications",
+   "text": "Identify principles of design, including proportion, balance, rhythm, emphasis, contrast and harmony",
+   "example": ""
+  },
+  "D3.3": {
+   "focusArea": "Textile design and product development",
+   "heading": "Creative textile design and technological applications",
+   "text": "Describe elements and principles of design featured in works created by Aboriginal and Torres Strait Islander Peoples",
+   "example": ""
+  },
+  "D3.4": {
+   "focusArea": "Textile design and product development",
+   "heading": "Creative textile design and technological applications",
+   "text": "Assess how elements and principles of design feature in the works and collections of textile designers",
+   "example": ""
+  },
+  "D3.5": {
+   "focusArea": "Textile design and product development",
+   "heading": "Creative textile design and technological applications",
+   "text": "Explore customary and contemporary decorative design Practices developed by Aboriginal and Torres Strait Islander Peoples",
+   "example": ""
+  },
+  "D3.6": {
+   "focusArea": "Textile design and product development",
+   "heading": "Creative textile design and technological applications",
+   "text": "Investigate textile designs and designers that feature creative decorative applications",
+   "example": ""
+  },
+  "D3.7": {
+   "focusArea": "Textile design and product development",
+   "heading": "Creative textile design and technological applications",
+   "text": "Generate ideas and concepts for innovative design and technological applications",
+   "example": ""
+  },
+  "D3.8": {
+   "focusArea": "Textile design and product development",
+   "heading": "Creative textile design and technological applications",
+   "text": "Demonstrate safe and ethical practices when using digital design and technological applications",
+   "example": ""
+  },
+  "D3.9": {
+   "focusArea": "Textile design and product development",
+   "heading": "Creative textile design and technological applications",
+   "text": "Investigate the application of innovative sustainable technologies for textile design and production",
+   "example": ""
+  },
+  "D3.10": {
+   "focusArea": "Textile design and product development",
+   "heading": "Creative textile design and technological applications",
+   "text": "Explore elements and principles of design through practical application",
+   "example": ""
+  },
+  "D3.11": {
+   "focusArea": "Textile design and product development",
+   "heading": "Creative textile design and technological applications",
+   "text": "Evaluate the practices and products of textile designers",
+   "example": ""
+  },
+  "D4.1": {
+   "focusArea": "Textile design and product development",
+   "heading": "Promotion of textile products",
+   "text": "Identify and describe target markets for current and emerging textile designers and brands",
+   "example": ""
+  },
+  "D4.2": {
+   "focusArea": "Textile design and product development",
+   "heading": "Promotion of textile products",
+   "text": "Compare promotional strategies used by textile designers",
+   "example": ""
+  },
+  "D4.3": {
+   "focusArea": "Textile design and product development",
+   "heading": "Promotion of textile products",
+   "text": "Investigate how data is used by textile designers and brands to inform textile product design",
+   "example": ""
+  },
+  "D4.4": {
+   "focusArea": "Textile design and product development",
+   "heading": "Promotion of textile products",
+   "text": "Explain how textile designers promote ethical and sustainable design practices",
+   "example": ""
+  },
+  "D4.5": {
+   "focusArea": "Textile design and product development",
+   "heading": "Promotion of textile products",
+   "text": "Use digital design and technological applications to create promotional materials for textile consumers",
+   "example": ""
+  },
+  "D4.6": {
+   "focusArea": "Textile design and product development",
+   "heading": "Promotion of textile products",
+   "text": "Demonstrate safe and ethical practices when accessing and collecting data",
+   "example": ""
+  },
+  "P1.1": {
+   "focusArea": "Textile project work",
+   "heading": "Textile design areas",
+   "text": "Identify textile products created within a range of different textile design areas",
+   "example": ""
+  },
+  "P1.2": {
+   "focusArea": "Textile project work",
+   "heading": "Textile design areas",
+   "text": "Outline the uses of a range of textile products",
+   "example": ""
+  },
+  "P1.3": {
+   "focusArea": "Textile project work",
+   "heading": "Textile design areas",
+   "text": "Describe aesthetic features of a range of textile products",
+   "example": ""
+  },
+  "P1.4": {
+   "focusArea": "Textile project work",
+   "heading": "Textile design areas",
+   "text": "Explain functional properties of a range of textile products",
+   "example": ""
+  },
+  "P2.1": {
+   "focusArea": "Textile project work",
+   "heading": "Design inspiration",
+   "text": "Investigate a range of design inspiration sources",
+   "example": ""
+  },
+  "P2.2": {
+   "focusArea": "Textile project work",
+   "heading": "Design inspiration",
+   "text": "Explore how designers use design inspiration sources when developing textile products and collections",
+   "example": ""
+  },
+  "P2.3": {
+   "focusArea": "Textile project work",
+   "heading": "Design inspiration",
+   "text": "Select and evaluate design inspiration sources for the development of textile projects",
+   "example": ""
+  },
+  "P2.4": {
+   "focusArea": "Textile project work",
+   "heading": "Design inspiration",
+   "text": "Outline features of design inspiration sources used to generate and refine ideas",
+   "example": ""
+  },
+  "P2.5": {
+   "focusArea": "Textile project work",
+   "heading": "Design inspiration",
+   "text": "Demonstrate safe and ethical practices using digital technologies to source information",
+   "example": ""
+  },
+  "P3.1": {
+   "focusArea": "Textile project work",
+   "heading": "Idea development",
+   "text": "Explore design software and applications to design and generate ideas",
+   "example": "Computer-aided design (CAD)."
+  },
+  "P3.2": {
+   "focusArea": "Textile project work",
+   "heading": "Idea development",
+   "text": "Apply design and creative thinking to generate ideas using a range of communication techniques",
+   "example": "Fashion drawing, production drawings, pattern pieces, sketching."
+  },
+  "P3.3": {
+   "focusArea": "Textile project work",
+   "heading": "Idea development",
+   "text": "Annotate aesthetic features and functional properties of design ideas",
+   "example": ""
+  },
+  "P3.4": {
+   "focusArea": "Textile project work",
+   "heading": "Idea development",
+   "text": "Evaluate and refine design ideas to justify the selection of final textile products using written, visual, verbal or multimodal communication forms",
+   "example": ""
+  },
+  "P3.5": {
+   "focusArea": "Textile project work",
+   "heading": "Idea development",
+   "text": "Analyse ways that textile ideas and products could be modified to improve sustainability",
+   "example": ""
+  },
+  "P3.6": {
+   "focusArea": "Textile project work",
+   "heading": "Idea development",
+   "text": "Use subject-specific terminology to communicate ideas for textile design and production",
+   "example": ""
+  },
+  "P4.1": {
+   "focusArea": "Textile project work",
+   "heading": "Experimentation",
+   "text": "Explore and experiment with construction techniques to test their suitability for textile products through practical application",
+   "example": ""
+  },
+  "P4.2": {
+   "focusArea": "Textile project work",
+   "heading": "Experimentation",
+   "text": "Investigate and experiment with decorative techniques to enhance textile products through practical application",
+   "example": ""
+  },
+  "P4.3": {
+   "focusArea": "Textile project work",
+   "heading": "Experimentation",
+   "text": "Evaluate experimentation with decorative and construction techniques to determine their application to textile projects",
+   "example": ""
+  },
+  "P4.4": {
+   "focusArea": "Textile project work",
+   "heading": "Experimentation",
+   "text": "Experiment with design software and applications to decorate and manipulate materials for textile design and production",
+   "example": ""
+  },
+  "P4.5": {
+   "focusArea": "Textile project work",
+   "heading": "Experimentation",
+   "text": "Examine fabric characteristics and properties to determine their suitability for textile products",
+   "example": "Abrasion resistance, breathability, colour, drape, durability, stretch, texture, woven, knitted, bonded, waterproof."
+  },
+  "P4.6": {
+   "focusArea": "Textile project work",
+   "heading": "Experimentation",
+   "text": "Justify the selection of materials used for textile products through testing and evaluation",
+   "example": ""
+  },
+  "P4.7": {
+   "focusArea": "Textile project work",
+   "heading": "Experimentation",
+   "text": "Create written texts to describe and evaluate design ideas and production processes",
+   "example": ""
+  },
+  "P5.1": {
+   "focusArea": "Textile project work",
+   "heading": "Textile product construction and design application",
+   "text": "Apply planning and organisation skills in the production of textile products",
+   "example": ""
+  },
+  "P5.2": {
+   "focusArea": "Textile project work",
+   "heading": "Textile product construction and design application",
+   "text": "Demonstrate safe practices when selecting and using materials, technologies and processes",
+   "example": ""
+  },
+  "P5.3": {
+   "focusArea": "Textile project work",
+   "heading": "Textile product construction and design application",
+   "text": "Identify and apply appropriate standards and codes of practice when designing textile products",
+   "example": "Mandatory standards for safety testing and care labelling, diversity codes of practice."
+  },
+  "P5.4": {
+   "focusArea": "Textile project work",
+   "heading": "Textile product construction and design application",
+   "text": "Use collaborative practices in textile design and production, including teamwork, communication and shared decision-making",
+   "example": ""
+  },
+  "P5.5": {
+   "focusArea": "Textile project work",
+   "heading": "Textile product construction and design application",
+   "text": "Deconstruct textile products to identify components and explore creative reuse opportunities",
+   "example": ""
+  },
+  "P5.6": {
+   "focusArea": "Textile project work",
+   "heading": "Textile product construction and design application",
+   "text": "Identify and apply sustainable practices and processes for textile design and production",
+   "example": ""
+  },
+  "P5.7": {
+   "focusArea": "Textile project work",
+   "heading": "Textile product construction and design application",
+   "text": "Identify and select appropriate fabric and notions for production",
+   "example": ""
+  },
+  "P5.8": {
+   "focusArea": "Textile project work",
+   "heading": "Textile product construction and design application",
+   "text": "Select, modify and use construction patterns",
+   "example": "Commercial patterns, drafting blocks, digital pattern making applications."
+  },
+  "P5.9": {
+   "focusArea": "Textile project work",
+   "heading": "Textile product construction and design application",
+   "text": "Interpret pattern instructions, transfer pattern marking and apply pattern layout plans",
+   "example": ""
+  },
+  "P5.10": {
+   "focusArea": "Textile project work",
+   "heading": "Textile product construction and design application",
+   "text": "Select and apply construction techniques to develop quality textile products",
+   "example": ""
+  },
+  "P5.11": {
+   "focusArea": "Textile project work",
+   "heading": "Textile product construction and design application",
+   "text": "Select and apply decorative techniques to enhance textile designs",
+   "example": "Colouration, embellishment, fabric manipulation, haberdashery applications."
+  },
+  "P5.12": {
+   "focusArea": "Textile project work",
+   "heading": "Textile product construction and design application",
+   "text": "Apply ongoing evaluation during the development and production of textile products",
+   "example": ""
+  },
+  "P5.13": {
+   "focusArea": "Textile project work",
+   "heading": "Textile product construction and design application",
+   "text": "Develop, refine and demonstrate technical proficiency through textile project work, individually or collaboratively",
+   "example": ""
+  }
+ },
+ "strands": [
+  {
+   "strand": "Design",
+   "categories": [
+    {
+     "category": "Elements of Design",
+     "areas": [
+      {
+       "name": "Shape",
+       "points": [
+        "D3.1",
+        "D3.3",
+        "D3.4",
+        "D3.10"
+       ]
+      },
+      {
+       "name": "Size",
+       "points": [
+        "D3.1",
+        "D3.3",
+        "D3.4",
+        "D3.10"
+       ]
+      },
+      {
+       "name": "Colour",
+       "points": [
+        "D3.1",
+        "D3.3",
+        "D3.4",
+        "D3.10",
+        "P4.5"
+       ]
+      },
+      {
+       "name": "Value",
+       "points": [
+        "D3.1",
+        "D3.3",
+        "D3.4",
+        "D3.10"
+       ]
+      },
+      {
+       "name": "Line",
+       "points": [
+        "D3.1",
+        "D3.3",
+        "D3.4",
+        "D3.10"
+       ]
+      },
+      {
+       "name": "Direction",
+       "points": [
+        "D3.1",
+        "D3.3",
+        "D3.4",
+        "D3.10"
+       ]
+      },
+      {
+       "name": "Texture",
+       "points": [
+        "D3.1",
+        "D3.3",
+        "D3.4",
+        "D3.10",
+        "P4.5",
+        "D2.3"
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Principles of Design",
+     "areas": [
+      {
+       "name": "Proportion",
+       "points": [
+        "D3.2",
+        "D3.3",
+        "D3.4",
+        "D3.10"
+       ]
+      },
+      {
+       "name": "Balance",
+       "points": [
+        "D3.2",
+        "D3.3",
+        "D3.4",
+        "D3.10"
+       ]
+      },
+      {
+       "name": "Rhythm",
+       "points": [
+        "D3.2",
+        "D3.3",
+        "D3.4",
+        "D3.10"
+       ]
+      },
+      {
+       "name": "Emphasis",
+       "points": [
+        "D3.2",
+        "D3.3",
+        "D3.4",
+        "D3.10"
+       ]
+      },
+      {
+       "name": "Contrast",
+       "points": [
+        "D3.2",
+        "D3.3",
+        "D3.4",
+        "D3.10"
+       ]
+      },
+      {
+       "name": "Harmony",
+       "points": [
+        "D3.2",
+        "D3.3",
+        "D3.4",
+        "D3.10"
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Design Analysis & Considerations",
+     "areas": [
+      {
+       "name": "Function",
+       "points": [
+        "D1.5",
+        "P1.2",
+        "P1.4",
+        "P3.3"
+       ]
+      },
+      {
+       "name": "Aesthetics",
+       "points": [
+        "P1.3",
+        "P3.3"
+       ]
+      },
+      {
+       "name": "User Needs",
+       "points": [
+        "D1.2",
+        "D1.6",
+        "D4.1"
+       ]
+      },
+      {
+       "name": "Context",
+       "points": [
+        "D1.1",
+        "D1.6",
+        "L2.6"
+       ]
+      },
+      {
+       "name": "Inclusivity",
+       "points": [
+        "D1.4",
+        "D1.3",
+        "P5.3"
+       ]
+      },
+      {
+       "name": "Sustainability",
+       "points": [
+        "P3.5",
+        "L3.13",
+        "D2.6"
+       ]
+      },
+      {
+       "name": "Technology",
+       "points": [
+        "D1.3",
+        "L3.7",
+        "D3.7"
+       ]
+      },
+      {
+       "name": "Quality",
+       "points": [
+        "P5.10",
+        "P5.12",
+        "P5.13"
+       ]
+      },
+      {
+       "name": "Materials & Performance",
+       "points": [
+        "D2.5",
+        "D2.7",
+        "P4.5"
+       ]
+      },
+      {
+       "name": "Construction & Manufacture",
+       "points": [
+        "P4.1",
+        "P5.10",
+        "P5.5"
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Creativity & Innovation",
+     "areas": [
+      {
+       "name": "Generating Ideas",
+       "points": [
+        "D1.6",
+        "D3.7",
+        "P3.1",
+        "P3.2"
+       ]
+      },
+      {
+       "name": "Exploring Possibilities",
+       "points": [
+        "P2.1",
+        "L1.6",
+        "P3.1",
+        "D3.6"
+       ]
+      },
+      {
+       "name": "Experimenting with Ideas",
+       "points": [
+        "P4.1",
+        "P4.2",
+        "P4.4",
+        "D3.10"
+       ]
+      },
+      {
+       "name": "Adapting & Innovating",
+       "points": [
+        "D1.2",
+        "D1.3",
+        "D3.7",
+        "P3.5",
+        "P5.5"
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Design Communication",
+     "areas": [
+      {
+       "name": "Visual",
+       "points": [
+        "P3.2",
+        "P3.4",
+        "P3.6",
+        "P3.3"
+       ]
+      },
+      {
+       "name": "Graphic",
+       "points": [
+        "P3.2",
+        "P3.4",
+        "P3.6",
+        "P3.1",
+        "D4.5"
+       ]
+      },
+      {
+       "name": "Written",
+       "points": [
+        "P3.2",
+        "P3.4",
+        "P3.6",
+        "P4.7"
+       ]
+      },
+      {
+       "name": "Audio-Verbal",
+       "points": [
+        "P3.2",
+        "P3.4",
+        "P3.6"
+       ]
+      },
+      {
+       "name": "Non-Verbal",
+       "points": [
+        "P3.2",
+        "P3.4",
+        "P3.6"
+       ]
+      },
+      {
+       "name": "Interactive",
+       "points": [
+        "P3.2",
+        "P3.4",
+        "P3.6",
+        "P3.1",
+        "D4.5"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "strand": "Materials, Properties & Performance",
+   "categories": [
+    {
+     "category": "Fibres",
+     "areas": [
+      {
+       "name": "Classification",
+       "points": [
+        "D2.1",
+        "D2.2",
+        "D2.5",
+        "L3.1"
+       ]
+      },
+      {
+       "name": "Chemical Composition",
+       "points": [
+        "D2.1",
+        "D2.2",
+        "D2.5"
+       ]
+      },
+      {
+       "name": "Internal Structure",
+       "points": [
+        "D2.1",
+        "D2.2",
+        "D2.5"
+       ]
+      },
+      {
+       "name": "External Structure",
+       "points": [
+        "D2.1",
+        "D2.2",
+        "D2.5"
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Yarns",
+     "areas": [
+      {
+       "name": "Types",
+       "points": [
+        "D2.1",
+        "D2.3",
+        "D2.5"
+       ]
+      },
+      {
+       "name": "Structure & Characteristics",
+       "points": [
+        "D2.1",
+        "D2.3",
+        "D2.5"
+       ]
+      },
+      {
+       "name": "Production",
+       "points": [
+        "D2.1",
+        "D2.3",
+        "D2.5"
+       ]
+      },
+      {
+       "name": "Properties & Performance",
+       "points": [
+        "D2.1",
+        "D2.3",
+        "D2.5"
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Fabrics",
+     "areas": [
+      {
+       "name": "Woven",
+       "points": [
+        "D2.1",
+        "D2.4",
+        "D2.5",
+        "P4.5"
+       ]
+      },
+      {
+       "name": "Knitted",
+       "points": [
+        "D2.1",
+        "D2.4",
+        "D2.5",
+        "P4.5"
+       ]
+      },
+      {
+       "name": "Non-woven",
+       "points": [
+        "D2.1",
+        "D2.4",
+        "D2.5",
+        "P4.5"
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Properties & Performance",
+     "areas": [
+      {
+       "name": "Aesthetics",
+       "points": [
+        "D2.5",
+        "P4.5",
+        "P1.4",
+        "P1.3"
+       ]
+      },
+      {
+       "name": "Durability",
+       "points": [
+        "D2.5",
+        "P4.5",
+        "P1.4"
+       ]
+      },
+      {
+       "name": "Comfort",
+       "points": [
+        "D2.5",
+        "P4.5",
+        "P1.4"
+       ]
+      },
+      {
+       "name": "Care",
+       "points": [
+        "D2.5",
+        "P4.5",
+        "P1.4",
+        "P5.3"
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Testing, End Use & Selection",
+     "areas": [
+      {
+       "name": "Fibre Identification",
+       "points": [
+        "D2.1"
+       ]
+      },
+      {
+       "name": "Textile Testing",
+       "points": [
+        "P4.5",
+        "P4.6",
+        "P5.3"
+       ]
+      },
+      {
+       "name": "End Use & Suitability",
+       "points": [
+        "D2.5",
+        "D1.5",
+        "P4.5"
+       ]
+      },
+      {
+       "name": "Selection & Justification",
+       "points": [
+        "D2.7",
+        "P4.6",
+        "P5.7"
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Innovation & Emerging Technologies",
+     "areas": [
+      {
+       "name": "Fibre Innovation",
+       "points": [
+        "L3.7",
+        "D1.3",
+        "L3.6"
+       ]
+      },
+      {
+       "name": "Yarn Innovation",
+       "points": [
+        "L3.7",
+        "D1.3"
+       ]
+      },
+      {
+       "name": "Fabric Innovation",
+       "points": [
+        "L3.7",
+        "D1.3"
+       ]
+      },
+      {
+       "name": "Emerging Textile Technologies",
+       "points": [
+        "L3.7",
+        "D1.3",
+        "D3.9",
+        "D1.4"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "strand": "Production & Manufacture",
+   "categories": [
+    {
+     "category": "Construction",
+     "areas": [
+      {
+       "name": "Hand Sewing",
+       "points": [
+        "P4.1",
+        "P5.10",
+        "P5.13"
+       ]
+      },
+      {
+       "name": "Stitches",
+       "points": [
+        "P4.1",
+        "P5.10",
+        "P5.13"
+       ]
+      },
+      {
+       "name": "Seams",
+       "points": [
+        "P4.1",
+        "P5.10",
+        "P5.13"
+       ]
+      },
+      {
+       "name": "Finishes",
+       "points": [
+        "P4.1",
+        "P5.10",
+        "P5.13"
+       ]
+      },
+      {
+       "name": "Shaping Techniques",
+       "points": [
+        "P4.1",
+        "P5.10",
+        "P5.13"
+       ]
+      },
+      {
+       "name": "Structural Support",
+       "points": [
+        "P4.1",
+        "P5.10",
+        "P5.13"
+       ]
+      },
+      {
+       "name": "Openings, Closings & Fastenings",
+       "points": [
+        "P4.1",
+        "P5.10",
+        "P5.13",
+        "P5.7"
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Decoration",
+     "areas": [
+      {
+       "name": "Embroidery",
+       "points": [
+        "P4.2",
+        "P5.11",
+        "D3.6",
+        "D3.5"
+       ]
+      },
+      {
+       "name": "Embellishment",
+       "points": [
+        "P4.2",
+        "P5.11",
+        "D3.6",
+        "D3.5"
+       ]
+      },
+      {
+       "name": "Insertion",
+       "points": [
+        "P4.2",
+        "P5.11",
+        "D3.6",
+        "D3.5"
+       ]
+      },
+      {
+       "name": "Application",
+       "points": [
+        "P4.2",
+        "P5.11",
+        "D3.6",
+        "D3.5"
+       ]
+      },
+      {
+       "name": "Fabric Manipulation",
+       "points": [
+        "P4.2",
+        "P5.11",
+        "D3.6",
+        "D3.5"
+       ]
+      },
+      {
+       "name": "Surface Treatments",
+       "points": [
+        "P4.2",
+        "P5.11",
+        "D3.6",
+        "D3.5"
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Colouration",
+     "areas": [
+      {
+       "name": "Direct Printing",
+       "points": [
+        "P4.2",
+        "P5.11",
+        "P4.4"
+       ]
+      },
+      {
+       "name": "Resist Printing",
+       "points": [
+        "P4.2",
+        "P5.11"
+       ]
+      },
+      {
+       "name": "Discharge Printing",
+       "points": [
+        "P4.2",
+        "P5.11"
+       ]
+      },
+      {
+       "name": "Transfer Printing",
+       "points": [
+        "P4.2",
+        "P5.11",
+        "P4.4",
+        "D3.9"
+       ]
+      },
+      {
+       "name": "Immersion Dyeing",
+       "points": [
+        "P4.2",
+        "P5.11"
+       ]
+      },
+      {
+       "name": "Resist Dyeing",
+       "points": [
+        "P4.2",
+        "P5.11"
+       ]
+      },
+      {
+       "name": "Creative Immersion",
+       "points": [
+        "P4.2",
+        "P5.11"
+       ]
+      },
+      {
+       "name": "Continuous Dyeing",
+       "points": [
+        "P4.2",
+        "P5.11"
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Fabric Creation & Finishes",
+     "areas": [
+      {
+       "name": "Weave",
+       "points": [
+        "D2.4",
+        "L1.3"
+       ]
+      },
+      {
+       "name": "Knit",
+       "points": [
+        "D2.4"
+       ]
+      },
+      {
+       "name": "Crochet",
+       "points": [
+        "D2.4"
+       ]
+      },
+      {
+       "name": "Lace Making",
+       "points": [
+        "D2.4"
+       ]
+      },
+      {
+       "name": "Knotted",
+       "points": [
+        "D2.4"
+       ]
+      },
+      {
+       "name": "Non-woven",
+       "points": [
+        "D2.4"
+       ]
+      },
+      {
+       "name": "Stitched or Layered",
+       "points": [
+        "D2.4",
+        "P4.2"
+       ]
+      },
+      {
+       "name": "Pile / Raised Surface Finishes",
+       "points": [
+        "D2.4",
+        "P4.5"
+       ]
+      },
+      {
+       "name": "Film / Bonded / Engineered",
+       "points": [
+        "D2.4",
+        "P4.5",
+        "L3.7",
+        "D1.3"
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Equipment & Technologies",
+     "areas": [
+      {
+       "name": "Hand Tools",
+       "points": [
+        "P5.2"
+       ]
+      },
+      {
+       "name": "Sewing Equipment",
+       "points": [
+        "P5.2"
+       ]
+      },
+      {
+       "name": "Specialist Equipment",
+       "points": [
+        "P5.2"
+       ]
+      },
+      {
+       "name": "Digital Technologies",
+       "points": [
+        "P5.2",
+        "P3.1",
+        "P4.4",
+        "D3.8"
+       ]
+      },
+      {
+       "name": "Emerging Technologies",
+       "points": [
+        "P5.2",
+        "L3.7",
+        "D1.3",
+        "D3.9"
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Production, Safety & Quality",
+     "areas": [
+      {
+       "name": "Safe Work Practices",
+       "points": [
+        "P5.2",
+        "D3.8"
+       ]
+      },
+      {
+       "name": "Production Planning",
+       "points": [
+        "P5.1",
+        "P5.4",
+        "P5.8",
+        "P5.9"
+       ]
+      },
+      {
+       "name": "Process Selection",
+       "points": [
+        "P4.3",
+        "P5.10",
+        "P5.11"
+       ]
+      },
+      {
+       "name": "Quality Control",
+       "points": [
+        "P5.12",
+        "P5.3"
+       ]
+      },
+      {
+       "name": "Quality Outcomes",
+       "points": [
+        "P5.10",
+        "P5.13"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "strand": "Local & Global Perspectives",
+   "categories": [
+    {
+     "category": "Culture & Society",
+     "areas": [
+      {
+       "name": "Historical Perspectives",
+       "points": [
+        "L2.1",
+        "L2.2",
+        "L2.3",
+        "L2.4"
+       ]
+      },
+      {
+       "name": "Cultural Perspectives",
+       "points": [
+        "L2.5",
+        "L2.6",
+        "L2.7"
+       ]
+      },
+      {
+       "name": "Social Perspectives",
+       "points": [
+        "D1.1",
+        "D1.4",
+        "L3.12"
+       ]
+      },
+      {
+       "name": "Trends",
+       "points": [
+        "D1.2",
+        "D4.3"
+       ]
+      },
+      {
+       "name": "Contemporary Issues",
+       "points": [
+        "L3.5",
+        "L3.9",
+        "L3.10"
+       ]
+      },
+      {
+       "name": "Identity & Expression",
+       "points": [
+        "L1.1",
+        "L2.5"
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Aboriginal & Torres Strait Islander Perspectives",
+     "areas": [
+      {
+       "name": "Practices & Technologies",
+       "points": [
+        "L1.3",
+        "L1.4",
+        "D3.5"
+       ]
+      },
+      {
+       "name": "Cultural Expression & Identity",
+       "points": [
+        "L1.1",
+        "D3.3"
+       ]
+      },
+      {
+       "name": "Contemporary Practice",
+       "points": [
+        "L1.2",
+        "L1.4"
+       ]
+      },
+      {
+       "name": "ICIP & Protocols",
+       "points": [
+        "L1.5",
+        "L1.7"
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Designers",
+     "areas": [
+      {
+       "name": "Local Designers",
+       "points": [
+        "L1.2",
+        "D3.11",
+        "D4.1"
+       ]
+      },
+      {
+       "name": "Global Designers",
+       "points": [
+        "L2.1",
+        "L2.6",
+        "D3.11"
+       ]
+      },
+      {
+       "name": "Design Practice",
+       "points": [
+        "D3.4",
+        "D3.6",
+        "D3.11",
+        "P2.2"
+       ]
+      },
+      {
+       "name": "Designer Influence",
+       "points": [
+        "L3.12",
+        "D4.4",
+        "D1.2"
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Textile Industry",
+     "areas": [
+      {
+       "name": "Local & Global Industries",
+       "points": [
+        "L3.1",
+        "L3.2",
+        "L3.4",
+        "L3.5",
+        "L3.9"
+       ]
+      },
+      {
+       "name": "Industry Practices",
+       "points": [
+        "L3.2",
+        "L3.4",
+        "L3.7",
+        "L3.10"
+       ]
+      },
+      {
+       "name": "Consumers & Markets",
+       "points": [
+        "D4.1",
+        "D4.2",
+        "D4.3",
+        "D1.2",
+        "L3.11"
+       ]
+      },
+      {
+       "name": "Careers & Work Environments",
+       "points": [
+        "L3.8"
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Sustainability & Ethics",
+     "areas": [
+      {
+       "name": "Environmental Impacts",
+       "points": [
+        "L3.13",
+        "L2.4"
+       ]
+      },
+      {
+       "name": "Sustainable Practices",
+       "points": [
+        "L3.3",
+        "L3.6",
+        "D2.6",
+        "P5.6",
+        "P3.5"
+       ]
+      },
+      {
+       "name": "Ethical Production",
+       "points": [
+        "L3.10",
+        "D4.4",
+        "L1.5"
+       ]
+      },
+      {
+       "name": "Responsible Consumption",
+       "points": [
+        "L3.11",
+        "L3.12",
+        "P5.5"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "strand": "The Process",
+   "categories": [
+    {
+     "category": "Design Inspiration",
+     "areas": [
+      {
+       "name": "Focus Area & End Use",
+       "points": [
+        "P1.1",
+        "P1.2",
+        "D1.1"
+       ]
+      },
+      {
+       "name": "Sources of Inspiration",
+       "points": [
+        "P2.1",
+        "P2.3",
+        "P2.5",
+        "L1.6"
+       ]
+      },
+      {
+       "name": "Influences",
+       "points": [
+        "P2.2",
+        "P2.4",
+        "L2.7"
+       ]
+      },
+      {
+       "name": "Creative & Innovative Direction",
+       "points": [
+        "D3.7",
+        "P2.4"
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Design Development",
+     "areas": [
+      {
+       "name": "Idea Generation",
+       "points": [
+        "P3.1",
+        "P3.2",
+        "D1.6"
+       ]
+      },
+      {
+       "name": "Design Ideas & Illustration",
+       "points": [
+        "P3.2",
+        "P3.3"
+       ]
+      },
+      {
+       "name": "Design Analysis",
+       "points": [
+        "P3.3",
+        "P3.4",
+        "P3.5"
+       ]
+      },
+      {
+       "name": "Design Development",
+       "points": [
+        "P3.4",
+        "P3.6"
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Manufacturing Specifications",
+     "areas": [
+      {
+       "name": "Item Description",
+       "points": [
+        "P1.2",
+        "P1.3",
+        "P1.4"
+       ]
+      },
+      {
+       "name": "Production Drawings",
+       "points": [
+        "P3.2",
+        "P5.8"
+       ]
+      },
+      {
+       "name": "Technical Production Plan",
+       "points": [
+        "P5.1",
+        "P5.9"
+       ]
+      },
+      {
+       "name": "Materials, Components & Costing",
+       "points": [
+        "P5.7"
+       ]
+      },
+      {
+       "name": "Product Labelling",
+       "points": [
+        "P5.3"
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Experimentation",
+     "areas": [
+      {
+       "name": "Materials",
+       "points": [
+        "P4.5",
+        "P4.6"
+       ]
+      },
+      {
+       "name": "Equipment",
+       "points": [
+        "P4.4",
+        "P5.2"
+       ]
+      },
+      {
+       "name": "Manufacturing Processes",
+       "points": [
+        "P4.1",
+        "P4.2"
+       ]
+      },
+      {
+       "name": "Results & Modifications",
+       "points": [
+        "P4.3",
+        "P4.7"
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Selection & Justification",
+     "areas": [
+      {
+       "name": "Material Selection",
+       "points": [
+        "D2.7",
+        "P4.6",
+        "P5.7"
+       ]
+      },
+      {
+       "name": "Equipment Selection",
+       "points": [
+        "P5.2"
+       ]
+      },
+      {
+       "name": "Process Selection",
+       "points": [
+        "P4.3",
+        "P5.10",
+        "P5.11"
+       ]
+      },
+      {
+       "name": "Justification",
+       "points": [
+        "P3.4",
+        "P4.6"
+       ]
+      }
+     ]
+    },
+    {
+     "category": "Evaluation",
+     "areas": [
+      {
+       "name": "Function & Aesthetics",
+       "points": [
+        "P1.3",
+        "P1.4",
+        "P3.3"
+       ]
+      },
+      {
+       "name": "Properties & Performance",
+       "points": [
+        "P4.5",
+        "D2.5"
+       ]
+      },
+      {
+       "name": "Suitability for End Use",
+       "points": [
+        "D1.5",
+        "D2.5",
+        "D2.7"
+       ]
+      },
+      {
+       "name": "Strengths, Limitations & Improvements",
+       "points": [
+        "P5.12",
+        "P3.5",
+        "P4.7"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
