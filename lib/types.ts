@@ -69,6 +69,8 @@ export type Slot = {
   capabilities: string[] | null; // null = from the activity types in the lesson
   priorities: string[]; // cross-curriculum priorities, only where relevant
   register: { date: string; taught: Taught; notes: string }; // the annotated register
+  intention: string; // learning intention
+  success: string; // success criteria, one per line
 };
 
 export type UnitRegister = {
@@ -113,6 +115,7 @@ export type Unit = {
   title: string;
   product: string;
   overview: string;
+  priorKnowledge: string;
   focusAreas: string[];
   outcomes: string[];
   cycles: number;
@@ -147,6 +150,7 @@ export const emptySlot = (): Slot => ({
   stream: "", status: "planned", pieceIds: [], title: "", notes: "",
   resources: [], equipment: [], capabilities: null, priorities: [],
   register: { date: "", taught: "", notes: "" },
+  intention: "", success: "",
 });
 
 // Units saved before a field existed get its default when loaded.
@@ -168,6 +172,7 @@ export function newUnit(): Unit {
     title: "",
     product: "",
     overview: "",
+    priorKnowledge: "",
     focusAreas: [],
     outcomes: [],
     cycles: 9,

@@ -52,6 +52,9 @@ export default function SetupStep({ unit, update, next }: Props) {
         <label className="field">Unit overview (goes into the program)
           <textarea rows={3} value={unit.overview} onChange={(e) => set("overview", e.target.value)} />
         </label>
+        <label className="field">Prior knowledge (what students bring from earlier units or Technology 7–8, one per line)
+          <textarea rows={3} value={unit.priorKnowledge} onChange={(e) => set("priorKnowledge", e.target.value)} />
+        </label>
       </section>
 
       <div className="grid-2">

@@ -20,6 +20,9 @@ async function main() {
   r.slots["1-2"].register = { date: "2028-02-04", taught: "partly", notes: "Machine set-up demo moved to next lesson." };
   r.slots["3-3"].resources = [{ name: "Construction workbooklet p.12 – Open and closed seams", url: "https://example.org/booklet" }];
   r.slots["3-3"].priorities = ["Sustainability"];
+  r.slots["3-3"].intention = "We are learning to construct and finish open and closed seams.";
+  r.slots["3-3"].success = "I can sew a 1.5 cm seam allowance accurately.\nI can press an open seam and a closed seam.";
+  r.priorKnowledge = "Safe use of the sewing machine from Technology 7–8.\nBasic hand stitches.";
   r.register.teacherComments = "Strong engagement with the brand research.";
   await save("register.docx", await buildProgram(r, tpl.buffer.slice(tpl.byteOffset, tpl.byteOffset + tpl.byteLength), true));
   const plans = [1, 2, 3, 4, 5].map((l) => compassPlan(u, 3, l)).filter((p) => p !== null);

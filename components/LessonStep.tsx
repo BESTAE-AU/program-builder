@@ -59,6 +59,18 @@ export default function LessonStep({ unit, update, lessonKey, openLesson, back }
     } catch (e) { setError(e instanceof Error ? e.message : "Writing steps failed."); } finally { setBusy(null); }
   };
 
+  const draftIntentions = async () => {
+    setBusy("li"); setError("");
+    try {
+      const points = [...new Set(pieces.flatMap((p) => p.points))].filter((c) => POINTS[c]).map((c) => POINTS[c].text);
+      const res = await askAI<{ intention: string; success: string[] }>({
+        action: "intentions", unit: unitCtx, lesson: title, content: points,
+        pieces: pieces.map((p) => ({ title: p.title, area: p.area, activityTypeId: p.activityTypeId, minutes: p.minutes, label: pieceLabel(p, unit.tasks) })),
+      });
+      setSlot({ intention: res.intention, success: res.success.join("\n") });
+    } catch (e) { setError(e instanceof Error ? e.message : "Drafting failed."); } finally { setBusy(null); }
+  };
+
   const plan = compassPlan(unit, cycle, lesson);
   const fileBase = `Unit${unit.unitNumber}_C${cycle}L${lesson}_${(slot.title || title).replace(/[^\w]+/g, "-").slice(0, 40)}`;
 
@@ -107,6 +119,19 @@ export default function LessonStep({ unit, update, lessonKey, openLesson, back }
       </section>
 
       {error && <p className="error" role="alert">{error}</p>}
+
+      <section className="card">
+        <div className="row">
+          <h2 className="spacer">Learning intention and success criteria</h2>
+          <button className="small primary" disabled={busy === "li"} onClick={draftIntentions}>{busy === "li" ? "Drafting…" : "Draft with AI"}</button>
+        </div>
+        <label className="field">Learning intention
+          <input value={slot.intention} placeholder="We are learning to…" onChange={(e) => setSlot({ intention: e.target.value })} />
+        </label>
+        <label className="field">Success criteria (one per line)
+          <textarea rows={3} value={slot.success} placeholder={"I can…\nI can…"} onChange={(e) => setSlot({ success: e.target.value })} />
+        </label>
+      </section>
 
       <div className="layout">
         <main>

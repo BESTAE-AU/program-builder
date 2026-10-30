@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { download } from "@/lib/ai";
+import { askAI, download } from "@/lib/ai";
+import { summariseResponses } from "@/lib/evaluation";
 import { buildProgram } from "@/lib/docx/program";
 import { buildPlanning } from "@/lib/docx/planning";
 import { compassDocx, compassHtmlPage, compassPlan, type CompassPlan } from "@/lib/docx/compass";
@@ -38,6 +39,27 @@ export default function ExportStep({ unit, update }: Props) {
     const name = `${base}_Cycle${cycle}_Compass`;
     if (kind === "docx") download(await compassDocx(plans, name), `${name}.docx`);
     else download(new Blob([compassHtmlPage(plans, name)], { type: "text/html" }), `${name}.html`);
+  });
+
+  const [evalTeacher, setEvalTeacher] = useState("");
+  const [evalNote, setEvalNote] = useState("");
+  const evalFile = useRef<HTMLInputElement>(null);
+  const summariseEval = (f: File) => run("eval", async () => {
+    setEvalNote("");
+    const summary = summariseResponses(await f.text(), { course: unit.course, unit: unit.unitNumber, teacher: evalTeacher || undefined });
+    if (!summary.responses) throw new Error(`No responses found for ${unit.course.split(" ")[0]} Unit ${unit.unitNumber}${evalTeacher ? ` with teacher "${evalTeacher}"` : ""}.`);
+    const res = await askAI<{ summary: string; improvements: string[] }>({
+      action: "evaluation", unit: { title: unit.title, year: unit.year, product: unit.product, notes: unit.aiNotes }, summary,
+    });
+    update((u) => ({
+      ...u,
+      register: {
+        ...u.register,
+        studentComments: `${res.summary}\n(${summary.responses} responses; overall rating ${summary.ratings["Overall rating"]}/5)`,
+        improvements: [u.register.improvements, ...res.improvements].filter(Boolean).join("\n"),
+      },
+    }));
+    setEvalNote(`Summarised ${summary.responses} responses into the register below. Check and edit it before exporting.`);
   });
 
   const saveCopy = () => download(new Blob([JSON.stringify(unit, null, 2)], { type: "application/json" }), `${base}.unit.json`);
@@ -108,6 +130,18 @@ export default function ExportStep({ unit, update }: Props) {
               <label className="field">Date signed<input type="date" value={unit.register.signDate} onChange={(e) => setRegister("signDate", e.target.value)} /></label>
             </div>
           </div>
+        </section>
+        <section className="card">
+          <h2>Student unit evaluation</h2>
+          <p className="muted">In the responses sheet, choose File → Download → CSV, then upload it here. Names and emails are removed in your browser before anything is summarised. The summary fills the register&apos;s student comments and suggested improvements.</p>
+          <label className="field">Only responses for this teacher (optional)
+            <input value={evalTeacher} placeholder="e.g. Staniforth" onChange={(e) => setEvalTeacher(e.target.value)} />
+          </label>
+          <div className="row">
+            <button className="primary" disabled={busy === "eval"} onClick={() => evalFile.current?.click()}>{busy === "eval" ? "Summarising…" : "Upload responses (.csv)"}</button>
+            <input ref={evalFile} type="file" accept=".csv,text/csv" hidden onChange={(e) => { const f = e.target.files?.[0]; e.target.value = ""; if (f) summariseEval(f); }} />
+          </div>
+          {evalNote && <p className="notice ok">{evalNote}</p>}
         </section>
         <section className="card">
           <h2>Backup</h2>

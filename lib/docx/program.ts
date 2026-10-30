@@ -59,6 +59,10 @@ function headerTable(u: Unit) {
         p(null, [{ text: "Indicative hours: ", bold: true }, { text: `${h.prior} before this unit, ${h.after} after it, of ${h.total} for the course` }]),
       ], { span: 3 }),
     ]),
+    ...(u.priorKnowledge ? [
+      row([cell(15138, [p("Heading3", "Prior Knowledge")], { span: 5 })]),
+      row([cell(15138, lines(u.priorKnowledge).map((l) => p("Content", l)), { span: 5 })]),
+    ] : []),
     row([cell(7578, [p("Heading3", "Outcomes")], { span: 2 }), cell(7560, [p("Heading3", "Formative and Summative Assessment Tasks")], { span: 3 })]),
     row([
       cell(7578, outcomeParas(u.outcomes), { span: 2 }),
@@ -144,6 +148,11 @@ function lessonBlock(u: Unit, heading: string, pieces: Piece[], key: string, ann
     content.push(p("Content", `${pt.text}${o ? ` (${o})` : ""}`));
   }
   const activities = [p("LessonNumbers", heading)];
+  if (slot.intention) activities.push(p(null, [{ text: "Learning intention: ", bold: true }, { text: slot.intention }]));
+  if (slot.success.trim()) {
+    activities.push(p(null, [{ text: "Success criteria:", bold: true }]));
+    for (const l of lines(slot.success)) activities.push(p("Content", l));
+  }
   for (const pc of pieces) {
     activities.push(p("ActivityType", activityLine(pc, u)));
     activities.push(p("Content", pc.title));
