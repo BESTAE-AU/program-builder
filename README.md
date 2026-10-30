@@ -6,7 +6,7 @@ Plan a teaching unit step by step and export it to Word.
 2. **Bank**: assessment tasks (AT/FT, parts, outcomes, set and due cycles) and the unit's items: task parts, skills and samples, theory topics, software skills. AI breaks an item into lesson-sized pieces using the Textiles Framework and the Activities & Tasks Framework.
 3. **Grid**: drag pieces into lessons (or Select, then Place here). Each lesson shows its stream, status, stacked pieces and minutes. Side panels: bank, lesson count, sequence check, assessment timeline, outcome coverage.
 4. **Lesson**: order and time the pieces, write student steps (AI or by hand), check suggested outcomes and syllabus points, and edit or AI-tailor the Supplementary / Substantial / Extensive / Extension–Newman / Life Skills adjustments. Download the Compass lesson plan.
-5. **Export**: the program and the annotated register (program plus date taught, taught / partly / not taught and notes per lesson, and the school register table) (in the new-syllabus program template), the Brainstorm & Planning doc, Compass plans for a whole cycle, and a backup copy of the unit.
+5. **Export**: the program (in the new-syllabus program template), the annotated register (the program plus date taught, taught / partly / not taught and notes for each lesson, and the school register table), the Brainstorm & Planning doc, Compass plans for a whole cycle, and a backup copy of the unit.
 
 The Tote-ally Textiles Unit 1 is preloaded as an example.
 
