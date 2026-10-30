@@ -19,7 +19,14 @@ export type ActivityType = {
   mode: string;
   ways: string[];
   levels: Record<Level, string>;
+  capabilities: { name: string; detail: string }[];
 };
+
+export const CROSS_CURRICULUM = [
+  "Aboriginal and Torres Strait Islander Histories and Cultures",
+  "Asia and Australia's Engagement with Asia",
+  "Sustainability",
+];
 
 export type TaskType = { kind: string; family: string; name: string; summary: string };
 

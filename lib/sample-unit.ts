@@ -3,7 +3,7 @@
 // types are mapped to her Textiles and Activities & Tasks frameworks.
 import { onPlace } from "./rules";
 import type { HandIn, Item, ItemKind, Piece, Slot, Stream, Task, Unit } from "./types";
-import { newUnit, slotKey } from "./types";
+import { emptySlot, newUnit, slotKey } from "./types";
 
 type P = {
   id: string; item: string; title: string; area: string; act: string; mins: number;
@@ -120,7 +120,9 @@ export function sampleUnit(): Unit {
   }));
   const slots: Record<string, Slot> = {};
   for (const [c, l, stream, ids, status] of PLACEMENT) {
-    slots[slotKey(c, l)] = { stream, status: status ?? "planned", pieceIds: ids, title: "", notes: "" };
+    const prac = stream === "Prac" && ids.length > 0;
+    const equipment = !prac ? [] : c === 1 ? ["sewing-machine", "scissors"] : c >= 3 ? ["sewing-machine", "overlocker", "iron", "scissors"] : ["sewing-machine", "iron", "scissors"];
+    slots[slotKey(c, l)] = { ...emptySlot(), stream, status: status ?? "planned", pieceIds: ids, equipment };
     pieces = pieces.map((p) => (ids.includes(p.id) ? onPlace({ ...p, homework: l === "hw" }) : p));
   }
   return {
@@ -139,6 +141,7 @@ export function sampleUnit(): Unit {
     ],
     caseStudy: "Kollab is the class case study. The teacher models each research section on Kollab before students complete the same section for their own brand.",
     brands: ["Bon Maxie", "Murph&Murph", "Stassh Society", "State of Escape", "Ela&Earth", "July", "Oroton", "A-Esque", "Sans Beast", "Mimmi", "Maison de Sabre", "Status Anxiety", "Country Road", "Louenhide", "Bambi Bags", "PAKD", "Orbitkey", "Nere Travel", "Tottie", "Willow Bay", "Olivia Jean", "The Somewhere Co", "Project 10", "Madison Accessories"].map((name) => ({ name, student: "" })),
+    courseHours: 200,
     aiNotes: "Year 9 Textiles, mixed ability with low digital literacy. Printed booklets over screens. Theory lessons introduce each cycle's homework.",
   };
 }

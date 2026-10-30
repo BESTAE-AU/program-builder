@@ -4,8 +4,9 @@
 // LessonNumbers, ActivityType, NCCD, Activities) and table settings, so it looks the same.
 import JSZip from "jszip";
 import { activityType, outcomeText, POINTS, pointOutcome } from "../frameworks";
-import { getSlot, pieceLabel } from "../rules";
-import type { Piece, Unit } from "../types";
+import { equipment, TEXTILES_GENERAL } from "../frameworks/whs";
+import { getSlot, hours, lessonCapabilities, pieceLabel } from "../rules";
+import type { Piece, Slot, Unit } from "../types";
 import { slotKey } from "../types";
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -46,12 +47,17 @@ function headerTable(u: Unit) {
       p("Content", `Set Cycle ${t.setCycle}, due Cycle ${t.dueCycle}`),
     ]);
   const weeks = u.cycles * 2;
+  const h = hours(u);
   return table("a", 15138, 0, [1266, 6312, 1768, 2012, 3780], [
     row([cell(1266, [p("Heading2", `UNIT ${u.unitNumber}:`)]), cell(6312, [p("Heading2", u.title)]), cell(1768, [p("Heading2", u.stage)]), cell(5792, [p("Heading2", u.year)], { span: 2 })]),
     row([cell(7578, [p("Heading3", "Unit Overview")], { span: 2 }), cell(7560, [p("Heading3", "Duration")], { span: 3 })]),
     row([
       cell(7578, [...lines(u.overview).map((l) => p("Content", l)), ...(u.product ? [p("Content", [{ text: "Students make: ", bold: true }, { text: u.product }])] : [])], { span: 2 }),
-      cell(7560, [p(null, [{ text: "Number of Weeks: ", bold: true }, { text: `${weeks} weeks (${u.cycles} cycles)` }]), p(null, [{ text: "Number of Lessons: ", bold: true }, { text: `${u.cycles * u.lessonsPerCycle}` }])], { span: 3 }),
+      cell(7560, [
+        p(null, [{ text: "Number of Weeks: ", bold: true }, { text: `${weeks} weeks (${u.cycles} cycles)` }]),
+        p(null, [{ text: "Number of Hours: ", bold: true }, { text: `${h.planned} hours planned (1 hour per lesson)` }]),
+        p(null, [{ text: "Indicative hours: ", bold: true }, { text: `${h.prior} before this unit, ${h.after} after it, of ${h.total} for the course` }]),
+      ], { span: 3 }),
     ]),
     row([cell(7578, [p("Heading3", "Outcomes")], { span: 2 }), cell(7560, [p("Heading3", "Formative and Summative Assessment Tasks")], { span: 3 })]),
     row([
@@ -101,8 +107,29 @@ function activityLine(piece: Piece, u: Unit) {
 }
 
 const W = [1703, 3543, 4924, 4425];
+const TAUGHT: Record<string, string> = { taught: "Taught", partly: "Partly taught", not: "Not taught", "": "Not recorded" };
 
-function lessonBlock(u: Unit, heading: string, pieces: Piece[]) {
+function registerRow(slot: Slot) {
+  const r = slot.register;
+  return row([cell(W[0] + W[1] + W[2] + W[3], [
+    p(null, [{ text: "REGISTER  ", bold: true }, { text: `Date taught: ${r.date || "—"}   ·   ${TAUGHT[r.taught]}` }]),
+    ...(r.notes ? [p(null, [{ text: "Notes and variations: ", bold: true }, { text: r.notes }])] : []),
+  ], { span: 4, shade: true })]);
+}
+
+function registerTable(u: Unit) {
+  const r = u.register;
+  const box = (label: string, value: string) => [p(null, [{ text: label, bold: true }]), ...lines(value).map((l) => p(null, l))];
+  const third = 5046;
+  return p("Heading3", "Register") + table("a0", 15138, 0, [third, third, third], [
+    row([cell(third, box("Teacher's Comments:", r.teacherComments)), cell(third, box("Summary of Student Comments:", r.studentComments)), cell(third, box("Assessment Comments:", r.assessmentComments))]),
+    row([cell(third, box("Suggested improvements for course delivery:", r.improvements)), cell(third, box("Additional / New Resources:", r.newResources)), cell(third, [])]),
+    row([cell(third, box("Date Commenced:", r.dateCommenced)), cell(third, box("Date Completed:", r.dateCompleted)), cell(third, [...box("Signature:", r.signature), ...box("Date:", r.signDate)])]),
+  ]);
+}
+
+function lessonBlock(u: Unit, heading: string, pieces: Piece[], key: string, annotated: boolean) {
+  const slot = getSlot(u, key);
   const outcomes = [...new Set(pieces.flatMap((x) => x.outcomes))];
   const points = [...new Set(pieces.flatMap((x) => x.points))].filter((c) => POINTS[c]);
   const content: string[] = [];
@@ -120,8 +147,23 @@ function lessonBlock(u: Unit, heading: string, pieces: Piece[]) {
   for (const pc of pieces) {
     activities.push(p("ActivityType", activityLine(pc, u)));
     activities.push(p("Content", pc.title));
-    for (const s of pc.steps) activities.push(p("Content", s));
+    for (const s of pc.steps.filter(Boolean)) activities.push(p("Content", s));
   }
+  if (slot.resources.length) {
+    activities.push(p("Resources", [{ text: "Resources", bold: true }]));
+    for (const r of slot.resources) activities.push(p("Resources", r.url ? `${r.name} – ${r.url}` : r.name));
+  }
+  const kit = slot.equipment.map(equipment).filter(Boolean);
+  if (kit.length) {
+    activities.push(p(null, [{ text: "WHS", bold: true }]));
+    activities.push(p("Activities", TEXTILES_GENERAL));
+    for (const e of kit) activities.push(p("Activities", [{ text: `${e!.name}: `, bold: true }, { text: e!.controls.join(" ") }]));
+  }
+  const caps = lessonCapabilities(u, key);
+  const capParas = [
+    ...(caps.length ? [p(null, [{ text: "General capabilities", bold: true }]), ...caps.map((c) => p(null, c))] : []),
+    ...(slot.priorities.length ? [p(null, [{ text: "Cross-curriculum priorities", bold: true }]), ...slot.priorities.map((c) => p(null, c))] : []),
+  ];
   const many = pieces.length > 1;
   const level = (key: "supplementary" | "substantial" | "extensive" | "extension" | "life_skills") =>
     pieces.filter((pc) => pc.adjustments[key]).map((pc) => p("Activities", many ? [{ text: `${pc.title}: `, bold: true }, { text: pc.adjustments[key]! }] : pc.adjustments[key]!));
@@ -133,13 +175,14 @@ function lessonBlock(u: Unit, heading: string, pieces: Piece[]) {
   ];
   return [
     row([cell(W[0], []), cell(W[1], []), cell(W[2], [p("Heading3", "Core")], { shade: true, center: true }), cell(W[3], [p("Heading3", "Supported")], { shade: true, center: true })]),
-    row([cell(W[0], outcomeParas(outcomes)), cell(W[1], content), cell(W[2], activities), cell(W[3], supported)]),
+    row([cell(W[0], [...outcomeParas(outcomes), ...capParas]), cell(W[1], content), cell(W[2], activities), cell(W[3], supported)]),
     row([cell(W[0], []), cell(W[1], []), cell(W[2], [p("Heading3", "Extension/Newman")], { shade: true, center: true }), cell(W[3], [p("Heading3", "Life skills")], { shade: true, center: true })]),
-    row([cell(W[0], []), cell(W[1], []), cell(W[2], level("extension")), cell(W[3], level("life_skills"))]),
+    row([cell(W[0], []), cell(W[1], []), cell(W[2], level("extension")), cell(W[3], [p("Activities", "See the separate Life Skills program.")])]),
+    ...(annotated ? [registerRow(slot)] : []),
   ];
 }
 
-function cycleTable(u: Unit, c: number) {
+function cycleTable(u: Unit, c: number, annotated: boolean) {
   const rows: string[] = [
     row([cell(W[0], [p("Heading3", `${c}. Outcomes`)]), cell(W[1], [p("Heading3", "Content from Syllabus")]), cell(W[2] + W[3], [p("Heading3", "Teaching, Learning Activities")], { span: 2 })], true),
   ];
@@ -153,23 +196,24 @@ function cycleTable(u: Unit, c: number) {
     counts[stream] = (counts[stream] ?? 0) + 1;
     const title = s.title || pieces[0].area || pieces[0].title;
     const flag = s.status === "optional" ? " (OPTIONAL)" : s.status === "at-risk" ? " (AT RISK)" : "";
-    rows.push(...lessonBlock(u, `LESSON ${l} – ${stream.toUpperCase()}: ${title.toUpperCase()}${flag}`, pieces));
+    rows.push(...lessonBlock(u, `LESSON ${l} – ${stream.toUpperCase()}: ${title.toUpperCase()}${flag}`, pieces, slotKey(c, l), annotated));
     any = true;
   }
   const hw = getSlot(u, slotKey(c, "hw"));
   const hwPieces = hw.pieceIds.map((id) => u.pieces.find((x) => x.id === id)).filter(Boolean) as Piece[];
   if (hwPieces.length) {
     const mins = hwPieces.reduce((a, x) => a + x.minutes, 0);
-    rows.push(...lessonBlock(u, `HOMEWORK (${mins} MIN)`, hwPieces));
+    rows.push(...lessonBlock(u, `HOMEWORK (${mins} MIN)`, hwPieces, slotKey(c, "hw"), false));
     any = true;
   }
   return any ? p("Heading3", `CYCLE ${c} · WEEKS ${2 * c - 1}–${2 * c}`) + table(null, 14595, -720, W, rows) + p(null) : "";
 }
 
-export async function buildProgram(u: Unit, template: ArrayBuffer): Promise<Blob> {
+// annotated = the school's "annotated register": the program with each lesson's date taught and notes.
+export async function buildProgram(u: Unit, template: ArrayBuffer, annotated = false): Promise<Blob> {
   const zip = await JSZip.loadAsync(template);
   const doc = await zip.file("word/document.xml")!.async("string");
-  const body = [p(null), headerTable(u), p(null), diverseTable(u), p(null), ...Array.from({ length: u.cycles }, (_, i) => cycleTable(u, i + 1))].join("");
+  const body = [p(null), headerTable(u), p(null), diverseTable(u), p(null), ...Array.from({ length: u.cycles }, (_, i) => cycleTable(u, i + 1, annotated)), registerTable(u)].join("");
   zip.file("word/document.xml", doc.replace("{{BODY}}", body));
   const header = zip.file("word/header3.xml");
   if (header) {

@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { activityType } from "@/lib/frameworks";
-import { coverage, getSlot, lessonCount, lessonTitle, minutesFor, pieceColours, pieceLabel, placedKey, placePiece, sequenceWarnings, unplacePiece } from "@/lib/rules";
+import { coverage, getSlot, hours, lessonCount, lessonTitle, minutesFor, pieceColours, pieceLabel, placedKey, placePiece, sequenceWarnings, unplacePiece } from "@/lib/rules";
 import type { Piece, Slot, Status, Stream, Unit } from "@/lib/types";
 import { slotKey } from "@/lib/types";
 
@@ -29,6 +29,7 @@ export default function GridStep({ unit, update, openLesson }: Props) {
   const bank = unit.pieces.filter((p) => !placedKey(unit, p.id));
   const warnings = sequenceWarnings(unit);
   const count = lessonCount(unit);
+  const h = hours(unit);
   const cov = coverage(unit);
   const max = Math.max(1, ...cov.map((c) => c.n));
 
@@ -84,7 +85,7 @@ export default function GridStep({ unit, update, openLesson }: Props) {
               {s.stream || "—"}
             </button>
           )}
-          <span className="muted spacer">{hw ? "Cycle block" : `Lesson ${l}`}</span>
+          <span className="muted spacer">{hw ? "Cycle block" : `Lesson ${l}`}{s.register.taught === "taught" ? " ✓" : s.register.taught === "partly" ? " ½" : ""}</span>
           {!hw && (
             <select aria-label={`Status of cycle ${c} lesson ${l}`} value={s.status} onChange={(e) => setSlot(key, { status: e.target.value as Status })}
               style={{ width: "auto", padding: "2px 4px", fontSize: 11, fontWeight: 700, background: risk ? "var(--yellow)" : "transparent", border: risk ? 0 : "1px solid var(--line)" }}>
@@ -136,6 +137,9 @@ export default function GridStep({ unit, update, openLesson }: Props) {
               <Stat n={count.planned} label="planned" /><Stat n={count.available} label="available" /><Stat n={count.risk} label="at risk or missed" warm />
             </div>
             <span className="muted">{count.available - count.planned - count.risk} lessons still empty.</span>
+            <span style={{ fontSize: 14 }}>
+              <b>Indicative hours:</b> {h.planned} planned · {h.taught} taught · {h.after} of {h.total} for the course after this unit
+            </span>
           </section>
 
           <section className="card tight">

@@ -23,11 +23,13 @@ export default function ExportStep({ unit, update }: Props) {
     try { await fn(); } catch (e) { setError(e instanceof Error ? e.message : "Export failed."); } finally { setBusy(null); }
   };
 
-  const program = () => run("program", async () => {
+  const program = (annotated: boolean) => run(annotated ? "register" : "program", async () => {
     const res = await fetch("/templates/program-template.docx");
     if (!res.ok) throw new Error("Couldn't load the program template. Refresh and try again.");
-    download(await buildProgram(unit, await res.arrayBuffer()), `${base}_Program.docx`);
+    download(await buildProgram(unit, await res.arrayBuffer(), annotated), `${base}_${annotated ? "Annotated-Register" : "Program"}.docx`);
   });
+  const setRegister = (k: keyof Unit["register"], v: string) => update((u) => ({ ...u, register: { ...u.register, [k]: v } }));
+  const taught = Object.entries(unit.slots).filter(([k, s]) => !k.endsWith("hw") && s.register?.taught).length;
   const planning = () => run("planning", async () => download(await buildPlanning(unit), `${base}_Brainstorm-and-Planning.docx`));
   const cyclePlans = () => Array.from({ length: unit.lessonsPerCycle }, (_, i) => compassPlan(unit, cycle, i + 1)).filter(Boolean) as CompassPlan[];
   const compass = (kind: "docx" | "html") => run(`compass-${kind}`, async () => {
@@ -63,7 +65,12 @@ export default function ExportStep({ unit, update }: Props) {
         <section className="card">
           <h2>Program</h2>
           <p className="muted">Your new-syllabus program template: unit details, Diverse Learning, then one Core / Supported / Extension–Newman / Life Skills block per lesson, cycle by cycle.</p>
-          <button className="primary" disabled={busy === "program"} onClick={program}>{busy === "program" ? "Building…" : "Download program (.docx)"}</button>
+          <button className="primary" disabled={busy === "program"} onClick={() => program(false)}>{busy === "program" ? "Building…" : "Download program (.docx)"}</button>
+        </section>
+        <section className="card">
+          <h2>Annotated register</h2>
+          <p className="muted">The program with each lesson&apos;s date taught, taught / partly / not taught, and notes, plus the register table below. Ready to upload to the school&apos;s register form. {taught} lessons recorded so far.</p>
+          <button className="primary" disabled={busy === "register"} onClick={() => program(true)}>{busy === "register" ? "Building…" : "Download annotated register (.docx)"}</button>
         </section>
         <section className="card">
           <h2>Brainstorm &amp; Planning</h2>
@@ -81,6 +88,25 @@ export default function ExportStep({ unit, update }: Props) {
           <div className="row">
             <button className="primary" disabled={busy === "compass-docx"} onClick={() => compass("docx")}>Download cycle (.docx)</button>
             <button disabled={busy === "compass-html"} onClick={() => compass("html")}>Download cycle (HTML)</button>
+          </div>
+        </section>
+        <section className="card" style={{ gridColumn: "1 / -1" }}>
+          <h2>Register (end of program)</h2>
+          <p className="muted">The school&apos;s register table, printed at the end of the program and the annotated register.</p>
+          <div className="grid-2">
+            {([
+              ["teacherComments", "Teacher's comments"], ["studentComments", "Summary of student comments"],
+              ["assessmentComments", "Assessment comments"], ["improvements", "Suggested improvements for course delivery"],
+              ["newResources", "Additional / new resources"],
+            ] as const).map(([k, label]) => (
+              <label key={k} className="field">{label}<textarea rows={3} value={unit.register[k]} onChange={(e) => setRegister(k, e.target.value)} /></label>
+            ))}
+            <div className="grid-auto">
+              <label className="field">Date commenced<input type="date" value={unit.register.dateCommenced} onChange={(e) => setRegister("dateCommenced", e.target.value)} /></label>
+              <label className="field">Date completed<input type="date" value={unit.register.dateCompleted} onChange={(e) => setRegister("dateCompleted", e.target.value)} /></label>
+              <label className="field">Signature (name)<input value={unit.register.signature} onChange={(e) => setRegister("signature", e.target.value)} /></label>
+              <label className="field">Date signed<input type="date" value={unit.register.signDate} onChange={(e) => setRegister("signDate", e.target.value)} /></label>
+            </div>
           </div>
         </section>
         <section className="card">
