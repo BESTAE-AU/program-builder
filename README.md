@@ -33,3 +33,9 @@ Open http://localhost:3000. Without a key everything works except the AI buttons
 Units are saved in the browser for now (Export → Save a copy for a backup file).
 
 `npx tsx scripts/export-sample.ts` writes the three exports for the sample unit to `out/`.
+
+## Put it online (Vercel)
+
+1. Sign in at https://vercel.com with GitHub and choose **Add New → Project → Import** `BESTAE-AU/program-builder`.
+2. Under **Environment Variables** add `ANTHROPIC_API_KEY` (from https://console.anthropic.com) and `APP_PASSWORD` (any password you choose).
+3. Select **Deploy**. When the browser asks for a login, type any username and your `APP_PASSWORD`.
