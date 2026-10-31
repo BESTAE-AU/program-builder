@@ -80,6 +80,11 @@ export default function ExportStep({ unit, update }: Props) {
     update((u) => ({ ...u, overview: res.overview }));
   });
 
+  const writePedagogy = () => run("pedagogy", async () => {
+    const res = await askAI<{ pedagogy: string }>({ action: "pedagogy", unit: { title: unit.title, year: unit.year, product: unit.product, notes: unit.aiNotes }, outline: outline() });
+    update((u) => ({ ...u, pedagogy: res.pedagogy }));
+  });
+
   const saveCopy = () => download(new Blob([JSON.stringify(unit, null, 2)], { type: "application/json" }), `${base}.unit.json`);
   const openCopy = async (f: File) => {
     try {
@@ -109,6 +114,14 @@ export default function ExportStep({ unit, update }: Props) {
           </div>
           <p className="muted">Written last, from the lessons, tasks and what students make. It goes at the top of the program. Edit it freely.</p>
           <textarea rows={5} aria-label="Unit overview" value={unit.overview} onChange={(e) => update((u) => ({ ...u, overview: e.target.value }))} />
+        </section>
+        <section className="card" style={{ gridColumn: "1 / -1" }}>
+          <div className="row">
+            <h2 className="spacer">Pedagogical approach</h2>
+            <button className="small primary" disabled={busy === "pedagogy"} onClick={writePedagogy}>{busy === "pedagogy" ? "Writing…" : unit.pedagogy ? "Rewrite from the program" : "Write from the program"}</button>
+          </div>
+          <p className="muted">How the unit is taught and why, grounded in information processing and cognitive load theory, with references. Goes in the program&apos;s unit header.</p>
+          <textarea rows={6} aria-label="Pedagogical approach" value={unit.pedagogy} onChange={(e) => update((u) => ({ ...u, pedagogy: e.target.value }))} />
         </section>
         <section className="card">
           <h2>Program</h2>

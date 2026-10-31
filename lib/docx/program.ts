@@ -69,6 +69,10 @@ function headerTable(u: Unit) {
         p(null, [{ text: "Indicative hours: ", bold: true }, { text: `${h.prior} before this unit, ${h.after} after it, of ${h.total} for the course` }]),
       ], { span: 3 }),
     ]),
+    ...(u.pedagogy ? [
+      row([cell(15138, [p("Heading3", "Pedagogical Approach")], { span: 5 })]),
+      row([cell(15138, lines(u.pedagogy).map((l) => p(null, l)), { span: 5 })]),
+    ] : []),
     ...(u.priorKnowledge ? [
       row([cell(15138, [p("Heading3", "Prior Knowledge")], { span: 5 })]),
       row([cell(15138, lines(u.priorKnowledge).map((l) => p("Content", l)), { span: 5 })]),

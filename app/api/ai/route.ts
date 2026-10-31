@@ -13,7 +13,8 @@ type Body =
   | { action: "intentions"; unit: UnitContext; lesson: string; content: string[]; pieces: PieceContext[] }
   | { action: "evaluation"; unit: UnitContext; summary: unknown }
   | { action: "tidy"; unit: UnitContext; field: string; text: string }
-  | { action: "overview"; unit: UnitContext; outline: string };
+  | { action: "overview"; unit: UnitContext; outline: string }
+  | { action: "pedagogy"; unit: UnitContext; outline: string };
 
 type UnitContext = { title: string; year: string; product: string; notes: string };
 type PieceContext = { title: string; area: string; activityTypeId: string; minutes: number; label: string };
@@ -183,6 +184,21 @@ Write the Unit Overview for the front of a teaching program, from the finished p
   });
 }
 
+function pedagogy(b: Extract<Body, { action: "pedagogy" }>) {
+  const system = `${HOUSE}
+
+Write the "Pedagogical approach" section for the front of a teaching program, from the program outline. One or two short paragraphs (6–9 sentences) explaining how the unit is taught and why, grounded in information processing and cognitive load theory as Britt applies it:
+- explicit teaching in small chunks, with demonstrations broken into steps and fill-in demonstration sheets (dual coding, generative learning: Fiorella & Mayer, 2016; Mayer, 2024);
+- managing working memory load (Paas & van Merriënboer, 2020; Sweller, 2016) and load reduction instruction (Martin & Evans, 2018);
+- worked examples and practice samples before independent project work, with support faded as expertise grows (Chen, Kalyuga & Sweller, 2017; Kirschner & Hendrick, 2020);
+- retrieval practice and spaced review (Agarwal, Nunes & Blunt, 2021);
+- printed booklets over screens for reading and organisation (Delgado et al., 2018), and explicit support for developing executive function (Zelazo & Carlson, 2020).
+Only mention strategies the outline actually uses. Cite with author–year in brackets. Third person, present tense, no headings.`;
+  return ask<{ pedagogy: string }>(system, `${unitLine(b.unit)}\n\nProgram outline:\n${b.outline}`, {
+    type: "object", properties: { pedagogy: { type: "string" } }, required: ["pedagogy"], additionalProperties: false,
+  });
+}
+
 export async function POST(req: Request) {
   const body = (await req.json()) as Body;
   try {
@@ -193,6 +209,7 @@ export async function POST(req: Request) {
     if (body.action === "evaluation") return NextResponse.json(await evaluation(body));
     if (body.action === "tidy") return NextResponse.json(await tidy(body));
     if (body.action === "overview") return NextResponse.json(await overview(body));
+    if (body.action === "pedagogy") return NextResponse.json(await pedagogy(body));
     return NextResponse.json({ error: "Unknown action." }, { status: 400 });
   } catch (error) {
     if (error instanceof Anthropic.AuthenticationError || (error instanceof Error && /api key|apiKey|authentication/i.test(error.message)))

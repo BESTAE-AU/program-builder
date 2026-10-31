@@ -118,6 +118,7 @@ export type Unit = {
   product: string;
   overview: string;
   priorKnowledge: string;
+  pedagogy: string; // pedagogical approach, unit level
   focusAreas: string[];
   outcomes: string[];
   syllabusMode: "2025" | "2019+2025"; // 2019+2025: 2019 is official, 2025 shown alongside
@@ -178,6 +179,7 @@ export function newUnit(): Unit {
     product: "",
     overview: "",
     priorKnowledge: "",
+    pedagogy: "",
     focusAreas: [],
     outcomes: [],
     syllabusMode: "2025",
