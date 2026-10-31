@@ -4,6 +4,7 @@ import { useState } from "react";
 import { askAI, download } from "@/lib/ai";
 import { activityType, AREAS, CROSS_CURRICULUM, OUTCOMES, outcomeText, POINTS, pointOutcome } from "@/lib/frameworks";
 import { EQUIPMENT } from "@/lib/frameworks/whs";
+import { OUTCOMES_2019, POINTS_2019, point2019 } from "@/lib/frameworks/textiles2019";
 import { getSlot, lessonCapabilities, levelName, lessonTitle, minutesFor, pieceColours, pieceLabel, slotOrder } from "@/lib/rules";
 import { compassDocx, compassHtml, compassHtmlPage, compassPlan } from "@/lib/docx/compass";
 import type { Level, Piece, Slot, Taught, Unit } from "@/lib/types";
@@ -261,8 +262,34 @@ export default function LessonStep({ unit, update, lessonKey, openLesson, back }
         </main>
 
         <aside>
+          {unit.syllabusMode === "2019+2025" && (
+            <section className="card tight" style={{ border: "2px solid var(--navy)" }}>
+              <h2>2019 syllabus <span className="muted">(official until 2027, suggested, check)</span></h2>
+              {OUTCOMES_2019.map((o) => {
+                const on = pieces.some((p) => (p.outcomes2019 ?? []).includes(o.code));
+                return (
+                  <label key={o.code} style={{ display: "grid", gridTemplateColumns: "auto minmax(0, 1fr)", gap: 6, alignItems: "start", fontSize: 14 }}>
+                    <input type="checkbox" style={{ width: "auto", marginTop: 3 }} checked={on}
+                      onChange={() => update((u) => ({ ...u, pieces: u.pieces.map((x) => (slot.pieceIds.includes(x.id) ? { ...x, outcomes2019: on ? (x.outcomes2019 ?? []).filter((c) => c !== o.code) : x.id === slot.pieceIds[0] ? [...(x.outcomes2019 ?? []), o.code] : x.outcomes2019 } : x)) }))} />
+                    <span><b>{o.code}</b> {on ? o.text : ""}</span>
+                  </label>
+                );
+              })}
+              <h3>Content</h3>
+              {[...new Set(pieces.flatMap((p) => p.points2019 ?? []))].map(point2019).filter(Boolean).map((pt) => (
+                <div key={pt!.code} style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) auto", gap: 6, fontSize: 14 }}>
+                  <span><b>{pt!.area}:</b> {pt!.text} <span className="muted">({pt!.outcome})</span></span>
+                  <button className="small ghost" aria-label={`Remove ${pt!.code}`} onClick={() => update((u) => ({ ...u, pieces: u.pieces.map((x) => (slot.pieceIds.includes(x.id) ? { ...x, points2019: (x.points2019 ?? []).filter((y) => y !== pt!.code) } : x)) }))}>×</button>
+                </div>
+              ))}
+              <select aria-label="Add 2019 content" value="" onChange={(e) => { const code = e.target.value; if (code) update((u) => ({ ...u, pieces: u.pieces.map((x) => (x.id === slot.pieceIds[0] ? { ...x, points2019: [...new Set([...(x.points2019 ?? []), code])] } : x)) })); }}>
+                <option value="">+ Add 2019 content…</option>
+                {POINTS_2019.map((pt) => <option key={pt.code} value={pt.code}>{pt.area} – {pt.text}</option>)}
+              </select>
+            </section>
+          )}
           <section className="card tight">
-            <h2>Outcomes <span className="muted">(suggested, check)</span></h2>
+            <h2>Outcomes{unit.syllabusMode === "2019+2025" ? " 2025" : ""} <span className="muted">(suggested, check)</span></h2>
             {OUTCOMES.map((o) => {
               const on = allOutcomes.includes(o.code);
               return (
@@ -275,7 +302,7 @@ export default function LessonStep({ unit, update, lessonKey, openLesson, back }
             })}
           </section>
           <section className="card tight">
-            <h2>Syllabus content</h2>
+            <h2>Syllabus content{unit.syllabusMode === "2019+2025" ? " (2025)" : ""}</h2>
             {allPoints.length === 0 && <p className="muted">Choose a content area for each piece to suggest syllabus content.</p>}
             {allPoints.filter((c) => POINTS[c]).map((c) => (
               <div key={c} style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) auto", alignItems: "start", gap: 6, fontSize: 14 }}>

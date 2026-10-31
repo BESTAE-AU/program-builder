@@ -6,7 +6,8 @@ import { summariseResponses } from "@/lib/evaluation";
 import { buildProgram } from "@/lib/docx/program";
 import { buildPlanning } from "@/lib/docx/planning";
 import { compassDocx, compassHtmlPage, compassPlan, type CompassPlan } from "@/lib/docx/compass";
-import { sequenceWarnings } from "@/lib/rules";
+import { getSlot, lessonTitle, sequenceWarnings } from "@/lib/rules";
+import { slotKey } from "@/lib/types";
 import type { Unit } from "@/lib/types";
 
 type Props = { unit: Unit; update: (fn: (u: Unit) => Unit) => void };
@@ -62,6 +63,23 @@ export default function ExportStep({ unit, update }: Props) {
     setEvalNote(`Summarised ${summary.responses} responses into the register below. Check and edit it before exporting.`);
   });
 
+  const outline = () => {
+    const parts = [`Students make:\n${unit.product}`, `Tasks: ${unit.tasks.map((t) => `${t.code} ${t.name} (${t.parts.map((x) => x.name).join("; ")})`).join(" | ")}`];
+    for (let c = 1; c <= unit.cycles; c++) {
+      const titles: string[] = [];
+      for (let l = 1; l <= unit.lessonsPerCycle; l++) {
+        const k = slotKey(c, l), s = getSlot(unit, k);
+        if (s.pieceIds.length && s.status !== "missed") titles.push(`${s.stream || "Lesson"}: ${lessonTitle(unit, k)} (${s.pieceIds.map((id) => unit.pieces.find((p) => p.id === id)?.title).filter(Boolean).join("; ")})`);
+      }
+      if (titles.length) parts.push(`Cycle ${c}: ${titles.join(" | ")}`);
+    }
+    return parts.join("\n");
+  };
+  const writeOverview = () => run("overview", async () => {
+    const res = await askAI<{ overview: string }>({ action: "overview", unit: { title: unit.title, year: unit.year, product: unit.product, notes: unit.aiNotes }, outline: outline() });
+    update((u) => ({ ...u, overview: res.overview }));
+  });
+
   const saveCopy = () => download(new Blob([JSON.stringify(unit, null, 2)], { type: "application/json" }), `${base}.unit.json`);
   const openCopy = async (f: File) => {
     try {
@@ -84,6 +102,14 @@ export default function ExportStep({ unit, update }: Props) {
       {error && <p className="error" role="alert">{error}</p>}
 
       <div className="grid-2">
+        <section className="card" style={{ gridColumn: "1 / -1" }}>
+          <div className="row">
+            <h2 className="spacer">Unit overview</h2>
+            <button className="small primary" disabled={busy === "overview"} onClick={writeOverview}>{busy === "overview" ? "Writing…" : unit.overview ? "Rewrite from the program" : "Write from the program"}</button>
+          </div>
+          <p className="muted">Written last, from the lessons, tasks and what students make. It goes at the top of the program. Edit it freely.</p>
+          <textarea rows={5} aria-label="Unit overview" value={unit.overview} onChange={(e) => update((u) => ({ ...u, overview: e.target.value }))} />
+        </section>
         <section className="card">
           <h2>Program</h2>
           <p className="muted">Your new-syllabus program template: unit details, Diverse Learning, then one Core / Supported / Extension–Newman / Life Skills block per lesson, cycle by cycle.</p>

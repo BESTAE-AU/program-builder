@@ -36,7 +36,7 @@ export default function BankStep({ unit, update, next }: Props) {
   };
   const blankPiece = (it: Item): Piece => ({
     id: uid(), itemId: it.id, title: "", area: "", activityTypeId: it.taskId ? "production" : "instruction", verb: "", minutes: 45,
-    taskId: it.taskId, partId: it.partId, stage: it.taskId ? "PRODUCE" : undefined, outcomes: [], points: [],
+    taskId: it.taskId, partId: it.partId, stage: it.taskId ? "PRODUCE" : undefined, outcomes: [], points: [], outcomes2019: [], points2019: [],
     adjustments: {}, tailored: false, steps: [], handIn: "NONE",
   });
 

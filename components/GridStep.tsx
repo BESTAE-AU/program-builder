@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { activityType } from "@/lib/frameworks";
-import { coverage, getSlot, hours, lessonCount, lessonTitle, minutesFor, pieceColours, pieceLabel, placedKey, placePiece, sequenceWarnings, unplacePiece } from "@/lib/rules";
+import { coverage, coverage2019, getSlot, hours, lessonCount, lessonTitle, minutesFor, pieceColours, pieceLabel, placedKey, placePiece, sequenceWarnings, unplacePiece } from "@/lib/rules";
 import type { Piece, Slot, Status, Stream, Unit } from "@/lib/types";
 import { slotKey } from "@/lib/types";
 
@@ -31,6 +31,7 @@ export default function GridStep({ unit, update, openLesson }: Props) {
   const count = lessonCount(unit);
   const h = hours(unit);
   const cov = coverage(unit);
+  const cov19 = unit.syllabusMode === "2019+2025" ? coverage2019(unit) : [];
   const max = Math.max(1, ...cov.map((c) => c.n));
 
   const chip = (p: Piece, inSlot: boolean) => {
@@ -171,7 +172,20 @@ export default function GridStep({ unit, update, openLesson }: Props) {
           </section>
 
           <section className="card tight">
-            <h2>Outcome coverage</h2>
+            {cov19.length > 0 && (
+              <>
+                <h2>Outcome coverage: 2019</h2>
+                {cov19.map((o) => (
+                  <div key={o.code} style={{ display: "grid", gridTemplateColumns: "92px minmax(0, 1fr) 28px", gap: 8, alignItems: "center", fontSize: 12 }}>
+                    <b>{o.code}</b>
+                    <span style={{ height: 12, background: "var(--line-soft)", borderRadius: 6, overflow: "hidden" }}><span style={{ display: "block", height: 12, width: `${(o.n / Math.max(1, ...cov19.map((x) => x.n))) * 100}%`, background: "var(--cerise)" }} /></span>
+                    <span style={{ textAlign: "right" }}>{o.n}</span>
+                  </div>
+                ))}
+                {cov19.some((o) => !o.n) && <p className="muted">2019 not yet covered: {cov19.filter((o) => !o.n).map((o) => o.code).join(", ")}.</p>}
+              </>
+            )}
+            <h2>Outcome coverage{cov19.length ? ": 2025" : ""}</h2>
             {cov.map((o) => (
               <div key={o.code} style={{ display: "grid", gridTemplateColumns: "92px minmax(0, 1fr) 28px", gap: 8, alignItems: "center", fontSize: 12 }}>
                 <b>{o.code}</b>

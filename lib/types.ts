@@ -48,6 +48,8 @@ export type Piece = {
   homework?: boolean;
   outcomes: string[];
   points: string[]; // numbered syllabus content points, e.g. "P5.10"
+  outcomes2019: string[]; // Textiles Technology 7–10 (2019) outcomes, e.g. "TEX5-10"
+  points2019: string[]; // 2019 content points, e.g. "PW-P5"
   adjustments: Partial<Record<Level, string>>;
   tailored: boolean;
   steps: string[]; // student-facing steps for the Compass page
@@ -118,6 +120,8 @@ export type Unit = {
   priorKnowledge: string;
   focusAreas: string[];
   outcomes: string[];
+  syllabusMode: "2025" | "2019+2025"; // 2019+2025: 2019 is official, 2025 shown alongside
+  outcomes2019: string[];
   cycles: number;
   lessonsPerCycle: number;
   frameworks: string[];
@@ -158,7 +162,8 @@ export function normaliseUnit(u: Unit): Unit {
   const base = newUnit();
   const slots: Record<string, Slot> = {};
   for (const [k, s] of Object.entries(u.slots ?? {})) slots[k] = { ...emptySlot(), ...s, register: { ...emptySlot().register, ...s.register } };
-  return { ...base, ...u, register: { ...emptyRegister(), ...u.register }, slots };
+  const pieces = (u.pieces ?? []).map((p) => ({ ...p, outcomes2019: p.outcomes2019 ?? [], points2019: p.points2019 ?? [] }));
+  return { ...base, ...u, register: { ...emptyRegister(), ...u.register }, slots, pieces };
 }
 
 export function newUnit(): Unit {
@@ -175,6 +180,8 @@ export function newUnit(): Unit {
     priorKnowledge: "",
     focusAreas: [],
     outcomes: [],
+    syllabusMode: "2025",
+    outcomes2019: [],
     cycles: 9,
     lessonsPerCycle: 5,
     frameworks: ["Textiles Framework", "Activities & Tasks Framework", "General Capabilities Map", "TAS Skills & Content Continuum"],
