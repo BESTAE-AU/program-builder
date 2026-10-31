@@ -14,6 +14,17 @@ async function main() {
   const tpl = readFileSync("public/templates/program-template.docx");
   await save("program.docx", await buildProgram(u, tpl.buffer.slice(tpl.byteOffset, tpl.byteOffset + tpl.byteLength)));
   await save("planning.docx", await buildPlanning(u));
+  // An annotated register with the first two lessons recorded.
+  const r = structuredClone(u);
+  r.slots["1-1"].register = { date: "2028-02-02", taught: "taught", notes: "Kollab case study took longer; brand choice moved to homework." };
+  r.slots["1-2"].register = { date: "2028-02-04", taught: "partly", notes: "Machine set-up demo moved to next lesson." };
+  r.slots["3-3"].resources = [{ name: "Construction workbooklet p.12 – Open and closed seams", url: "https://example.org/booklet" }];
+  r.slots["3-3"].priorities = ["Sustainability"];
+  r.slots["3-3"].intention = "We are learning to construct and finish open and closed seams.";
+  r.slots["3-3"].success = "I can sew a 1.5 cm seam allowance accurately.\nI can press an open seam and a closed seam.";
+  r.priorKnowledge = "Safe use of the sewing machine from Technology 7–8.\nBasic hand stitches.";
+  r.register.teacherComments = "Strong engagement with the brand research.";
+  await save("register.docx", await buildProgram(r, tpl.buffer.slice(tpl.byteOffset, tpl.byteOffset + tpl.byteLength), true));
   const plans = [1, 2, 3, 4, 5].map((l) => compassPlan(u, 3, l)).filter((p) => p !== null);
   await save("compass-cycle3.docx", await compassDocx(plans, "Cycle 3"));
   writeFileSync("out/compass-cycle3.html", compassHtmlPage(plans, "Cycle 3"));

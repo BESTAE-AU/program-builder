@@ -1,7 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { download } from "@/lib/ai";
+import { askAI, download } from "@/lib/ai";
+import { summariseResponses } from "@/lib/evaluation";
 import { buildProgram } from "@/lib/docx/program";
 import { buildPlanning } from "@/lib/docx/planning";
 import { compassDocx, compassHtmlPage, compassPlan, type CompassPlan } from "@/lib/docx/compass";
@@ -23,11 +24,13 @@ export default function ExportStep({ unit, update }: Props) {
     try { await fn(); } catch (e) { setError(e instanceof Error ? e.message : "Export failed."); } finally { setBusy(null); }
   };
 
-  const program = () => run("program", async () => {
+  const program = (annotated: boolean) => run(annotated ? "register" : "program", async () => {
     const res = await fetch("/templates/program-template.docx");
     if (!res.ok) throw new Error("Couldn't load the program template. Refresh and try again.");
-    download(await buildProgram(unit, await res.arrayBuffer()), `${base}_Program.docx`);
+    download(await buildProgram(unit, await res.arrayBuffer(), annotated), `${base}_${annotated ? "Annotated-Register" : "Program"}.docx`);
   });
+  const setRegister = (k: keyof Unit["register"], v: string) => update((u) => ({ ...u, register: { ...u.register, [k]: v } }));
+  const taught = Object.entries(unit.slots).filter(([k, s]) => !k.endsWith("hw") && s.register?.taught).length;
   const planning = () => run("planning", async () => download(await buildPlanning(unit), `${base}_Brainstorm-and-Planning.docx`));
   const cyclePlans = () => Array.from({ length: unit.lessonsPerCycle }, (_, i) => compassPlan(unit, cycle, i + 1)).filter(Boolean) as CompassPlan[];
   const compass = (kind: "docx" | "html") => run(`compass-${kind}`, async () => {
@@ -36,6 +39,27 @@ export default function ExportStep({ unit, update }: Props) {
     const name = `${base}_Cycle${cycle}_Compass`;
     if (kind === "docx") download(await compassDocx(plans, name), `${name}.docx`);
     else download(new Blob([compassHtmlPage(plans, name)], { type: "text/html" }), `${name}.html`);
+  });
+
+  const [evalTeacher, setEvalTeacher] = useState("");
+  const [evalNote, setEvalNote] = useState("");
+  const evalFile = useRef<HTMLInputElement>(null);
+  const summariseEval = (f: File) => run("eval", async () => {
+    setEvalNote("");
+    const summary = summariseResponses(await f.text(), { course: unit.course, unit: unit.unitNumber, teacher: evalTeacher || undefined });
+    if (!summary.responses) throw new Error(`No responses found for ${unit.course.split(" ")[0]} Unit ${unit.unitNumber}${evalTeacher ? ` with teacher "${evalTeacher}"` : ""}.`);
+    const res = await askAI<{ summary: string; improvements: string[] }>({
+      action: "evaluation", unit: { title: unit.title, year: unit.year, product: unit.product, notes: unit.aiNotes }, summary,
+    });
+    update((u) => ({
+      ...u,
+      register: {
+        ...u.register,
+        studentComments: `${res.summary}\n(${summary.responses} responses; overall rating ${summary.ratings["Overall rating"]}/5)`,
+        improvements: [u.register.improvements, ...res.improvements].filter(Boolean).join("\n"),
+      },
+    }));
+    setEvalNote(`Summarised ${summary.responses} responses into the register below. Check and edit it before exporting.`);
   });
 
   const saveCopy = () => download(new Blob([JSON.stringify(unit, null, 2)], { type: "application/json" }), `${base}.unit.json`);
@@ -63,7 +87,12 @@ export default function ExportStep({ unit, update }: Props) {
         <section className="card">
           <h2>Program</h2>
           <p className="muted">Your new-syllabus program template: unit details, Diverse Learning, then one Core / Supported / Extension–Newman / Life Skills block per lesson, cycle by cycle.</p>
-          <button className="primary" disabled={busy === "program"} onClick={program}>{busy === "program" ? "Building…" : "Download program (.docx)"}</button>
+          <button className="primary" disabled={busy === "program"} onClick={() => program(false)}>{busy === "program" ? "Building…" : "Download program (.docx)"}</button>
+        </section>
+        <section className="card">
+          <h2>Annotated register</h2>
+          <p className="muted">The program with each lesson&apos;s date taught, taught / partly / not taught, and notes, plus the register table below. Ready to upload to the school&apos;s register form. {taught} lessons recorded so far.</p>
+          <button className="primary" disabled={busy === "register"} onClick={() => program(true)}>{busy === "register" ? "Building…" : "Download annotated register (.docx)"}</button>
         </section>
         <section className="card">
           <h2>Brainstorm &amp; Planning</h2>
@@ -82,6 +111,37 @@ export default function ExportStep({ unit, update }: Props) {
             <button className="primary" disabled={busy === "compass-docx"} onClick={() => compass("docx")}>Download cycle (.docx)</button>
             <button disabled={busy === "compass-html"} onClick={() => compass("html")}>Download cycle (HTML)</button>
           </div>
+        </section>
+        <section className="card" style={{ gridColumn: "1 / -1" }}>
+          <h2>Register (end of program)</h2>
+          <p className="muted">The school&apos;s register table, printed at the end of the program and the annotated register.</p>
+          <div className="grid-2">
+            {([
+              ["teacherComments", "Teacher's comments"], ["studentComments", "Summary of student comments"],
+              ["assessmentComments", "Assessment comments"], ["improvements", "Suggested improvements for course delivery"],
+              ["newResources", "Additional / new resources"],
+            ] as const).map(([k, label]) => (
+              <label key={k} className="field">{label}<textarea rows={3} value={unit.register[k]} onChange={(e) => setRegister(k, e.target.value)} /></label>
+            ))}
+            <div className="grid-auto">
+              <label className="field">Date commenced<input type="date" value={unit.register.dateCommenced} onChange={(e) => setRegister("dateCommenced", e.target.value)} /></label>
+              <label className="field">Date completed<input type="date" value={unit.register.dateCompleted} onChange={(e) => setRegister("dateCompleted", e.target.value)} /></label>
+              <label className="field">Signature (name)<input value={unit.register.signature} onChange={(e) => setRegister("signature", e.target.value)} /></label>
+              <label className="field">Date signed<input type="date" value={unit.register.signDate} onChange={(e) => setRegister("signDate", e.target.value)} /></label>
+            </div>
+          </div>
+        </section>
+        <section className="card">
+          <h2>Student unit evaluation</h2>
+          <p className="muted">In the responses sheet, choose File → Download → CSV, then upload it here. Names and emails are removed in your browser before anything is summarised. The summary fills the register&apos;s student comments and suggested improvements.</p>
+          <label className="field">Only responses for this teacher (optional)
+            <input value={evalTeacher} placeholder="e.g. Staniforth" onChange={(e) => setEvalTeacher(e.target.value)} />
+          </label>
+          <div className="row">
+            <button className="primary" disabled={busy === "eval"} onClick={() => evalFile.current?.click()}>{busy === "eval" ? "Summarising…" : "Upload responses (.csv)"}</button>
+            <input ref={evalFile} type="file" accept=".csv,text/csv" hidden onChange={(e) => { const f = e.target.files?.[0]; e.target.value = ""; if (f) summariseEval(f); }} />
+          </div>
+          {evalNote && <p className="notice ok">{evalNote}</p>}
         </section>
         <section className="card">
           <h2>Backup</h2>

@@ -53,7 +53,36 @@ export function onPlace(p: Piece): Piece {
 }
 
 export function getSlot(unit: Unit, key: string): Slot {
-  return unit.slots[key] ?? emptySlot();
+  const s = unit.slots[key];
+  return s ? { ...emptySlot(), ...s } : emptySlot();
+}
+
+const slotPieces = (unit: Unit, key: string) =>
+  getSlot(unit, key).pieceIds.map((id) => unit.pieces.find((p) => p.id === id)).filter(Boolean) as Piece[];
+
+// General capabilities for a lesson: chosen by hand, or else taken from the
+// activity types in it (each type in the framework lists its capabilities).
+export function lessonCapabilities(unit: Unit, key: string): string[] {
+  const s = getSlot(unit, key);
+  if (s.capabilities) return s.capabilities;
+  return frameworkCapabilities(slotPieces(unit, key));
+}
+
+export function frameworkCapabilities(pieces: Piece[]): string[] {
+  const seen = new Set<string>();
+  for (const p of pieces) for (const c of activityType(p.activityTypeId)?.capabilities ?? []) seen.add(`${c.name} › ${c.detail}`);
+  return [...seen];
+}
+
+// Indicative hours: one hour per lesson that isn't at risk or missed.
+export function hours(unit: Unit) {
+  let planned = 0, taught = 0;
+  for (const [k, s] of Object.entries(unit.slots)) {
+    if (k.endsWith("hw") || !s.pieceIds?.length || s.status === "at-risk" || s.status === "missed") continue;
+    planned++;
+    if (s.register?.taught === "taught" || s.register?.taught === "partly") taught++;
+  }
+  return { planned, taught, total: unit.courseHours, prior: unit.priorHours, after: unit.priorHours + planned };
 }
 
 export function placedKey(unit: Unit, pieceId: string): string | undefined {

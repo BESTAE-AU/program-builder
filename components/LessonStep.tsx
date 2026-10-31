@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { askAI, download } from "@/lib/ai";
-import { activityType, AREAS, OUTCOMES, outcomeText, POINTS, pointOutcome } from "@/lib/frameworks";
-import { getSlot, levelName, lessonTitle, minutesFor, pieceColours, pieceLabel, slotOrder } from "@/lib/rules";
+import { activityType, AREAS, CROSS_CURRICULUM, OUTCOMES, outcomeText, POINTS, pointOutcome } from "@/lib/frameworks";
+import { EQUIPMENT } from "@/lib/frameworks/whs";
+import { getSlot, lessonCapabilities, levelName, lessonTitle, minutesFor, pieceColours, pieceLabel, slotOrder } from "@/lib/rules";
 import { compassDocx, compassHtml, compassHtmlPage, compassPlan } from "@/lib/docx/compass";
-import type { Level, Piece, Slot, Unit } from "@/lib/types";
+import type { Level, Piece, Slot, Taught, Unit } from "@/lib/types";
 import { LEVELS } from "@/lib/types";
 import PieceEditor from "./PieceEditor";
 
@@ -58,6 +59,18 @@ export default function LessonStep({ unit, update, lessonKey, openLesson, back }
     } catch (e) { setError(e instanceof Error ? e.message : "Writing steps failed."); } finally { setBusy(null); }
   };
 
+  const draftIntentions = async () => {
+    setBusy("li"); setError("");
+    try {
+      const points = [...new Set(pieces.flatMap((p) => p.points))].filter((c) => POINTS[c]).map((c) => POINTS[c].text);
+      const res = await askAI<{ intention: string; success: string[] }>({
+        action: "intentions", unit: unitCtx, lesson: title, content: points,
+        pieces: pieces.map((p) => ({ title: p.title, area: p.area, activityTypeId: p.activityTypeId, minutes: p.minutes, label: pieceLabel(p, unit.tasks) })),
+      });
+      setSlot({ intention: res.intention, success: res.success.join("\n") });
+    } catch (e) { setError(e instanceof Error ? e.message : "Drafting failed."); } finally { setBusy(null); }
+  };
+
   const plan = compassPlan(unit, cycle, lesson);
   const fileBase = `Unit${unit.unitNumber}_C${cycle}L${lesson}_${(slot.title || title).replace(/[^\w]+/g, "-").slice(0, 40)}`;
 
@@ -107,6 +120,19 @@ export default function LessonStep({ unit, update, lessonKey, openLesson, back }
 
       {error && <p className="error" role="alert">{error}</p>}
 
+      <section className="card">
+        <div className="row">
+          <h2 className="spacer">Learning intention and success criteria</h2>
+          <button className="small primary" disabled={busy === "li"} onClick={draftIntentions}>{busy === "li" ? "Drafting…" : "Draft with AI"}</button>
+        </div>
+        <label className="field">Learning intention
+          <input value={slot.intention} placeholder="We are learning to…" onChange={(e) => setSlot({ intention: e.target.value })} />
+        </label>
+        <label className="field">Success criteria (one per line)
+          <textarea rows={3} value={slot.success} placeholder={"I can…\nI can…"} onChange={(e) => setSlot({ success: e.target.value })} />
+        </label>
+      </section>
+
       <div className="layout">
         <main>
           <section className="card">
@@ -155,7 +181,7 @@ export default function LessonStep({ unit, update, lessonKey, openLesson, back }
                   <button className="small primary" disabled={busy === p.id} onClick={() => tailor(p)}>{busy === p.id ? "Tailoring…" : "Tailor with AI"}</button>
                 </div>
                 <dl className="levels">
-                  {LEVELS.map((l) => (
+                  {LEVELS.filter((l) => l.key !== "life_skills").map((l) => (
                     <div key={l.key} style={{ display: "contents" }}>
                       <dt style={{ background: LEVEL_BG[l.key] }}>{levelName[l.key]}</dt>
                       <dd><textarea rows={2} aria-label={`${l.name} adjustment for ${p.title}`} value={p.adjustments[l.key] ?? ""} onChange={(e) => setPiece({ ...p, adjustments: { ...p.adjustments, [l.key]: e.target.value }, tailored: true })} /></dd>
@@ -164,7 +190,73 @@ export default function LessonStep({ unit, update, lessonKey, openLesson, back }
                 </dl>
               </div>
             ))}
+            <p className="muted">Life Skills: students follow the separate Life Skills program; the program says so in each lesson.</p>
             {unit.students.length > 0 && <p className="muted">On this program: {unit.students.map((s) => `${s.initials} – ${s.level}`).join(" · ")}</p>}
+          </section>
+
+          <section className="card">
+            <h2>Resources</h2>
+            <p className="muted">Named links, printed under this lesson&apos;s activities and on the Compass page.</p>
+            {slot.resources.map((r, i) => (
+              <div key={i} className="grid-auto" style={{ gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1.4fr) auto", alignItems: "end" }}>
+                <label className="field">Name<input value={r.name} placeholder="Construction workbooklet p.12 – Open seams" onChange={(e) => setSlot({ resources: slot.resources.map((x, j) => (j === i ? { ...x, name: e.target.value } : x)) })} /></label>
+                <label className="field">Link<input value={r.url} placeholder="https://…" onChange={(e) => setSlot({ resources: slot.resources.map((x, j) => (j === i ? { ...x, url: e.target.value } : x)) })} /></label>
+                <button className="ghost" onClick={() => setSlot({ resources: slot.resources.filter((_, j) => j !== i) })}>Remove</button>
+              </div>
+            ))}
+            <div><button className="small" onClick={() => setSlot({ resources: [...slot.resources, { name: "", url: "" }] })}>+ Add resource</button></div>
+          </section>
+
+          <section className="card">
+            <h2>WHS: equipment used</h2>
+            <p className="muted">Hazards and controls come from the SCS TAS Safety Handbook (your ref-whs skill) and print in the program. Students must be assessed competent on each item first.</p>
+            <div className="grid-auto" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))", gap: 6 }}>
+              {EQUIPMENT.map((e) => {
+                const on = slot.equipment.includes(e.id);
+                const tooYoung = Number(unit.year.replace(/\D/g, "")) < e.fromYear;
+                return (
+                  <label key={e.id} style={{ display: "grid", gridTemplateColumns: "auto minmax(0, 1fr)", gap: 6, fontSize: 14 }}>
+                    <input type="checkbox" style={{ width: "auto" }} checked={on} onChange={() => setSlot({ equipment: on ? slot.equipment.filter((x) => x !== e.id) : [...slot.equipment, e.id] })} />
+                    <span>{e.name}{tooYoung && <b style={{ color: "var(--cerise)" }}> (Year {e.fromYear}+)</b>}</span>
+                  </label>
+                );
+              })}
+            </div>
+          </section>
+
+          <section className="card">
+            <div className="row">
+              <h2 className="spacer">General capabilities</h2>
+              <span className="muted">{slot.capabilities ? "Edited" : "From the framework's activity types"}</span>
+              {slot.capabilities && <button className="small" onClick={() => setSlot({ capabilities: null })}>Use framework</button>}
+            </div>
+            <textarea rows={Math.max(2, lessonCapabilities(unit, lessonKey).length)} aria-label="General capabilities, one per line" value={lessonCapabilities(unit, lessonKey).join("\n")} onChange={(e) => setSlot({ capabilities: e.target.value.split("\n") })} />
+            <h3>Cross-curriculum priorities <span className="muted">(only where the content calls for them)</span></h3>
+            {CROSS_CURRICULUM.map((c) => {
+              const on = slot.priorities.includes(c);
+              return (
+                <label key={c} style={{ display: "grid", gridTemplateColumns: "auto minmax(0, 1fr)", gap: 6, fontSize: 14 }}>
+                  <input type="checkbox" style={{ width: "auto" }} checked={on} onChange={() => setSlot({ priorities: on ? slot.priorities.filter((x) => x !== c) : [...slot.priorities, c] })} />
+                  <span>{c}</span>
+                </label>
+              );
+            })}
+          </section>
+
+          <section className="card" style={{ borderColor: "var(--navy)" }}>
+            <h2>Register</h2>
+            <p className="muted">Fill this in as you teach. It prints in the annotated register export.</p>
+            <div className="grid-auto">
+              <label className="field">Date taught<input type="date" value={slot.register.date} onChange={(e) => setSlot({ register: { ...slot.register, date: e.target.value } })} /></label>
+              <label className="field">Taught?
+                <select value={slot.register.taught} onChange={(e) => setSlot({ register: { ...slot.register, taught: e.target.value as Taught } })}>
+                  <option value="">Not recorded</option><option value="taught">Taught</option><option value="partly">Partly taught</option><option value="not">Not taught</option>
+                </select>
+              </label>
+            </div>
+            <label className="field">Notes and variations
+              <textarea rows={2} value={slot.register.notes} placeholder="What changed, what moved to next lesson, what to fix next time" onChange={(e) => setSlot({ register: { ...slot.register, notes: e.target.value } })} />
+            </label>
           </section>
         </main>
 

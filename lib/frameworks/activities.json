@@ -46,7 +46,17 @@
    "extensive": "Run recall one-to-one with real tools, samples or photo cards; the student responds by pointing, selecting or using their communication system. Record responses against personalised goals.",
    "extension": "Pre-test with the most difficult questions first; students showing mastery (about 85%) skip the drill and instead write hinge questions or explain why a common wrong answer is tempting.",
    "life_skills": "Student recalls by matching photos to real tools or materials, or sorting safe and unsafe pictures, alongside peers and with prompts. Record against their Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Reflecting › Transfer knowledge"
+   },
+   {
+    "name": "Literacy",
+    "detail": "Speaking and listening › Interacting"
+   }
+  ]
  },
  {
   "id": "instruction",
@@ -95,7 +105,13 @@
    "extensive": "Deliver the key content one-to-one using real objects, symbols or the student's communication system, in short blocks. Teach to personalised goals drawn from the same lesson.",
    "extension": "Compact the explanation after a pre-test and replace repeated content with a conceptual question (patterns, ethics, change over time) that students investigate and bring back to the class.",
    "life_skills": "Teach two or three functional ideas from the lesson using real materials and photo cards, with the student seated among peers. Assess against Life Skills outcomes, not the class notes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Literacy",
+    "detail": "Reading and viewing › Understanding texts Speaking and listening › Listening"
+   }
+  ]
  },
  {
   "id": "demonstration",
@@ -128,7 +144,17 @@
    "extensive": "Demonstrate one-to-one in a low-noise setting, one step per turn, using objects, symbols or key word sign. Hearing protection and close supervision at all times.",
    "extension": "After a verified safety induction, students who show mastery skip repeat demonstrations, tackle the fault-finding version or prepare an advanced technique to demonstrate to others.",
    "life_skills": "Student watches from a safe, close position and copies one or two steps with support. Assessed against Life Skills outcomes such as following a demonstrated step safely."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Literacy",
+    "detail": "Speaking and listening › Listening"
+   },
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Self-management › Perseverance and adaptability"
+   }
+  ]
  },
  {
   "id": "worked-example",
@@ -160,7 +186,17 @@
    "extensive": "Work one-to-one with a real finished sample and a single quality feature at a time; the student indicates the stronger of two samples using their communication system.",
    "extension": "Have students rank several exemplars, justify the ranking against the criteria and then write the annotations for an unannotated piece, including what would lift it beyond the A range.",
    "life_skills": "Student compares two real samples (finished and unfinished, neat and untidy) and chooses which is better, with prompts, working beside peers. Record against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Analysing › Interpret concepts and problems"
+   },
+   {
+    "name": "Literacy",
+    "detail": "Reading and viewing › Understanding texts"
+   }
+  ]
  },
  {
   "id": "exploration",
@@ -202,7 +238,17 @@
    "extensive": "Explore one-to-one through object handling and sensory examples; the student shows preference by choosing between two items or symbols. An adult records responses against personalised goals.",
    "extension": "Ask students to curate their own reference set around a concept (a trend, a paradox, a design movement over time) and justify each inclusion to a real or simulated client.",
    "life_skills": "Student handles real objects and chooses favourites for a simple collage or likes board, with support and alongside peers. Assessed on Life Skills outcomes such as making and communicating choices."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Inquiring › Identify, process and evaluate information"
+   },
+   {
+    "name": "Intercultural Understanding",
+    "detail": "Reflecting on culture and cultural diversity › Examine cultural perspectives and world views"
+   }
+  ]
  },
  {
   "id": "revision",
@@ -238,7 +284,17 @@
    "extensive": "Revise one-to-one in short, highly structured sessions using objects, photos and the student's communication system, focused only on their personalised goals.",
    "extension": "Skip rote review after demonstrated mastery. Students write and mark an exam-style question with marking guidelines, or apply the content to an unfamiliar case and evaluate their own response.",
    "life_skills": "Student revisits functional content with a photo book or matching game about tools, materials and safety, beside peers. Assessed on personalised Life Skills outcomes, not the class test."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Reflecting › Transfer knowledge"
+   },
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Self-management › Goal setting"
+   }
+  ]
  },
  {
   "id": "discussion",
@@ -288,7 +344,25 @@
    "extensive": "Student contributes through their communication device, symbols or choice cards with one-to-one support, answering one prepared closed question. Peers are taught to wait and respond.",
    "extension": "Pose provocative questions with no settled answer and have students argue from multiple perspectives or lead the Socratic questioning. Ask what makes you say that to demand justification.",
    "life_skills": "Student joins the pair or group and answers a concrete question (like or dislike, yes or no, which one) using speech, pictures or gesture. Record against Life Skills communication outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Literacy",
+    "detail": "Speaking and listening › Interacting"
+   },
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Analysing › Draw conclusions and provide reasons"
+   },
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Social management › Communication"
+   },
+   {
+    "name": "Ethical Understanding",
+    "detail": "Responding to ethical issues › Explore ethical issues"
+   }
+  ]
  },
  {
   "id": "research",
@@ -333,7 +407,21 @@
    "extensive": "Research one-to-one from a single image-rich or symbolated source; the student selects pictures or symbols to build a fact page. An adult records choices against personalised goals.",
    "extension": "Set an open question that needs original research (an interview, survey or industry contact) and have students weigh conflicting sources and report to an authentic audience.",
    "life_skills": "Student finds and sorts pictures on a practical topic (for example, fabrics we wear, tools we use) into a simple poster, with support. Assessed against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Inquiring › Identify, process and evaluate information"
+   },
+   {
+    "name": "Digital Literacy",
+    "detail": "Investigating › Locate information Creating and exchanging › Respect intellectual property"
+   },
+   {
+    "name": "Literacy",
+    "detail": "Reading and viewing › Understanding texts"
+   }
+  ]
  },
  {
   "id": "investigation",
@@ -371,7 +459,21 @@
    "extensive": "The student directs the test while an adult handles the equipment; they observe and indicate results by choosing between two options. One-to-one support and a personalised goal throughout.",
    "extension": "Students design their own fair test, choose the variables, analyse multiple variables and critique the reliability of the method. Present findings as a recommendation to a client or manufacturer.",
    "life_skills": "Student takes part in a concrete test (which fabric soaks up water, which join holds) and says or shows what happened, with support. Record against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Inquiring › Develop questions"
+   },
+   {
+    "name": "Numeracy",
+    "detail": "Statistics and probability › Interpreting and representing data Measurement and geometry › Understanding units of measurement"
+   },
+   {
+    "name": "Digital Literacy",
+    "detail": "Investigating › Acquire and collate data"
+   }
+  ]
  },
  {
   "id": "analysis",
@@ -417,7 +519,17 @@
    "extensive": "Analyse one feature at a time one-to-one using the real object; the student identifies parts by pointing, matching or their communication system. Record against personalised goals.",
    "extension": "Apply Kaplan lenses (patterns, ethics, multiple perspectives) or hexagonal thinking to link the parts to a bigger idea. Students justify which factor matters most and why.",
    "life_skills": "Student names or matches the main parts of a real product (handle, seam, switch) and what each is for, with prompts. Assessed against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Analysing › Interpret concepts and problems Analysing › Draw conclusions and provide reasons"
+   },
+   {
+    "name": "Literacy",
+    "detail": "Writing › Creating texts"
+   }
+  ]
  },
  {
   "id": "comparison",
@@ -453,7 +565,17 @@
    "extensive": "Compare two real objects one-to-one on a single criterion; the student indicates which is bigger, softer or stronger by choosing. An adult records against personalised goals.",
    "extension": "Students set and weight their own criteria, compare across disciplines or contexts (industry and classroom) and argue where the comparison breaks down.",
    "life_skills": "Student sorts real items or photos into two groups (same or different, hard or soft) with support, beside peers. Record against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Analysing › Draw conclusions and provide reasons"
+   },
+   {
+    "name": "Numeracy",
+    "detail": "Statistics and probability › Interpreting and representing data"
+   }
+  ]
  },
  {
   "id": "interpretation",
@@ -488,7 +610,21 @@
    "extensive": "Respond to the artwork one-to-one through sensory or tactile versions, choice cards and the student's communication system. Record reactions and choices against personalised goals.",
    "extension": "Have students interpret the same work through competing frames or as a critic and a curator, then explain how the viewpoint changes the meaning. Publish as a catalogue entry for a real exhibition.",
    "life_skills": "Student says or shows what they see and how the artwork makes them feel using picture or feeling cards, with support. Assessed against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Analysing › Interpret concepts and problems"
+   },
+   {
+    "name": "Intercultural Understanding",
+    "detail": "Engaging with cultural and linguistic diversity › Develop multiple perspectives"
+   },
+   {
+    "name": "Literacy",
+    "detail": "Reading and viewing › Understanding texts"
+   }
+  ]
  },
  {
   "id": "product-evaluation",
@@ -525,7 +661,17 @@
    "extensive": "Student trials the product one-to-one and indicates like or dislike and one reason using symbols or their communication device. An adult records against personalised goals.",
    "extension": "Students write their own criteria from user research, evaluate for a specific stakeholder and recommend a redesign, weighing trade-offs between function, cost and environmental impact.",
    "life_skills": "Student tries a real product and answers concrete questions (does it work, is it comfortable, would I use it) with picture supports. Record against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Analysing › Evaluate actions and outcomes"
+   },
+   {
+    "name": "Ethical Understanding",
+    "detail": "Understanding ethical concepts and perspectives › Examine values, rights and responsibilities and ethical norms"
+   }
+  ]
  },
  {
   "id": "idea-generation",
@@ -565,7 +711,13 @@
    "extensive": "Offer two or three concrete options at a time one-to-one; the student chooses and combines them using their communication system. An adult draws or assembles at the student's direction.",
    "extension": "Tighten or open the brief with real constraints (client, budget, sustainability). Use forced association or SCAMPER to push for original, risky ideas, then justify which idea best answers the need.",
    "life_skills": "Student chooses colours, shapes or materials they like from real samples to build one idea, with support and alongside peers. Assessed on Life Skills outcomes about making choices."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Generating › Create possibilities Generating › Consider alternatives"
+   }
+  ]
  },
  {
   "id": "design-development",
@@ -605,7 +757,21 @@
    "extensive": "The student directs changes one-to-one and an adult draws or operates the software at their direction, with choices made through their communication system. Personalised goals apply.",
    "extension": "Require iterations that respond to user testing or expert critique, with each change justified against design principles and the brief. Add advanced techniques once core skills are shown.",
    "life_skills": "Student improves one thing about their design by choosing between options (colour, size, decoration) using templates or stencils, with support. Record against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Generating › Put ideas into action"
+   },
+   {
+    "name": "Digital Literacy",
+    "detail": "Creating and exchanging › Create, communicate and collaborate"
+   },
+   {
+    "name": "Numeracy",
+    "detail": "Measurement and geometry › Understanding geometric properties"
+   }
+  ]
  },
  {
   "id": "experimentation",
@@ -641,7 +807,17 @@
    "extensive": "Student experiences each material or technique one-to-one, with hand-over-hand support or the teacher operating equipment at their direction. Record sensory responses and choices against personalised goals.",
    "extension": "Students plan their own one-variable trials, predict outcomes and explain unexpected results. Extend into techniques beyond the unit or combine processes to solve a design problem.",
    "life_skills": "Student tries two or three safe materials or techniques with support and shows which they prefer and why. Assessed against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Generating › Consider alternatives Analysing › Evaluate actions and outcomes"
+   },
+   {
+    "name": "Numeracy",
+    "detail": "Measurement and geometry › Understanding units of measurement"
+   }
+  ]
  },
  {
   "id": "prototyping",
@@ -675,7 +851,17 @@
    "extensive": "Student directs assembly while an adult handles tools, or uses hand-over-hand support and adaptive equipment. Testing is one-to-one against a personalised goal.",
    "extension": "Students prototype to answer a specific question, test with real users, record data and justify changes. Encourage low-fidelity risk-taking and a second iteration, not a neater first one.",
    "life_skills": "Student builds a simple mock-up from a kit and checks one concrete thing (does it fit, does it stand up) with support. Record against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Generating › Put ideas into action Analysing › Evaluate actions and outcomes"
+   },
+   {
+    "name": "Numeracy",
+    "detail": "Measurement and geometry › Understanding units of measurement"
+   }
+  ]
  },
  {
   "id": "guided-practice",
@@ -707,7 +893,17 @@
    "extensive": "Practise one-to-one with hand-over-hand support, tools preset and additional guards or PPE, or the teacher operates the tool at the student's direction. Personalised goals guide each step.",
    "extension": "Release students to the you do stage early after a quick mastery check, then set a harder application of the same technique or a problem with no modelled answer.",
    "life_skills": "Student completes selected steps of the technique with physical or visual prompts beside peers, on a simplified practice piece. Record against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Self-management › Perseverance and adaptability"
+   },
+   {
+    "name": "Literacy",
+    "detail": "Speaking and listening › Listening"
+   }
+  ]
  },
  {
   "id": "tutorial",
@@ -740,7 +936,21 @@
    "extensive": "An adult works through a symbol or photo sequence one-to-one, one step at a time, with the student indicating next using their communication system.",
    "extension": "Compact tutorials students can already do. They attempt the advanced tutorial, troubleshoot a deliberately broken file or sample, or write a step card for a real class to use.",
    "life_skills": "Student follows a short visual sequence of three or four photo steps for a functional task, with prompts. Assessed on Life Skills outcomes such as following a visual procedure."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Literacy",
+    "detail": "Reading and viewing › Understanding texts"
+   },
+   {
+    "name": "Digital Literacy",
+    "detail": "Managing and operating › Select and operate tools"
+   },
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Self-management › Perseverance and adaptability"
+   }
+  ]
  },
  {
   "id": "skill-practice",
@@ -780,7 +990,17 @@
    "extensive": "Practise one-to-one with preset tools, adaptive grips and hand-over-hand support, or direct the teacher to operate equipment where manipulation isn't the outcome. Track progress against personalised goals.",
    "extension": "Once the standard is met, stop repetition. Move to the top of the challenge ladder: an advanced variation, a combination of techniques or applying the skill in an unfamiliar material.",
    "life_skills": "Student practises one functional skill (threading, sanding, saving a file) on a simplified piece with prompts, working alongside peers. Record against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Self-management › Perseverance and adaptability"
+   },
+   {
+    "name": "Numeracy",
+    "detail": "Measurement and geometry › Understanding units of measurement"
+   }
+  ]
  },
  {
   "id": "production",
@@ -812,7 +1032,21 @@
    "extensive": "The student makes design decisions and directs construction while an adult operates equipment, with hand-over-hand support where safe. One-to-one supervision and personalised goals at all times.",
    "extension": "Keep one open project but stretch it: added constraints, a real client or advanced techniques, with decisions justified in the folio. Aim for the Newman Symposium or an exhibition.",
    "life_skills": "Student makes a simplified, functional version of the class project using a kit and visual sequence, with support. Assessed against personalised Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Self-management › Goal setting"
+   },
+   {
+    "name": "Numeracy",
+    "detail": "Measurement and geometry › Understanding units of measurement"
+   },
+   {
+    "name": "Digital Literacy",
+    "detail": "Managing and operating › Select and operate tools"
+   }
+  ]
  },
  {
   "id": "peer-teaching",
@@ -843,7 +1077,17 @@
    "extensive": "Student shows a peer one step using their communication system or by doing it, with one-to-one adult support. Record against a personalised communication or participation goal.",
    "extension": "Students who have mastered the skill produce a tested step card or tutorial for a real audience, anticipating common errors and explaining why each step matters.",
    "life_skills": "Student shows a classmate one thing they can do (for example, how to put on safety glasses) with prompts. Assessed against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Social management › Communication"
+   },
+   {
+    "name": "Literacy",
+    "detail": "Speaking and listening › Speaking"
+   }
+  ]
  },
  {
   "id": "safety-induction",
@@ -877,7 +1121,21 @@
    "extensive": "Induct one-to-one with symbols and physical modelling, additional guards and PPE. The student uses equipment only with constant, vigilant supervision, or directs the teacher to operate it.",
    "extension": "After passing the standard induction, students analyse why each control exists, rank hazards by risk or redesign a procedure or guard. The induction itself is never compacted.",
    "life_skills": "Student learns two or three key safety behaviours (PPE on, hands clear, stop and ask) with picture cues and practice. Assessed against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Social awareness › Community awareness"
+   },
+   {
+    "name": "Ethical Understanding",
+    "detail": "Understanding ethical concepts and perspectives › Examine values, rights and responsibilities and ethical norms"
+   },
+   {
+    "name": "Digital Literacy",
+    "detail": "Practising digital safety and wellbeing › Manage online safety"
+   }
+  ]
  },
  {
   "id": "risk-assessment",
@@ -909,7 +1167,21 @@
    "extensive": "Identify hazards one-to-one on the real equipment by pointing or using symbols, choosing safe or not safe. An adult records against personalised safety goals.",
    "extension": "Students assess a process they have not been taught, weigh likelihood against consequence, debate competing controls and write the safe operating procedure for others to use.",
    "life_skills": "Student sorts photos into safe and unsafe and matches PPE to a task, with support and beside peers. Record against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Analysing › Draw conclusions and provide reasons"
+   },
+   {
+    "name": "Ethical Understanding",
+    "detail": "Understanding ethical concepts and perspectives › Examine values, rights and responsibilities and ethical norms"
+   },
+   {
+    "name": "Numeracy",
+    "detail": "Statistics and probability › Understanding chance"
+   }
+  ]
  },
  {
   "id": "impact-assessment",
@@ -941,7 +1213,17 @@
    "extensive": "Explore one concrete impact one-to-one using real objects (for example, rubbish and recycling); the student indicates good or bad using their communication system.",
    "extension": "Set a genuine ethical dilemma with no clear answer. Students map unintended consequences over time, argue from opposing stakeholders and recommend a decision to a real organisation.",
    "life_skills": "Student sorts pictures of who uses a product and whether a choice is good or bad for people or the environment, with prompts. Assessed against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Ethical Understanding",
+    "detail": "Responding to ethical issues › Explore ethical issues Responding to ethical issues › Making and reflecting on ethical decisions"
+   },
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Analysing › Evaluate actions and outcomes"
+   }
+  ]
  },
  {
   "id": "documentation",
@@ -981,7 +1263,17 @@
    "extensive": "An adult photographs each stage and the student selects and orders images one-to-one, adding comments through their communication system. Record against personalised goals.",
    "extension": "Annotations must justify decisions against the brief and design principles, evaluate alternatives and propose iterations. Present the process for an authentic audience such as a client or exhibition.",
    "life_skills": "Student keeps a simple photo record of what they made, sequencing pictures and adding a word or symbol to each, with support. Record against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Literacy",
+    "detail": "Writing › Creating texts"
+   },
+   {
+    "name": "Digital Literacy",
+    "detail": "Creating and exchanging › Create, communicate and collaborate Managing and operating › Manage content"
+   }
+  ]
  },
  {
   "id": "technical-drawing",
@@ -1019,7 +1311,17 @@
    "extensive": "The student directs the drawing and an adult draws or operates CAD at their direction; alternatively trace or assemble pre-cut shapes with hand-over-hand support. Personalised goals apply.",
    "extension": "Students draw a more complex object or their own design to full standards, choose the most suitable drawing type for a manufacturer and justify the choice.",
    "life_skills": "Student traces, matches or measures simple shapes with a ruler or template and labels them, with support. Assessed against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Numeracy",
+    "detail": "Measurement and geometry › Understanding geometric properties Measurement and geometry › Understanding units of measurement Number sense and algebra › Proportional thinking"
+   },
+   {
+    "name": "Digital Literacy",
+    "detail": "Managing and operating › Select and operate tools"
+   }
+  ]
  },
  {
   "id": "informal-presentation",
@@ -1053,7 +1355,17 @@
    "extensive": "Student presents through their communication device, a pre-recorded message or by showing the work one-to-one with adult support. Record against personalised communication goals.",
    "extension": "Students pitch to an authentic or expert audience, field unscripted questions and defend their decisions. Give feedback on reasoning and risk-taking, not polish.",
    "life_skills": "Student shows their work to a peer or small group and says or indicates one thing about it, with prompts. Record against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Literacy",
+    "detail": "Speaking and listening › Speaking"
+   },
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Social management › Communication"
+   }
+  ]
  },
  {
   "id": "planning",
@@ -1093,7 +1405,17 @@
    "extensive": "Create a now, next, then visual schedule one-to-one for each session; the student chooses the order of steps where possible. An adult monitors against personalised goals.",
    "extension": "Students plan backwards from a real deadline, cost materials, identify the critical path and risks, and adjust the plan when a constraint changes. Negotiate their own checkpoints.",
    "life_skills": "Student puts three or four picture steps in order and ticks them off as they go, with support. Assessed against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Self-management › Goal setting"
+   },
+   {
+    "name": "Numeracy",
+    "detail": "Measurement and geometry › Measuring time Number sense and algebra › Understanding money"
+   }
+  ]
  },
  {
   "id": "reflection",
@@ -1131,7 +1453,17 @@
    "extensive": "Reflect one-to-one using photos of the session; the student indicates liked, didn't like and next using symbols or their communication device. Record against personalised goals.",
    "extension": "Students evaluate their process against the brief, identify the decision that most shaped the outcome, explain how their thinking shifted and set their own stretch goal.",
    "life_skills": "Student chooses a face or symbol to show how the work went and picks one thing to try next time, with prompts. Record against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Reflecting › Think about thinking (metacognition)"
+   },
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Self-awareness › Reflective practice"
+   }
+  ]
  },
  {
   "id": "peer-self-assessment",
@@ -1173,7 +1505,17 @@
    "extensive": "Compare the student's work with one photo criterion one-to-one; they indicate yes or not yet using their communication system. Peer feedback is given with an adult supporting.",
    "extension": "Students apply the full rubric, justify a grade with evidence, distinguish the top bands and give feedback on how to move the work beyond the A descriptor.",
    "life_skills": "Student checks their work against a two- or three-item picture checklist and gives a peer a thumbs up or one positive comment, with support. Assessed against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Analysing › Evaluate actions and outcomes"
+   },
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Self-awareness › Reflective practice Social management › Communication"
+   }
+  ]
  },
  {
   "id": "collaboration",
@@ -1213,7 +1555,17 @@
    "extensive": "Student takes a personalised role with one-to-one adult support, contributing through their communication system or by making choices the group acts on. Peers are briefed on how to include them.",
    "extension": "Group like-ability students for a design team challenge with a real client and complex constraints, or give a leadership or project-manager role with responsibility for the brief.",
    "life_skills": "Student has a real, concrete job in the group (handing out materials, choosing colours, gluing or pressing) with support. Record against Life Skills outcomes about working with others."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Social management › Collaboration Social management › Leadership Social management › Conflict resolution"
+   },
+   {
+    "name": "Intercultural Understanding",
+    "detail": "Engaging with cultural and linguistic diversity › Communicate responsively"
+   }
+  ]
  },
  {
   "id": "check-for-understanding",
@@ -1265,7 +1617,17 @@
    "extensive": "Check one-to-one straight after the activity using yes/no cards, symbols, gesture or the student's communication device. Record against the student's personalised goal for the lesson.",
    "extension": "Add a stretch prompt to the same ticket: what if a variable changed, or why does this hold? Use confident responses to decide who compacts the next lesson.",
    "life_skills": "Student shows understanding by pointing to, selecting or doing one concrete thing (for example, picking the correct tool) with a prompt. Record against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Reflecting › Think about thinking (metacognition)"
+   },
+   {
+    "name": "Literacy",
+    "detail": "Writing › Creating texts"
+   }
+  ]
  },
  {
   "id": "feedback-and-conferencing",
@@ -1307,7 +1669,17 @@
    "extensive": "Give immediate one-to-one feedback during the task using symbols, gesture or the student's communication system, linked to personalised goals and recorded each session.",
    "extension": "Use the conference to probe reasoning and negotiate a stretch goal or compacting. Praise effort, strategy and risk-taking, and bring in an expert or mentor for critique.",
    "life_skills": "Teacher gives one simple, concrete next step with a picture or demonstration and the student tries it straight away with support. Record progress against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Self-awareness › Reflective practice Self-management › Goal setting"
+   },
+   {
+    "name": "Literacy",
+    "detail": "Speaking and listening › Interacting"
+   }
+  ]
  },
  {
   "id": "reading-and-comprehension",
@@ -1340,7 +1712,17 @@
    "extensive": "Read a few key sentences aloud with picture support and have the student show understanding by pointing, matching or using AAC. Work one-to-one with an adult.",
    "extension": "Use a more complex or contrasting text on the same topic and ask students to weigh up the writer's purpose, bias and what is left out.",
    "life_skills": "Read everyday texts such as signs, labels, timetables or instructions with support and show the meaning by acting on them. Record against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Literacy",
+    "detail": "Reading and viewing › Understanding texts"
+   },
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Inquiring › Identify, process and evaluate information Analysing › Interpret concepts and problems"
+   }
+  ]
  },
  {
   "id": "vocabulary-and-terminology",
@@ -1372,7 +1754,17 @@
    "extensive": "Focus on one or two words linked to real objects or actions, shown by pointing, signing or using AAC. Work one-to-one with an adult and repeat across lessons.",
    "extension": "Explore word origins, shades of meaning and how a term changes meaning between subjects, then use the words in a precise explanation.",
    "life_skills": "Learn functional words for the topic, such as safety signs, tool names or everyday labels, and match them to objects in the room. Record against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Literacy",
+    "detail": "Reading and viewing › Understanding texts Speaking and listening › Speaking Writing › Creating texts"
+   },
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Analysing › Interpret concepts and problems"
+   }
+  ]
  },
  {
   "id": "note-making-and-summarising",
@@ -1405,7 +1797,17 @@
    "extensive": "Have the student choose or match two or three picture cards that show the main ideas, using AAC or pointing. Work one-to-one with an adult.",
    "extension": "Combine notes from two sources, point out where they agree or differ, and reduce the result to the fewest words that still hold the meaning.",
    "life_skills": "Record one or two important things from the lesson using photos, symbols or key words, such as a list of steps to follow. Record against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Literacy",
+    "detail": "Reading and viewing › Understanding texts Writing › Creating texts Speaking and listening › Listening"
+   },
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Inquiring › Identify, process and evaluate information"
+   }
+  ]
  },
  {
   "id": "listening-and-viewing",
@@ -1438,7 +1840,21 @@
    "extensive": "Use a very short clip or sound with one thing to notice, and have the student respond by pointing, choosing a picture or using AAC. Work one-to-one with an adult.",
    "extension": "Ask students to judge how sound, image and editing choices shape the message, or to compare two versions of the same piece.",
    "life_skills": "Listen to and follow spoken instructions or announcements, or view a short clip and show one thing learned. Record against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Literacy",
+    "detail": "Speaking and listening › Listening Reading and viewing › Understanding texts"
+   },
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Inquiring › Identify, process and evaluate information Analysing › Interpret concepts and problems"
+   },
+   {
+    "name": "Intercultural Understanding",
+    "detail": "Engaging with cultural and linguistic diversity › Develop multiple perspectives"
+   }
+  ]
  },
  {
   "id": "problem-solving",
@@ -1471,7 +1887,21 @@
    "extensive": "Work on one step of the problem with objects, pictures or a calculator and adult support. Accept a spoken, pointed or AAC response for the answer.",
    "extension": "Solve the same problem a second way, then generalise it or change one condition and predict what happens.",
    "life_skills": "Solve an everyday problem such as working out change, reading a timetable or sharing items equally, recorded against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Analysing › Interpret concepts and problems Generating › Consider alternatives Reflecting › Think about thinking (metacognition)"
+   },
+   {
+    "name": "Numeracy",
+    "detail": "Number sense and algebra › Proportional thinking"
+   },
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Self-management › Perseverance and adaptability"
+   }
+  ]
  },
  {
   "id": "source-and-data-work",
@@ -1504,7 +1934,25 @@
    "extensive": "Explore one image, object or simple picture graph with adult support and respond by pointing, sorting or AAC. Focus on one question such as who or how many.",
    "extension": "Add a conflicting source or a second data set and judge which is more useful for the question. Explain what further evidence would be needed.",
    "life_skills": "Read everyday sources such as a timetable, weather chart, map of the local area or product label to find information, recorded against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Inquiring › Identify, process and evaluate information Analysing › Draw conclusions and provide reasons"
+   },
+   {
+    "name": "Literacy",
+    "detail": "Reading and viewing › Understanding texts"
+   },
+   {
+    "name": "Numeracy",
+    "detail": "Statistics and probability › Interpreting and representing data"
+   },
+   {
+    "name": "Intercultural Understanding",
+    "detail": "Engaging with cultural and linguistic diversity › Develop multiple perspectives"
+   }
+  ]
  },
  {
   "id": "fieldwork",
@@ -1537,7 +1985,21 @@
    "extensive": "Take part in one sensory or observation task with adult support and record by photo, object collection or AAC. Plan access, rest breaks and a familiar routine for the day.",
    "extension": "Design part of the method, such as the sampling plan, and evaluate how accurate and reliable the data is. Suggest how the method could be improved.",
    "life_skills": "Take part in the visit to practise functional skills such as following a route, reading signs, staying safe and recording what was seen, recorded against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Inquiring › Develop questions Inquiring › Identify, process and evaluate information"
+   },
+   {
+    "name": "Numeracy",
+    "detail": "Measurement and geometry › Understanding units of measurement Statistics and probability › Interpreting and representing data"
+   },
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Social management › Collaboration Social awareness › Community awareness"
+   }
+  ]
  },
  {
   "id": "learning-games",
@@ -1570,7 +2032,21 @@
    "extensive": "Join the game by matching pictures, objects or symbols with adult support, responding by pointing or AAC. Keep rounds short and the routine predictable.",
    "extension": "Write the questions or clue cards for the game, including ones that need an explanation or an example. Justify answers instead of only naming them.",
    "life_skills": "Play a matching or turn-taking game using functional words, signs or symbols, focusing on taking turns and following rules, recorded against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Literacy",
+    "detail": "Speaking and listening › Speaking Speaking and listening › Listening"
+   },
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Social management › Collaboration Social management › Communication"
+   },
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Reflecting › Transfer knowledge"
+   }
+  ]
  },
  {
   "id": "composing-and-creating",
@@ -1604,7 +2080,21 @@
    "extensive": "Create through choice-making: the student selects images, sounds, words or movements from a small set using pointing, objects or AAC, and an adult records and assembles the piece with them.",
    "extension": "Add a constraint that raises the complexity, such as a second voice, a shift in point of view or a set structure, and ask for a short statement justifying the choices.",
    "life_skills": "Make a short personal piece on a familiar topic using a picture sequence, sentence starters or a simple pattern, recorded against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Generating › Create possibilities Generating › Put ideas into action"
+   },
+   {
+    "name": "Literacy",
+    "detail": "Writing › Creating texts"
+   },
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Self-management › Perseverance and adaptability"
+   }
+  ]
  },
  {
   "id": "role-play-and-simulation",
@@ -1639,7 +2129,25 @@
    "extensive": "Take part through a simplified role with one clear action or choice, using objects, pictures or AAC to respond, with an adult alongside throughout.",
    "extension": "Take a role with a competing interest or an unexpected complication, then write or speak a short analysis of how the simulation differs from the real process.",
    "life_skills": "Role play an everyday situation such as buying an item, asking for help or making a phone call, using a visual script, recorded against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Social management › Communication Social management › Collaboration"
+   },
+   {
+    "name": "Ethical Understanding",
+    "detail": "Responding to ethical issues › Explore ethical issues"
+   },
+   {
+    "name": "Intercultural Understanding",
+    "detail": "Engaging with cultural and linguistic diversity › Develop multiple perspectives"
+   },
+   {
+    "name": "Literacy",
+    "detail": "Speaking and listening › Interacting"
+   }
+  ]
  },
  {
   "id": "rehearsal-and-performance",
@@ -1672,7 +2180,21 @@
    "extensive": "Perform one prepared action, sound, word or switch-activated cue within the group piece, practised with adult support and visual or tactile prompts.",
    "extension": "Take a leading or more exposed part, make and justify interpretive choices, and coach a section of the group on one technique.",
    "life_skills": "Rehearse and present a short familiar item, such as a greeting, a song chorus or a simple routine, to a known audience, recorded against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Self-management › Perseverance and adaptability Self-management › Goal setting Social management › Collaboration"
+   },
+   {
+    "name": "Literacy",
+    "detail": "Speaking and listening › Speaking"
+   },
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Reflecting › Think about thinking (metacognition)"
+   }
+  ]
  },
  {
   "id": "physical-activity-and-movement",
@@ -1705,7 +2227,21 @@
    "extensive": "Take part in a parallel movement task with adapted equipment and adult support, working on one movement or choice at a time with visual, verbal or physical prompts.",
    "extension": "Add a defender, less time or less space so decisions are harder, and ask the student to analyse a tactic and design a variation for the group.",
    "life_skills": "Take part in movement for enjoyment, health and safety, such as following a simple routine, taking turns or using community sport equipment, recorded against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Social management › Collaboration Self-management › Perseverance and adaptability"
+   },
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Analysing › Evaluate actions and outcomes Reflecting › Transfer knowledge"
+   },
+   {
+    "name": "Numeracy",
+    "detail": "Statistics and probability › Interpreting and representing data"
+   }
+  ]
  },
  {
   "id": "structured-writing",
@@ -1738,7 +2274,21 @@
    "extensive": "Compose through supported choices: the student selects and orders words, symbols or sentence strips using pointing or AAC, and an adult scribes the response.",
    "extension": "Remove the scaffold and ask for a sustained argument that weighs up competing views, with deliberate choices about structure and expression.",
    "life_skills": "Write or assemble a short functional text, such as a list, a form, a message or a simple set of steps, using visuals and models, recorded against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Literacy",
+    "detail": "Writing › Creating texts Reading and viewing › Understanding texts"
+   },
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Analysing › Draw conclusions and provide reasons"
+   },
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Self-management › Perseverance and adaptability"
+   }
+  ]
  },
  {
   "id": "speaking-and-conversation",
@@ -1771,7 +2321,21 @@
    "extensive": "Offer an alternative response mode such as AAC, picture cards, gesture or a pre-recorded message, with adult support. Keep the same topic and count each response as participation.",
    "extension": "Ask students to speak without notes, build on or challenge a partner's point, and adjust their language for a different audience or a more formal register.",
    "life_skills": "Practise a functional conversation such as greeting someone, asking for help or ordering food, using visual scripts. Record against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Literacy",
+    "detail": "Speaking and listening › Speaking Speaking and listening › Interacting Speaking and listening › Listening"
+   },
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Social management › Communication"
+   },
+   {
+    "name": "Intercultural Understanding",
+    "detail": "Engaging with cultural and linguistic diversity › Communicate responsively"
+   }
+  ]
  },
  {
   "id": "visual-representation",
@@ -1806,7 +2370,21 @@
    "extensive": "Use real objects, photos or symbols that the student matches or sequences with adult support, or have them point or use AAC to direct where each item goes.",
    "extension": "Ask students to choose and justify the best type of visual, combine two sets of information in one, or redraw it for a different audience.",
    "life_skills": "Create or read a functional visual such as a picture schedule, a simple map of the school or a step-by-step picture sequence. Record against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Literacy",
+    "detail": "Writing › Creating texts Reading and viewing › Understanding texts"
+   },
+   {
+    "name": "Numeracy",
+    "detail": "Statistics and probability › Interpreting and representing data"
+   },
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Inquiring › Identify, process and evaluate information Analysing › Interpret concepts and problems"
+   }
+  ]
  },
  {
   "id": "goal-setting-and-study-skills",
@@ -1839,7 +2417,21 @@
    "extensive": "Use a visual schedule or now and next board with one step at a time, built with adult support. The student shows choices and progress by pointing, symbols or AAC.",
    "extension": "Ask students to plan across several subjects at once, track which study methods work best for them using their own results, and adjust the plan with reasons.",
    "life_skills": "Use a personal daily or weekly schedule to prepare for routines, such as packing a bag or getting ready for an activity. Record against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Self-management › Goal setting Self-management › Perseverance and adaptability Self-awareness › Reflective practice"
+   },
+   {
+    "name": "Critical and Creative Thinking",
+    "detail": "Reflecting › Think about thinking (metacognition)"
+   },
+   {
+    "name": "Numeracy",
+    "detail": "Measurement and geometry › Measuring time"
+   }
+  ]
  },
  {
   "id": "warm-up-and-connection",
@@ -1872,6 +2464,16 @@
    "extensive": "Offer a way to join in using AAC, gesture, a choice card or a pre-recorded message, with adult support. Keep moving and noise predictable or provide a quieter spot.",
    "extension": "Ask students to write the questions, lead the routine or link their answer to a wider idea or another subject.",
    "life_skills": "Practise a functional greeting or turn-taking routine, such as saying hello and answering a simple question. Record against Life Skills outcomes."
-  }
+  },
+  "capabilities": [
+   {
+    "name": "Personal and Social Capability",
+    "detail": "Social management › Communication Social management › Collaboration Social awareness › Community awareness"
+   },
+   {
+    "name": "Literacy",
+    "detail": "Speaking and listening › Interacting Speaking and listening › Listening"
+   }
+  ]
  }
 ]

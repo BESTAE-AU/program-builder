@@ -9,7 +9,9 @@ const HOUSE = `You help Britt, a NSW Textiles Technology teacher (Marist Catholi
 type Body =
   | { action: "breakdown"; unit: UnitContext; item: { title: string; kind: string; notes: string }; task?: { code: string; kind: string; part?: string } }
   | { action: "tailor"; unit: UnitContext; lesson: string; piece: PieceContext }
-  | { action: "steps"; unit: UnitContext; lesson: string; lessonType: string; pieces: PieceContext[] };
+  | { action: "steps"; unit: UnitContext; lesson: string; lessonType: string; pieces: PieceContext[] }
+  | { action: "intentions"; unit: UnitContext; lesson: string; content: string[]; pieces: PieceContext[] }
+  | { action: "evaluation"; unit: UnitContext; summary: unknown };
 
 type UnitContext = { title: string; year: string; product: string; notes: string };
 type PieceContext = { title: string; area: string; activityTypeId: string; minutes: number; label: string };
@@ -128,12 +130,47 @@ ${b.pieces.map((p, i) => `${i + 1}. ${p.title} — ${activityType(p.activityType
   });
 }
 
+function intentions(b: Extract<Body, { action: "intentions" }>) {
+  const system = `${HOUSE}
+
+You write one learning intention and 2–4 success criteria for a lesson.
+- Learning intention: "We are learning to …", one sentence, about the learning, not the activity.
+- Success criteria: "I can …" statements students can check themselves, observable and specific to the content and techniques.`;
+  const prompt = `${unitLine(b.unit)}
+Lesson: ${b.lesson}
+Syllabus content: ${b.content.join("; ") || "(none listed)"}
+Activities: ${b.pieces.map((p) => `${p.title} (${p.label})`).join("; ")}`;
+  return ask<{ intention: string; success: string[] }>(system, prompt, {
+    type: "object",
+    properties: { intention: { type: "string" }, success: { type: "array", items: { type: "string" } } },
+    required: ["intention", "success"],
+    additionalProperties: false,
+  });
+}
+
+function evaluation(b: Extract<Body, { action: "evaluation" }>) {
+  const system = `${HOUSE}
+
+You summarise a class's Student Unit Evaluation for the "Summary of Student Comments" box of the school's program register. Write 4–6 plain sentences: overall rating and engagement, whether students finished in time and felt they got feedback, what they enjoyed, what held them back, and the most common recommendations. Use counts and averages from the data. No student names. Then give 2–4 short suggested improvements for course delivery based on the responses.`;
+  const prompt = `${unitLine(b.unit)}
+Evaluation data (names removed):
+${JSON.stringify(b.summary, null, 1)}`;
+  return ask<{ summary: string; improvements: string[] }>(system, prompt, {
+    type: "object",
+    properties: { summary: { type: "string" }, improvements: { type: "array", items: { type: "string" } } },
+    required: ["summary", "improvements"],
+    additionalProperties: false,
+  });
+}
+
 export async function POST(req: Request) {
   const body = (await req.json()) as Body;
   try {
     if (body.action === "breakdown") return NextResponse.json(await breakdown(body));
     if (body.action === "tailor") return NextResponse.json(await tailor(body));
     if (body.action === "steps") return NextResponse.json(await steps(body));
+    if (body.action === "intentions") return NextResponse.json(await intentions(body));
+    if (body.action === "evaluation") return NextResponse.json(await evaluation(body));
     return NextResponse.json({ error: "Unknown action." }, { status: 400 });
   } catch (error) {
     if (error instanceof Anthropic.AuthenticationError || (error instanceof Error && /api key|apiKey|authentication/i.test(error.message)))

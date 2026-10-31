@@ -3,6 +3,7 @@
 // fixed hand-in captions, ACTIVITY / FORMATIVE TASK / ASSESSMENT TASK badges, no outcome codes.
 import { AlignmentType, Document, Packer, PageBreak, Paragraph, ShadingType, Table, TableCell, TableRow, TextRun, WidthType } from "docx";
 import { activityType } from "../frameworks";
+import { equipment } from "../frameworks/whs";
 import { getSlot, lessonTitle, pieceLabel } from "../rules";
 import type { HandIn, Piece, Unit } from "../types";
 import { slotKey } from "../types";
@@ -23,6 +24,7 @@ export type CompassPlan = {
   target: number;
   homework: { task: string; badge: string; minutes: number; handIn: string }[];
   links: string[];
+  notices: string[];
 };
 
 function badge(p: Piece, u: Unit) {
@@ -69,7 +71,8 @@ export function compassPlan(u: Unit, cycle: number, lesson: number): CompassPlan
     total,
     target: practical ? 45 : 50,
     homework,
-    links: u.resources.map((r) => r.name),
+    links: [...s.resources.map((r) => r.name), ...u.resources.map((r) => r.name)],
+    notices: [...new Set(s.equipment.map((id) => equipment(id)?.notice).filter(Boolean) as string[])],
   };
 }
 
@@ -100,6 +103,7 @@ export function compassHtml(plan: CompassPlan): string {
 <tr><td colspan="4" style="padding:6px 10px;background:${GREY};font-weight:bold">WEEK ______ &nbsp; DAY ______ &nbsp; DATE ______</td></tr>
 ${band("TODAY'S FOCUS")}
 <tr><td colspan="4" style="text-align:center;font-weight:bold;font-size:16px;padding:10px">${esc(plan.focus)}</td></tr>
+${plan.notices.length ? `${band("NOTICES")}<tr><td colspan="4" style="background:#F7F4A2;padding:8px 10px">${plan.notices.map(esc).join("<br>")}</td></tr>` : ""}
 ${band("TODAY'S TASKS")}
 ${rows}${pack}
 ${band("HOMEWORK")}
@@ -133,6 +137,7 @@ function planTable(plan: CompassPlan) {
     full([new Paragraph({ children: [t("WEEK ______   DAY ______   DATE ______", { bold: true })] })], "D9DDE5"),
     bandRow("TODAY'S FOCUS"),
     full([new Paragraph({ alignment: AlignmentType.CENTER, children: [t(plan.focus, { bold: true, size: 32 })] })]),
+    ...(plan.notices.length ? [bandRow("NOTICES"), full(plan.notices.map((n) => new Paragraph({ children: [t(n)] })), "F7F4A2")] : []),
     bandRow("TODAY'S TASKS"),
     ...plan.activities.map((a, i) => new TableRow({ children: [
       c([new Paragraph({ alignment: AlignmentType.CENTER, children: [t(String(i + 1), { bold: true })] })], W[0]),

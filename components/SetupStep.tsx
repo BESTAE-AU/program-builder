@@ -52,6 +52,9 @@ export default function SetupStep({ unit, update, next }: Props) {
         <label className="field">Unit overview (goes into the program)
           <textarea rows={3} value={unit.overview} onChange={(e) => set("overview", e.target.value)} />
         </label>
+        <label className="field">Prior knowledge (what students bring from earlier units or Technology 7–8, one per line)
+          <textarea rows={3} value={unit.priorKnowledge} onChange={(e) => set("priorKnowledge", e.target.value)} />
+        </label>
       </section>
 
       <div className="grid-2">
@@ -82,7 +85,13 @@ export default function SetupStep({ unit, update, next }: Props) {
             <span className="muted">Classes available</span>
             <b style={{ fontSize: 24 }}>{unit.cycles * unit.lessonsPerCycle}</b>
           </div>
-          <p className="muted" style={{ maxWidth: "46ch" }}>A cycle is two weeks. You choose each lesson&apos;s stream (Theory, Design, Prac) on the grid. Homework is one block per cycle, plus unfinished class work.</p>
+          <label className="field" style={{ width: 170 }}>Course indicative hours
+            <input type="number" min={0} value={unit.courseHours} onChange={(e) => set("courseHours", Number(e.target.value) || 0)} />
+          </label>
+          <label className="field" style={{ width: 170 }}>Hours before this unit
+            <input type="number" min={0} value={unit.priorHours} onChange={(e) => set("priorHours", Number(e.target.value) || 0)} />
+          </label>
+          <p className="muted" style={{ maxWidth: "46ch" }}>Each lesson counts as 1 hour. A cycle is two weeks. You choose each lesson&apos;s stream (Theory, Design, Prac) on the grid. Homework is one block per cycle, plus unfinished class work.</p>
         </div>
       </section>
 

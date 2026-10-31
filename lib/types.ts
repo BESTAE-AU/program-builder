@@ -55,12 +55,34 @@ export type Piece = {
   prereq?: string; // piece id that must come first
 };
 
+export type Link = { name: string; url: string };
+export type Taught = "" | "taught" | "partly" | "not";
+
 export type Slot = {
   stream: Stream;
   status: Status;
   pieceIds: string[];
   title: string; // overrides the first piece's area as the lesson title
   notes: string;
+  resources: Link[];
+  equipment: string[]; // WHS equipment ids
+  capabilities: string[] | null; // null = from the activity types in the lesson
+  priorities: string[]; // cross-curriculum priorities, only where relevant
+  register: { date: string; taught: Taught; notes: string }; // the annotated register
+  intention: string; // learning intention
+  success: string; // success criteria, one per line
+};
+
+export type UnitRegister = {
+  teacherComments: string;
+  studentComments: string;
+  assessmentComments: string;
+  improvements: string;
+  newResources: string;
+  dateCommenced: string;
+  dateCompleted: string;
+  signature: string;
+  signDate: string;
 };
 
 export type TaskPart = { id: string; name: string };
@@ -93,6 +115,7 @@ export type Unit = {
   title: string;
   product: string;
   overview: string;
+  priorKnowledge: string;
   focusAreas: string[];
   outcomes: string[];
   cycles: number;
@@ -108,14 +131,35 @@ export type Unit = {
   caseStudy: string;
   brands: { name: string; student: string }[];
   aiNotes: string;
+  courseHours: number; // indicative hours for the whole course, e.g. 200 for Years 9–10
+  priorHours: number; // hours already completed in earlier units
+  register: UnitRegister;
   updatedAt: string;
 };
+
+export const emptyRegister = (): UnitRegister => ({
+  teacherComments: "", studentComments: "", assessmentComments: "", improvements: "",
+  newResources: "", dateCommenced: "", dateCompleted: "", signature: "", signDate: "",
+});
 
 export const uid = () => Math.random().toString(36).slice(2, 10);
 
 export const slotKey = (cycle: number, lesson: number | "hw") => `${cycle}-${lesson}`;
 
-export const emptySlot = (): Slot => ({ stream: "", status: "planned", pieceIds: [], title: "", notes: "" });
+export const emptySlot = (): Slot => ({
+  stream: "", status: "planned", pieceIds: [], title: "", notes: "",
+  resources: [], equipment: [], capabilities: null, priorities: [],
+  register: { date: "", taught: "", notes: "" },
+  intention: "", success: "",
+});
+
+// Units saved before a field existed get its default when loaded.
+export function normaliseUnit(u: Unit): Unit {
+  const base = newUnit();
+  const slots: Record<string, Slot> = {};
+  for (const [k, s] of Object.entries(u.slots ?? {})) slots[k] = { ...emptySlot(), ...s, register: { ...emptySlot().register, ...s.register } };
+  return { ...base, ...u, register: { ...emptyRegister(), ...u.register }, slots };
+}
 
 export function newUnit(): Unit {
   return {
@@ -128,6 +172,7 @@ export function newUnit(): Unit {
     title: "",
     product: "",
     overview: "",
+    priorKnowledge: "",
     focusAreas: [],
     outcomes: [],
     cycles: 9,
@@ -143,6 +188,9 @@ export function newUnit(): Unit {
     caseStudy: "",
     brands: [],
     aiNotes: "",
+    courseHours: 200,
+    priorHours: 0,
+    register: emptyRegister(),
     updatedAt: new Date().toISOString(),
   };
 }

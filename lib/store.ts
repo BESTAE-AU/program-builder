@@ -3,13 +3,14 @@
 import { useCallback, useEffect, useState } from "react";
 import { sampleUnit } from "./sample-unit";
 import type { Unit } from "./types";
+import { normaliseUnit } from "./types";
 
 const KEY = "unit-builder:units";
 
 function readAll(): Unit[] {
   try {
     const raw = localStorage.getItem(KEY);
-    if (raw) return JSON.parse(raw);
+    if (raw) return (JSON.parse(raw) as Unit[]).map(normaliseUnit);
   } catch {}
   return [];
 }

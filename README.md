@@ -6,7 +6,7 @@ Plan a teaching unit step by step and export it to Word.
 2. **Bank**: assessment tasks (AT/FT, parts, outcomes, set and due cycles) and the unit's items: task parts, skills and samples, theory topics, software skills. AI breaks an item into lesson-sized pieces using the Textiles Framework and the Activities & Tasks Framework.
 3. **Grid**: drag pieces into lessons (or Select, then Place here). Each lesson shows its stream, status, stacked pieces and minutes. Side panels: bank, lesson count, sequence check, assessment timeline, outcome coverage.
 4. **Lesson**: order and time the pieces, write student steps (AI or by hand), check suggested outcomes and syllabus points, and edit or AI-tailor the Supplementary / Substantial / Extensive / Extension–Newman / Life Skills adjustments. Download the Compass lesson plan.
-5. **Export**: the program (in the new-syllabus program template), the Brainstorm & Planning doc, Compass plans for a whole cycle, and a backup copy of the unit.
+5. **Export**: the program (in the new-syllabus program template), the annotated register (the program plus date taught, taught / partly / not taught and notes for each lesson, and the school register table), the Brainstorm & Planning doc, Compass plans for a whole cycle, and a backup copy of the unit.
 
 The Tote-ally Textiles Unit 1 is preloaded as an example.
 
@@ -33,3 +33,9 @@ Open http://localhost:3000. Without a key everything works except the AI buttons
 Units are saved in the browser for now (Export → Save a copy for a backup file).
 
 `npx tsx scripts/export-sample.ts` writes the three exports for the sample unit to `out/`.
+
+## Put it online (Vercel)
+
+1. Sign in at https://vercel.com with GitHub and choose **Add New → Project → Import** `BESTAE-AU/program-builder`.
+2. Under **Environment Variables** add `ANTHROPIC_API_KEY` (from https://console.anthropic.com) and `APP_PASSWORD` (any password you choose).
+3. Select **Deploy**. When the browser asks for a login, type any username and your `APP_PASSWORD`.
