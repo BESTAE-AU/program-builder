@@ -1,6 +1,7 @@
 // The unit builder's rules: labels, what happens when a piece is placed, and the checks
 // shown beside the grid. Build rules come from Britt's plan-unit skill.
 import { activityType, FAMILY_COLOURS, OUTCOMES, STAGES, suggestMapping } from "./frameworks";
+import { OUTCOMES_2019, suggestMapping2019 } from "./frameworks/textiles2019";
 import type { Level, Piece, Slot, Stage, Stream, Task, Unit } from "./types";
 import { emptySlot, slotKey } from "./types";
 
@@ -49,7 +50,8 @@ export function onPlace(p: Piece): Piece {
   const at = activityType(p.activityTypeId);
   const adjustments = p.tailored || !at ? p.adjustments : { ...at.levels };
   const mapping = p.points.length || p.outcomes.length ? { points: p.points, outcomes: p.outcomes } : suggestMapping(p.area);
-  return { ...p, adjustments, ...mapping };
+  const m2019 = p.points2019?.length || p.outcomes2019?.length ? { points2019: p.points2019, outcomes2019: p.outcomes2019 } : (({ points, outcomes }) => ({ points2019: points, outcomes2019: outcomes }))(suggestMapping2019(p.area));
+  return { ...p, adjustments, ...mapping, ...m2019 };
 }
 
 export function getSlot(unit: Unit, key: string): Slot {
@@ -166,6 +168,12 @@ export function coverage(unit: Unit) {
   const placed = unit.pieces.filter((p) => placedKey(unit, p.id));
   const wanted = unit.outcomes.length ? unit.outcomes : OUTCOMES.map((o) => o.code);
   return wanted.map((code) => ({ code, n: placed.filter((p) => p.outcomes.includes(code)).length }));
+}
+
+export function coverage2019(unit: Unit) {
+  const placed = unit.pieces.filter((p) => placedKey(unit, p.id));
+  const wanted = unit.outcomes2019.length ? unit.outcomes2019 : OUTCOMES_2019.map((o) => o.code);
+  return wanted.map((code) => ({ code, n: placed.filter((p) => (p.outcomes2019 ?? []).includes(code)).length }));
 }
 
 export function lessonCount(unit: Unit) {

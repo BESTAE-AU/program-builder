@@ -115,7 +115,7 @@ export function sampleUnit(): Unit {
   const items: Item[] = ITEMS.map(([id, kind, title, taskId, partId]) => ({ id, kind, title, notes: "", taskId, partId }));
   let pieces: Piece[] = PIECES.map((p) => ({
     id: p.id, itemId: p.item, title: p.title, area: p.area, activityTypeId: p.act, verb: p.verb ?? "",
-    minutes: p.mins, taskId: p.task, partId: p.part, stage: p.stage, outcomes: [], points: [],
+    minutes: p.mins, taskId: p.task, partId: p.part, stage: p.stage, outcomes: [], points: [], outcomes2019: [], points2019: [],
     adjustments: {}, tailored: false, steps: [], handIn: p.handIn ?? "NONE", prereq: p.prereq,
   }));
   const slots: Record<string, Slot> = {};
@@ -127,8 +127,10 @@ export function sampleUnit(): Unit {
   }
   return {
     ...u,
-    year: "Year 9", calendarYear: "2028", unitNumber: "1", title: "Tote-ally Textiles",
-    product: "A lined tote bag with a zipper flap, bound seams and straps (AT1 Part B), and a research magazine on an Australian bag brand (AT1 Part A).",
+    year: "Year 9", unitNumber: "1", title: "Tote-ally Textiles",
+    syllabusMode: "2019+2025", calendarYear: "2027",
+    outcomes2019: ["TEX5-1", "TEX5-2", "TEX5-3", "TEX5-7", "TEX5-8", "TEX5-9", "TEX5-10", "TEX5-11", "TEX5-12"],
+    product: "A lined tote bag with a zipper flap, bound seams and straps (AT1 Part B)\nA research magazine on an Australian bag brand, laid out in InDesign (AT1 Part A)\nA skills folder of construction samples (FT1)",
     overview: "Students research an Australian bag designer or brand and present their findings as a magazine, while developing construction skills through a skills folder and making a lined tote bag.",
     focusAreas: ["Local and global textile perspectives", "Textile design and product development", "Textile project work"],
     outcomes: ["TT5-SAF-01", "TT5-COM-01", "TT5-EVL-01", "TT5-IVT-01", "TT5-CDT-01", "TT5-MAT-01", "TT5-ENV-01"],

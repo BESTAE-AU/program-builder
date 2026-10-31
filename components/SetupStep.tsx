@@ -1,6 +1,9 @@
 "use client";
 
+import { useState } from "react";
+import { askAI } from "@/lib/ai";
 import { FOCUS_AREAS, OUTCOMES } from "@/lib/frameworks";
+import { OUTCOMES_2019, suggestMapping2019 } from "@/lib/frameworks/textiles2019";
 import type { Student, Unit } from "@/lib/types";
 import { LEVELS } from "@/lib/types";
 
@@ -9,6 +12,15 @@ type Props = { unit: Unit; update: (fn: (u: Unit) => Unit) => void; next: () => 
 const FRAMEWORKS = ["Textiles Framework", "Activities & Tasks Framework", "General Capabilities Map", "TAS Skills & Content Continuum"];
 
 export default function SetupStep({ unit, update, next }: Props) {
+  const [tidying, setTidying] = useState(false);
+  const [tidyError, setTidyError] = useState("");
+  const tidyProduct = async () => {
+    setTidying(true); setTidyError("");
+    try {
+      const res = await askAI<{ points: string[] }>({ action: "tidy", unit: { title: unit.title, year: unit.year, product: "", notes: unit.aiNotes }, field: "What students make", text: unit.product });
+      update((u) => ({ ...u, product: res.points.join("\n") }));
+    } catch (e) { setTidyError(e instanceof Error ? e.message : "Tidying failed."); } finally { setTidying(false); }
+  };
   const set = <K extends keyof Unit>(k: K, v: Unit[K]) => update((u) => ({ ...u, [k]: v }));
   const toggle = (list: string[], v: string) => (list.includes(v) ? list.filter((x) => x !== v) : [...list, v]);
 
@@ -46,15 +58,45 @@ export default function SetupStep({ unit, update, next }: Props) {
           </label>
         </div>
         {unit.stage === "Stage 4" && <p className="muted">TT4-ADJ-01: in Stage 4 teachers may adjust the Stage 5 outcomes as appropriate to the needs of students in Years 7 and 8.</p>}
-        <label className="field">What students make
-          <textarea rows={2} value={unit.product} onChange={(e) => set("product", e.target.value)} />
+        <label className="field">What students make (one dot point per line; type roughly, then tidy)
+          <textarea rows={4} value={unit.product} onChange={(e) => set("product", e.target.value)} />
         </label>
-        <label className="field">Unit overview (goes into the program)
-          <textarea rows={3} value={unit.overview} onChange={(e) => set("overview", e.target.value)} />
-        </label>
+        <div className="row">
+          <button className="small primary" disabled={tidying || !unit.product.trim()} onClick={tidyProduct}>{tidying ? "Tidying…" : "Tidy with AI"}</button>
+          <span className="muted">The unit overview is written at the end, on the Export step, from what&apos;s in the program.</span>
+        </div>
+        {tidyError && <p className="error" role="alert">{tidyError}</p>}
         <label className="field">Prior knowledge (what students bring from earlier units or Technology 7–8, one per line)
           <textarea rows={3} value={unit.priorKnowledge} onChange={(e) => set("priorKnowledge", e.target.value)} />
         </label>
+      </section>
+
+      <section className="card">
+        <h2>Syllabus</h2>
+        <div className="row">
+          <button className="toggle" style={{ width: "auto" }} aria-pressed={unit.syllabusMode === "2019+2025"} onClick={() => update((u) => ({
+            ...u, syllabusMode: "2019+2025",
+            // Fill 2019 suggestions for pieces that don't have any yet.
+            pieces: u.pieces.map((p) => (p.points2019?.length || p.outcomes2019?.length ? p : (({ points, outcomes }) => ({ ...p, points2019: points, outcomes2019: outcomes }))(suggestMapping2019(p.area)))),
+          }))}>
+            {unit.syllabusMode === "2019+2025" ? "◉" : "○"} 2019 official, 2025 alongside (taught until 2027)
+          </button>
+          <button className="toggle" style={{ width: "auto" }} aria-pressed={unit.syllabusMode === "2025"} onClick={() => set("syllabusMode", "2025")}>
+            {unit.syllabusMode === "2025" ? "◉" : "○"} 2025 only (from 2028)
+          </button>
+        </div>
+        {unit.syllabusMode === "2019+2025" && (
+          <>
+            <h3>Textiles Technology 7–10 (2019) outcomes</h3>
+            <div className="grid-2" style={{ gap: 8 }}>
+              {OUTCOMES_2019.map((o) => (
+                <button key={o.code} className="toggle" aria-pressed={unit.outcomes2019.includes(o.code)} onClick={() => set("outcomes2019", OUTCOMES_2019.map((x) => x.code).filter((c) => (c === o.code ? !unit.outcomes2019.includes(c) : unit.outcomes2019.includes(c))))}>
+                  <b>{unit.outcomes2019.includes(o.code) ? "☑" : "☐"} {o.code}</b> <span>{o.text}</span>
+                </button>
+              ))}
+            </div>
+          </>
+        )}
       </section>
 
       <div className="grid-2">
@@ -67,7 +109,7 @@ export default function SetupStep({ unit, update, next }: Props) {
           ))}
         </section>
         <section className="card">
-          <h2>Outcomes</h2>
+          <h2>Outcomes{unit.syllabusMode === "2019+2025" ? " (2025, shown alongside)" : ""}</h2>
           {OUTCOMES.map((o) => (
             <button key={o.code} className="toggle" aria-pressed={unit.outcomes.includes(o.code)} onClick={() => set("outcomes", OUTCOMES.map((x) => x.code).filter((c) => c === o.code ? !unit.outcomes.includes(c) : unit.outcomes.includes(c)))}>
               <b>{unit.outcomes.includes(o.code) ? "☑" : "☐"} {o.code}</b> <span>{o.text}</span>

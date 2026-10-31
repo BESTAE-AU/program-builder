@@ -6,6 +6,7 @@ import JSZip from "jszip";
 import { activityType, outcomeText, POINTS, pointOutcome } from "../frameworks";
 import { equipment, TEXTILES_GENERAL } from "../frameworks/whs";
 import { getSlot, hours, lessonCapabilities, pieceLabel } from "../rules";
+import { outcomeText2019, point2019 } from "../frameworks/textiles2019";
 import type { Piece, Slot, Unit } from "../types";
 import { slotKey } from "../types";
 
@@ -34,8 +35,14 @@ const table = (style: string | null, width: number, indent: number, grid: number
   `<w:tbl><w:tblPr>${style ? `<w:tblStyle w:val="${style}"/>` : ""}<w:tblW w:w="${width}" w:type="dxa"/><w:tblInd w:w="${indent}" w:type="dxa"/>${BORDERS}<w:tblLayout w:type="fixed"/><w:tblLook w:val="0600" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0" w:noHBand="1" w:noVBand="1"/></w:tblPr><w:tblGrid>${grid.map((g) => `<w:gridCol w:w="${g}"/>`).join("")}</w:tblGrid>${rows.join("")}</w:tbl>`;
 
 const lines = (s: string) => s.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
-const outcomeParas = (codes: string[]) =>
-  codes.flatMap((c) => [p("Heading7", [{ text: `${c}:`, strong: true }]), p(null, outcomeText(c)), p(null)]);
+const outcomeParas = (codes: string[], text: (c: string) => string = outcomeText) =>
+  codes.flatMap((c) => [p("Heading7", [{ text: `${c}:`, strong: true }]), p(null, text(c)), p(null)]);
+
+// In 2019+2025 mode the 2019 syllabus is official (full outcomes and content) and the
+// 2025 codes sit underneath, so the program carries into 2028 with little rework.
+const dual = (u: Unit) => u.syllabusMode === "2019+2025";
+const alongside = (label: string, codes: string[]) =>
+  codes.length ? [p(null, [{ text: `${label}: `, bold: true }, { text: codes.join(", ") }])] : [];
 
 function headerTable(u: Unit) {
   const summative = u.tasks.filter((t) => t.kind === "Summative");
@@ -52,7 +59,10 @@ function headerTable(u: Unit) {
     row([cell(1266, [p("Heading2", `UNIT ${u.unitNumber}:`)]), cell(6312, [p("Heading2", u.title)]), cell(1768, [p("Heading2", u.stage)]), cell(5792, [p("Heading2", u.year)], { span: 2 })]),
     row([cell(7578, [p("Heading3", "Unit Overview")], { span: 2 }), cell(7560, [p("Heading3", "Duration")], { span: 3 })]),
     row([
-      cell(7578, [...lines(u.overview).map((l) => p("Content", l)), ...(u.product ? [p("Content", [{ text: "Students make: ", bold: true }, { text: u.product }])] : [])], { span: 2 }),
+      cell(7578, [
+        ...lines(u.overview).map((l) => p(null, l)),
+        ...(u.product.trim() ? [p(null, [{ text: "Students make:", bold: true }]), ...lines(u.product).map((l) => p("Content", l))] : []),
+      ], { span: 2 }),
       cell(7560, [
         p(null, [{ text: "Number of Weeks: ", bold: true }, { text: `${weeks} weeks (${u.cycles} cycles)` }]),
         p(null, [{ text: "Number of Hours: ", bold: true }, { text: `${h.planned} hours planned (1 hour per lesson)` }]),
@@ -65,7 +75,9 @@ function headerTable(u: Unit) {
     ] : []),
     row([cell(7578, [p("Heading3", "Outcomes")], { span: 2 }), cell(7560, [p("Heading3", "Formative and Summative Assessment Tasks")], { span: 3 })]),
     row([
-      cell(7578, outcomeParas(u.outcomes), { span: 2 }),
+      cell(7578, dual(u)
+        ? [p(null, [{ text: "Textiles Technology 7–10 (2019)", bold: true }]), ...outcomeParas(u.outcomes2019, outcomeText2019), p(null, [{ text: "Textiles Technology 7–10 (2025), from 2028", bold: true }]), ...outcomeParas(u.outcomes)]
+        : outcomeParas(u.outcomes), { span: 2 }),
       cell(3780, [p(null, [{ text: "Summative Assessment", bold: true }]), ...taskLines(summative)], { span: 2 }),
       cell(3780, [p(null, [{ text: "Formative Assessment", bold: true }]), ...taskLines(formative)]),
     ]),
@@ -134,19 +146,33 @@ function registerTable(u: Unit) {
 
 function lessonBlock(u: Unit, heading: string, pieces: Piece[], key: string, annotated: boolean) {
   const slot = getSlot(u, key);
-  const outcomes = [...new Set(pieces.flatMap((x) => x.outcomes))];
+  const outcomes25 = [...new Set(pieces.flatMap((x) => x.outcomes))];
   const points = [...new Set(pieces.flatMap((x) => x.points))].filter((c) => POINTS[c]);
+  const outcomes19 = [...new Set(pieces.flatMap((x) => x.outcomes2019 ?? []))];
+  const points19 = [...new Set(pieces.flatMap((x) => x.points2019 ?? []))].map(point2019).filter(Boolean);
   const content: string[] = [];
   let lastHeading = "";
-  for (const code of points) {
-    const pt = POINTS[code];
-    if (pt.heading !== lastHeading) {
-      content.push(p("CONTENTHEADING", pt.heading.toUpperCase()));
-      lastHeading = pt.heading;
+  if (dual(u)) {
+    for (const pt of points19) {
+      if (pt!.heading !== lastHeading) {
+        content.push(p("CONTENTHEADING", pt!.heading.toUpperCase()));
+        lastHeading = pt!.heading;
+      }
+      content.push(p("Content", `${pt!.text} (${pt!.outcome})`));
     }
-    const o = pointOutcome(code);
-    content.push(p("Content", `${pt.text}${o ? ` (${o})` : ""}`));
+    content.push(...alongside("2025 content", points));
+  } else {
+    for (const code of points) {
+      const pt = POINTS[code];
+      if (pt.heading !== lastHeading) {
+        content.push(p("CONTENTHEADING", pt.heading.toUpperCase()));
+        lastHeading = pt.heading;
+      }
+      const o = pointOutcome(code);
+      content.push(p("Content", `${pt.text}${o ? ` (${o})` : ""}`));
+    }
   }
+  const outcomeCell = dual(u) ? [...outcomeParas(outcomes19, outcomeText2019), ...alongside("2025", outcomes25)] : outcomeParas(outcomes25);
   const activities = [p("LessonNumbers", heading)];
   if (slot.intention) activities.push(p(null, [{ text: "Learning intention: ", bold: true }, { text: slot.intention }]));
   if (slot.success.trim()) {
@@ -184,7 +210,7 @@ function lessonBlock(u: Unit, heading: string, pieces: Piece[], key: string, ann
   ];
   return [
     row([cell(W[0], []), cell(W[1], []), cell(W[2], [p("Heading3", "Core")], { shade: true, center: true }), cell(W[3], [p("Heading3", "Supported")], { shade: true, center: true })]),
-    row([cell(W[0], [...outcomeParas(outcomes), ...capParas]), cell(W[1], content), cell(W[2], activities), cell(W[3], supported)]),
+    row([cell(W[0], [...outcomeCell, ...capParas]), cell(W[1], content), cell(W[2], activities), cell(W[3], supported)]),
     row([cell(W[0], []), cell(W[1], []), cell(W[2], [p("Heading3", "Extension/Newman")], { shade: true, center: true }), cell(W[3], [p("Heading3", "Life skills")], { shade: true, center: true })]),
     row([cell(W[0], []), cell(W[1], []), cell(W[2], level("extension")), cell(W[3], [p("Activities", "See the separate Life Skills program.")])]),
     ...(annotated ? [registerRow(slot)] : []),

@@ -11,7 +11,9 @@ type Body =
   | { action: "tailor"; unit: UnitContext; lesson: string; piece: PieceContext }
   | { action: "steps"; unit: UnitContext; lesson: string; lessonType: string; pieces: PieceContext[] }
   | { action: "intentions"; unit: UnitContext; lesson: string; content: string[]; pieces: PieceContext[] }
-  | { action: "evaluation"; unit: UnitContext; summary: unknown };
+  | { action: "evaluation"; unit: UnitContext; summary: unknown }
+  | { action: "tidy"; unit: UnitContext; field: string; text: string }
+  | { action: "overview"; unit: UnitContext; outline: string };
 
 type UnitContext = { title: string; year: string; product: string; notes: string };
 type PieceContext = { title: string; area: string; activityTypeId: string; minutes: number; label: string };
@@ -163,6 +165,24 @@ ${JSON.stringify(b.summary, null, 1)}`;
   });
 }
 
+function tidy(b: Extract<Body, { action: "tidy" }>) {
+  const system = `${HOUSE}
+
+Britt types rough notes into her unit planner. Turn them into clean, concise dot points for a teaching program. Keep every idea she wrote and her terminology; fix spelling and grammar; don't add new content. Each point is a short phrase or sentence with no bullet character.`;
+  return ask<{ points: string[] }>(system, `${unitLine(b.unit)}\nField: ${b.field}\nRough notes:\n${b.text}`, {
+    type: "object", properties: { points: { type: "array", items: { type: "string" } } }, required: ["points"], additionalProperties: false,
+  });
+}
+
+function overview(b: Extract<Body, { action: "overview" }>) {
+  const system = `${HOUSE}
+
+Write the Unit Overview for the front of a teaching program, from the finished program outline. One paragraph of 4–6 sentences: what students investigate and learn, what they make, how the unit is assessed, and the key skills and knowledge developed. Third person ("Students …"), present tense, no outcome codes, no headings.`;
+  return ask<{ overview: string }>(system, `${unitLine(b.unit)}\n\nProgram outline:\n${b.outline}`, {
+    type: "object", properties: { overview: { type: "string" } }, required: ["overview"], additionalProperties: false,
+  });
+}
+
 export async function POST(req: Request) {
   const body = (await req.json()) as Body;
   try {
@@ -171,6 +191,8 @@ export async function POST(req: Request) {
     if (body.action === "steps") return NextResponse.json(await steps(body));
     if (body.action === "intentions") return NextResponse.json(await intentions(body));
     if (body.action === "evaluation") return NextResponse.json(await evaluation(body));
+    if (body.action === "tidy") return NextResponse.json(await tidy(body));
+    if (body.action === "overview") return NextResponse.json(await overview(body));
     return NextResponse.json({ error: "Unknown action." }, { status: 400 });
   } catch (error) {
     if (error instanceof Anthropic.AuthenticationError || (error instanceof Error && /api key|apiKey|authentication/i.test(error.message)))
