@@ -2,9 +2,9 @@
 
 import { useRef, useState } from "react";
 import { activityType } from "@/lib/frameworks";
-import { coverage, coverage2019, getSlot, hours, lessonCount, lessonTitle, minutesFor, pieceColours, pieceLabel, placedKey, placePiece, sequenceWarnings, unplacePiece } from "@/lib/rules";
+import { coverage, coverage2019, getSlot, loadWarnings, spacedReview, hours, lessonCount, lessonTitle, minutesFor, pieceColours, pieceLabel, placedKey, placePiece, sequenceWarnings, unplacePiece } from "@/lib/rules";
 import type { Piece, Slot, Status, Stream, Unit } from "@/lib/types";
-import { slotKey } from "@/lib/types";
+import { slotKey, uid } from "@/lib/types";
 
 type Props = { unit: Unit; update: (fn: (u: Unit) => Unit) => void; openLesson: (key: string) => void };
 
@@ -28,6 +28,15 @@ export default function GridStep({ unit, update, openLesson }: Props) {
 
   const bank = unit.pieces.filter((p) => !placedKey(unit, p.id));
   const warnings = sequenceWarnings(unit);
+  const load = loadWarnings(unit);
+  const review = spacedReview(unit).filter((r) => r.introduced < unit.cycles);
+  const notRevisited = review.filter((r) => !r.revisited.length);
+  const addReview = (area: string) => update((u) => {
+    let item = u.items.find((i) => i.title === "Review and recall starters");
+    const items = item ? u.items : [...u.items, (item = { id: uid(), kind: "theory" as const, title: "Review and recall starters", notes: "Spaced retrieval of earlier content." })];
+    const piece = { id: uid(), itemId: item.id, title: `Recall: ${area}`, area: u.pieces.find((x) => x.area.startsWith(area + " – "))?.area ?? "", activityTypeId: "review-and-recall", verb: "", minutes: 5, outcomes: [], points: [], outcomes2019: [], points2019: [], adjustments: {}, tailored: false, steps: [], handIn: "NONE" as const };
+    return { ...u, items, pieces: [...u.pieces, piece] };
+  });
   const count = lessonCount(unit);
   const h = hours(unit);
   const cov = coverage(unit);
@@ -150,6 +159,28 @@ export default function GridStep({ unit, update, openLesson }: Props) {
             ) : (
               warnings.map((w, i) => <p key={i} className="notice warn">⚠ {w.text}</p>)
             )}
+          </section>
+
+          <section className="card tight">
+            <h2>Cognitive load check</h2>
+            {load.length === 0 ? (
+              <p className="notice ok">No load problems: demonstrations are chunked, new tools get their own lesson, and skills are practised before independent or assessed work.</p>
+            ) : (
+              load.map((w, i) => <p key={i} className="notice warn">⚠ {w.text}</p>)
+            )}
+          </section>
+
+          <section className="card tight">
+            <h2>Spaced review</h2>
+            <span className="muted">{review.length - notRevisited.length} of {review.length} framework categories come back in a later cycle.</span>
+            {notRevisited.slice(0, 12).map((r) => (
+              <div key={r.area} className="row" style={{ gap: 6, fontSize: 13 }}>
+                <span className="spacer">{r.area} <span className="muted">(Cycle {r.introduced} only)</span></span>
+                <button className="small" onClick={() => addReview(r.area)}>+ Recall starter</button>
+              </div>
+            ))}
+            {notRevisited.length > 12 && <span className="muted">and {notRevisited.length - 12} more.</span>}
+            <span className="muted">A recall starter is a 5-minute Review and recall piece added to the bank, ready to drag into a later cycle.</span>
           </section>
 
           <section className="card tight">

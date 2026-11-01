@@ -164,6 +164,76 @@ export function sequenceWarnings(unit: Unit): Warning[] {
   return out;
 }
 
+// Cognitive load checks (information processing and cognitive load theory: Sweller;
+// Paas & van Merriënboer 2020; Chen, Kalyuga & Sweller 2017 on fading support).
+const MODEL_TYPES = ["demonstration", "instruction", "worked-example", "listening-and-viewing"];
+const lessonOf = (k: string) => (k.endsWith("hw") ? `Cycle ${k.split("-")[0]} homework` : `Cycle ${k.split("-")[0]}, lesson ${k.split("-")[1]}`);
+const isNewTool = (p: Piece) => p.area.startsWith("Equipment & Technologies") || /indesign|photoshop|illustrator|canva|software|machine|overlocker/i.test(p.title);
+
+export function loadWarnings(unit: Unit): Warning[] {
+  const out: Warning[] = [];
+  const placed = unit.pieces
+    .map((p) => ({ p, k: placedKey(unit, p.id) }))
+    .filter((x): x is { p: Piece; k: string } => !!x.k)
+    .sort((a, b) => slotOrder(a.k) - slotOrder(b.k));
+  const step = (p: Piece) => (p.taskId && p.stage === "PRODUCE" ? "PRODUCE" : activityType(p.activityTypeId)?.step ?? "");
+
+  // Long demonstrations: chunk anything over 12 minutes with practice in between.
+  const long = placed.filter(({ p }) => MODEL_TYPES.includes(p.activityTypeId) && p.minutes > 12);
+  if (long.length === 1)
+    out.push({ text: `${lessonOf(long[0].k)}: "${long[0].p.title}" is ${long[0].p.minutes} min of ${activityType(long[0].p.activityTypeId)?.name.toLowerCase()}. Chunk it into steps of 10–12 min with practice between.`, key: long[0].k });
+  else if (long.length > 1)
+    out.push({ text: `${long.length} lessons have a single instruction or demonstration block over 12 min (${long.map(({ k }) => lessonOf(k).replace("Cycle ", "C").replace(", lesson ", "L")).join(", ")}). Break each into 10–12 min chunks with a practice or check activity between.`, key: long[0].k });
+
+  // Too many new things at once: a new tool or machine alongside other new content.
+  const seen = new Set<string>();
+  const newIn = new Map<string, Piece[]>();
+  for (const { p, k } of placed) {
+    if (p.area && !seen.has(p.area)) {
+      seen.add(p.area);
+      newIn.set(k, [...(newIn.get(k) ?? []), p]);
+    }
+  }
+  for (const [k, ps] of newIn)
+    if (ps.length >= 2 && ps.some(isNewTool))
+      out.push({ text: `${lessonOf(k)} introduces ${ps.length} new things at once (${ps.map((x) => x.title).join("; ")}), including a new tool. Give the new tool its own lesson.`, key: k });
+
+  // Practice before the task, and support fades: each content area should pass through
+  // practice before independent or assessed work.
+  // Compared by framework category; research homework is modelled in class, so it's skipped.
+  const practised = new Set<string>();
+  const warned = new Set<string>();
+  const category = (p: Piece) => p.area.split(" – ")[0];
+  for (const { p, k } of placed) {
+    const s = step(p);
+    if (s === "PRACTISE" || s === "LEARN" || (p.taskId && unit.tasks.find((t) => t.id === p.taskId)?.kind === "Formative")) practised.add(category(p));
+    if (k.endsWith("hw")) continue;
+    if ((s === "PRODUCE" || s === "APPLY") && p.area && !practised.has(category(p)) && !warned.has(category(p)) && !p.prereq) {
+      warned.add(category(p));
+      out.push({ text: `${lessonOf(k)}: "${p.title}" is the first time students practise ${p.area} on their own${p.taskId ? " in an assessed task" : ""}. Add a guided or practice step first.`, key: k });
+    }
+  }
+  return out;
+}
+
+// Spaced review: concepts taught in theory or demonstrations should come back in a later
+// cycle (retrieval practice: Agarwal, Nunes & Blunt 2021).
+export function spacedReview(unit: Unit) {
+  const byArea = new Map<string, number[]>();
+  for (const p of unit.pieces) {
+    const k = placedKey(unit, p.id);
+    if (!k || !p.area) continue;
+    const category = p.area.split(" – ")[0];
+    byArea.set(category, [...(byArea.get(category) ?? []), Number(k.split("-")[0])]);
+  }
+  return [...byArea.entries()]
+    .map(([area, cycles]) => {
+      const sorted = [...new Set(cycles)].sort((a, b) => a - b);
+      return { area, introduced: sorted[0], revisited: sorted.slice(1) };
+    })
+    .sort((a, b) => a.introduced - b.introduced);
+}
+
 export function coverage(unit: Unit) {
   const placed = unit.pieces.filter((p) => placedKey(unit, p.id));
   const wanted = unit.outcomes.length ? unit.outcomes : OUTCOMES.map((o) => o.code);
