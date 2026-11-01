@@ -188,9 +188,11 @@ function lessonBlock(u: Unit, heading: string, pieces: Piece[], key: string, ann
     activities.push(p("Content", pc.title));
     for (const s of pc.steps.filter(Boolean)) activities.push(p("Content", s));
   }
-  if (slot.resources.length) {
+  const sheets = pieces.filter((x) => x.sheet);
+  if (slot.resources.length || sheets.length) {
     activities.push(p("Resources", [{ text: "Resources", bold: true }]));
     for (const r of slot.resources) activities.push(p("Resources", r.url ? `${r.name} – ${r.url}` : r.name));
+    for (const x of sheets) activities.push(p("Resources", `Demonstration sheet: ${x.title}`));
   }
   const kit = slot.equipment.map(equipment).filter(Boolean);
   if (kit.length) {

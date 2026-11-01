@@ -46,9 +46,19 @@ export function stageVerbs(stage: Stage) {
 
 // What happens when a piece lands in a lesson: the framework adjustments fill in (unless tailored),
 // and the syllabus mapping is suggested from its content area (unless already chosen).
+// Executive function supports (organisation, starting, staying on track) added to the
+// Supplementary level by kind of activity (Zelazo & Carlson, 2020).
+export function efSupport(p: Piece): string {
+  const step = activityType(p.activityTypeId)?.step;
+  if (p.homework) return "Organisation: break the task into its 20-minute parts with a tick-off tracker and the due date written in the booklet.";
+  if (p.activityTypeId === "production" || step === "PRACTISE") return "Organisation: a numbered step checklist to tick off, a labelled tray or bag for pieces, and a check-in at the halfway point.";
+  if (step === "LEARN") return "Organisation: the booklet page open before starting, one step shown at a time, and booklets filed at pack-up.";
+  return "Organisation: instructions chunked into numbered steps, with a check-in after the first step.";
+}
+
 export function onPlace(p: Piece): Piece {
   const at = activityType(p.activityTypeId);
-  const adjustments = p.tailored || !at ? p.adjustments : { ...at.levels };
+  const adjustments = p.tailored || !at ? p.adjustments : { ...at.levels, supplementary: `${at.levels.supplementary} ${efSupport(p)}` };
   const mapping = p.points.length || p.outcomes.length ? { points: p.points, outcomes: p.outcomes } : suggestMapping(p.area);
   const m2019 = p.points2019?.length || p.outcomes2019?.length ? { points2019: p.points2019, outcomes2019: p.outcomes2019 } : (({ points, outcomes }) => ({ points2019: points, outcomes2019: outcomes }))(suggestMapping2019(p.area));
   return { ...p, adjustments, ...mapping, ...m2019 };

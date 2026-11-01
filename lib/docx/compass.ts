@@ -13,7 +13,14 @@ export const HAND_IN_CAPTION: Record<HandIn, string> = {
   WAYGROUND: "COMPLETE IN WAYGROUND", BRING: "BRING NEXT LESSON", SAME: "",
 };
 
-export type CompassActivity = { title: string; minutes: number; badge: string; chips: string[]; handIn: string; steps: string[] };
+export type CompassActivity = { title: string; minutes: number; badge: string; chips: string[]; handIn: string; steps: string[]; phase: string };
+
+// I do / We do / You do, in words students understand, from the activity's step or task stage.
+function phaseFor(p: Piece) {
+  if (p.taskId && (p.stage === "PRODUCE" || p.stage === "REFINE")) return "On your own";
+  const step = activityType(p.activityTypeId)?.step;
+  return step === "LEARN" ? "Watch and listen" : step === "PRACTISE" ? "Try it together" : step === "APPLY" ? "On your own" : step === "RECALL" ? "Remember" : step === "CHECK" ? "Show what you know" : "";
+}
 export type CompassPlan = {
   heading: string;
   lessonType: "theory" | "practical";
@@ -52,6 +59,7 @@ export function compassPlan(u: Unit, cycle: number, lesson: number): CompassPlan
     minutes: p.minutes,
     badge: badge(p, u),
     chips: pieceLabel(p, u.tasks).split(" · ")[0].split(" "),
+    phase: phaseFor(p),
     handIn: HAND_IN_CAPTION[p.handIn],
     steps: p.steps.length ? p.steps : [activityType(p.activityTypeId)?.summary ?? p.title],
   }));
@@ -91,7 +99,7 @@ const band = (t: string) => `<tr><td colspan="4" style="background:${NAVY};color
 export function compassHtml(plan: CompassPlan): string {
   const rows = plan.activities.map((a, i) => `<tr>
 <td style="width:32px;text-align:center;font-weight:bold;padding:6px;border:1px solid ${GREY}">${i + 1}</td>
-<td style="padding:6px 8px;border:1px solid ${GREY}">${tag(a.badge)} <b>${esc(a.title)}</b><br>${a.chips.map(chip).join("")}</td>
+<td style="padding:6px 8px;border:1px solid ${GREY}">${a.phase ? `<span style="font-size:10px;font-weight:bold;letter-spacing:.04em;text-transform:uppercase;color:${CERISE}">${esc(a.phase)}</span><br>` : ""}${tag(a.badge)} <b>${esc(a.title)}</b><br>${a.chips.map(chip).join("")}</td>
 <td style="width:60px;text-align:center;padding:6px;border:1px solid ${GREY}">${a.minutes} min</td>
 <td style="width:150px;text-align:center;font-size:11px;font-weight:bold;padding:6px;border:1px solid ${GREY}">${a.handIn}</td></tr>`).join("");
   const pack = plan.packUp ? `<tr><td style="text-align:center;padding:6px;border:1px solid ${GREY}">${plan.activities.length + 1}</td><td style="padding:6px 8px;border:1px solid ${GREY}"><b>PACK UP AND CLEAN UP</b></td><td style="text-align:center;padding:6px;border:1px solid ${GREY}">${plan.packUp} min</td><td style="border:1px solid ${GREY}"></td></tr>` : "";
@@ -141,7 +149,11 @@ function planTable(plan: CompassPlan) {
     bandRow("TODAY'S TASKS"),
     ...plan.activities.map((a, i) => new TableRow({ children: [
       c([new Paragraph({ alignment: AlignmentType.CENTER, children: [t(String(i + 1), { bold: true })] })], W[0]),
-      c([new Paragraph({ children: [t(`${a.badge}  `, { bold: true, color: a.badge === "ACTIVITY" ? "001D3E" : "A6214D", size: 16 }), t(a.title, { bold: true })] }), new Paragraph({ children: [t(a.chips.join(" · "), { size: 16 })] })], W[1]),
+      c([
+        ...(a.phase ? [new Paragraph({ children: [t(a.phase.toUpperCase(), { bold: true, color: "A6214D", size: 16 })] })] : []),
+        new Paragraph({ children: [t(`${a.badge}  `, { bold: true, color: a.badge === "ACTIVITY" ? "001D3E" : "A6214D", size: 16 }), t(a.title, { bold: true })] }),
+        new Paragraph({ children: [t(a.chips.join(" · "), { size: 16 })] }),
+      ], W[1]),
       c([new Paragraph({ alignment: AlignmentType.CENTER, children: [t(`${a.minutes} min`)] })], W[2]),
       c([new Paragraph({ alignment: AlignmentType.CENTER, children: [t(a.handIn, { bold: true, size: 16 })] })], W[3]),
     ] })),

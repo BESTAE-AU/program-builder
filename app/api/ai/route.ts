@@ -14,7 +14,8 @@ type Body =
   | { action: "evaluation"; unit: UnitContext; summary: unknown }
   | { action: "tidy"; unit: UnitContext; field: string; text: string }
   | { action: "overview"; unit: UnitContext; outline: string }
-  | { action: "pedagogy"; unit: UnitContext; outline: string };
+  | { action: "pedagogy"; unit: UnitContext; outline: string }
+  | { action: "sheet"; unit: UnitContext; piece: PieceContext };
 
 type UnitContext = { title: string; year: string; product: string; notes: string };
 type PieceContext = { title: string; area: string; activityTypeId: string; minutes: number; label: string };
@@ -87,7 +88,7 @@ function tailor(b: Extract<Body, { action: "tailor" }>) {
   const system = `${HOUSE}
 
 You rewrite NCCD adjustments for one lesson activity so they name the actual content, materials and equipment. Keep each to one or two sentences and keep the level's intent:
-- Supplementary: targeted scaffolds at particular times (photo step cards, video, word banks, pre-marked lines). Same outcomes, full grade range.
+- Supplementary: targeted scaffolds at particular times (photo step cards, video, word banks, pre-marked lines), plus one executive function support for organisation (step checklist, labelled tray, booklet routine, chunked task tracker). Same outcomes, full grade range.
 - Substantial: frequent modification (reduced load, pre-cut or pre-pinned samples, sentence starters, LSO support). Same outcomes.
 - Extensive: highly individualised, one-to-one (hand-over-hand, slow machine speed, picture cards, one simplified task).
 - Extension / Newman: removes practice already mastered and raises depth and complexity inside the same task.
@@ -199,6 +200,21 @@ Only mention strategies the outline actually uses. Cite with author–year in br
   });
 }
 
+function sheet(b: Extract<Body, { action: "sheet" }>) {
+  const system = `${HOUSE}
+
+You write a fill-in demonstration sheet students complete while watching a teacher demonstration, then keep in their booklet as a reference (generative learning and dual coding: they write, label and sketch as they watch).
+- steps: 4–8 numbered steps in order, second person, each with one key word or measurement replaced by "_____" for students to fill in.
+- labels: 3–6 parts of a diagram for students to label (equipment parts, fabric features or construction details).
+- keyWords: the 4–8 words that fill the blanks and labels, for a word bank.
+Use correct textiles terminology and real measurements (e.g. 1.5 cm seam allowance).`;
+  return ask<{ steps: string[]; labels: string[]; keyWords: string[] }>(system, `${unitLine(b.unit)}\nDemonstration: ${b.piece.title} (content area: ${b.piece.area}, ${b.piece.minutes} min)`, {
+    type: "object",
+    properties: { steps: { type: "array", items: { type: "string" } }, labels: { type: "array", items: { type: "string" } }, keyWords: { type: "array", items: { type: "string" } } },
+    required: ["steps", "labels", "keyWords"], additionalProperties: false,
+  });
+}
+
 export async function POST(req: Request) {
   const body = (await req.json()) as Body;
   try {
@@ -210,6 +226,7 @@ export async function POST(req: Request) {
     if (body.action === "tidy") return NextResponse.json(await tidy(body));
     if (body.action === "overview") return NextResponse.json(await overview(body));
     if (body.action === "pedagogy") return NextResponse.json(await pedagogy(body));
+    if (body.action === "sheet") return NextResponse.json(await sheet(body));
     return NextResponse.json({ error: "Unknown action." }, { status: 400 });
   } catch (error) {
     if (error instanceof Anthropic.AuthenticationError || (error instanceof Error && /api key|apiKey|authentication/i.test(error.message)))

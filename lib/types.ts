@@ -55,6 +55,8 @@ export type Piece = {
   steps: string[]; // student-facing steps for the Compass page
   handIn: HandIn;
   prereq?: string; // piece id that must come first
+  // Fill-in demonstration sheet students complete while watching and keep as a reference.
+  sheet?: { steps: string[]; labels: string[]; keyWords: string[] };
 };
 
 export type Link = { name: string; url: string };

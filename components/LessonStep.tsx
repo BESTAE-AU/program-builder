@@ -10,6 +10,9 @@ import { compassDocx, compassHtml, compassHtmlPage, compassPlan } from "@/lib/do
 import type { Level, Piece, Slot, Taught, Unit } from "@/lib/types";
 import { LEVELS } from "@/lib/types";
 import PieceEditor from "./PieceEditor";
+import { buildSheet } from "@/lib/docx/sheet";
+
+const SHEET_TYPES = ["demonstration", "worked-example"];
 
 type Props = { unit: Unit; update: (fn: (u: Unit) => Unit) => void; lessonKey: string; openLesson: (k: string) => void; back: () => void };
 
@@ -69,6 +72,14 @@ export default function LessonStep({ unit, update, lessonKey, openLesson, back }
         pieces: pieces.map((p) => ({ title: p.title, area: p.area, activityTypeId: p.activityTypeId, minutes: p.minutes, label: pieceLabel(p, unit.tasks) })),
       });
       setSlot({ intention: res.intention, success: res.success.join("\n") });
+    } catch (e) { setError(e instanceof Error ? e.message : "Drafting failed."); } finally { setBusy(null); }
+  };
+
+  const draftSheet = async (p: Piece) => {
+    setBusy(`sheet-${p.id}`); setError("");
+    try {
+      const res = await askAI<NonNullable<Piece["sheet"]>>({ action: "sheet", unit: unitCtx, piece: { title: p.title, area: p.area, activityTypeId: p.activityTypeId, minutes: p.minutes, label: pieceLabel(p, unit.tasks) } });
+      setPiece({ ...p, sheet: res });
     } catch (e) { setError(e instanceof Error ? e.message : "Drafting failed."); } finally { setBusy(null); }
   };
 
@@ -165,6 +176,30 @@ export default function LessonStep({ unit, update, lessonKey, openLesson, back }
                     <label className="field">Student steps (one per line)
                       <textarea rows={Math.max(2, p.steps.length)} value={p.steps.join("\n")} placeholder={at?.summary} onChange={(e) => setPiece({ ...p, steps: e.target.value.split("\n") })} />
                     </label>
+                    {SHEET_TYPES.includes(p.activityTypeId) && (
+                      <div style={{ borderTop: "1px dashed var(--line)", paddingTop: 8, display: "flex", flexDirection: "column", gap: 8 }}>
+                        <div className="row">
+                          <b className="spacer" style={{ fontSize: 14 }}>Demonstration sheet</b>
+                          <button className="small primary" disabled={busy === `sheet-${p.id}`} onClick={() => draftSheet(p)}>{busy === `sheet-${p.id}` ? "Drafting…" : p.sheet ? "Redraft with AI" : "Draft with AI"}</button>
+                          {p.sheet && <button className="small" onClick={async () => download(await buildSheet(p, `Unit ${unit.unitNumber}: ${unit.title}`), `Demo-sheet_${p.title.replace(/[^\w]+/g, "-").slice(0, 40)}.docx`)}>Download sheet (.docx)</button>}
+                        </div>
+                        {p.sheet && (
+                          <div className="grid-2" style={{ gap: 8 }}>
+                            <label className="field">Steps with blanks (one per line)
+                              <textarea rows={Math.max(3, p.sheet.steps.length)} value={p.sheet.steps.join("\n")} onChange={(e) => setPiece({ ...p, sheet: { ...p.sheet!, steps: e.target.value.split("\n") } })} />
+                            </label>
+                            <div>
+                              <label className="field">Diagram labels (one per line)
+                                <textarea rows={3} value={p.sheet.labels.join("\n")} onChange={(e) => setPiece({ ...p, sheet: { ...p.sheet!, labels: e.target.value.split("\n") } })} />
+                              </label>
+                              <label className="field">Word bank (comma separated)
+                                <input value={p.sheet.keyWords.join(", ")} onChange={(e) => setPiece({ ...p, sheet: { ...p.sheet!, keyWords: e.target.value.split(/,\s*/) } })} />
+                              </label>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </li>
                 );
               })}
