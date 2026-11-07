@@ -1,0 +1,615 @@
+<title>Activity and Task Builder</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/docx@9.5.1/dist/index.iife.js"></script>
+<style>
+/* Layout: a navy unit bar, three views (Activities, Tasks, Booklets), each a list beside an editor. */
+:root {
+  --navy: #001D3E; --blue: #909DB2; --yellow: #FFCB05; --cerise: #A6214D;
+  --bg: #F4F5F8; --panel: #FFFFFF; --fg: #12213A; --muted: #5A6577; --line: #D9DDE5;
+  --chip: #E8EBF1; --ok: #2E7D4F; --warn: #A65B00; --focus: #2F5DA8;
+  --bar: #001D3E; --bar-fg: #FFFFFF; --sel: #E6ECF6;
+  --font: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0B1322; --panel: #121D31; --fg: #E6EAF2; --muted: #9AA6BA; --line: #26334B;
+  --chip: #1C2940; --ok: #6CC08F; --warn: #F0B35A; --focus: #8FB0F0; --bar: #04101F; --bar-fg: #FFFFFF; --sel: #1A2A46;
+  --cerise: #E07A9A; --blue: #A9B5C9; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0B1322; --panel: #121D31; --fg: #E6EAF2; --muted: #9AA6BA; --line: #26334B;
+  --chip: #1C2940; --ok: #6CC08F; --warn: #F0B35A; --focus: #8FB0F0; --bar: #04101F; --bar-fg: #FFFFFF; --sel: #1A2A46;
+  --cerise: #E07A9A; --blue: #A9B5C9; color-scheme: dark }
+body { background: var(--bg); color: var(--fg); font: 15px/1.5 var(--font); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bar); }
+.wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header { background: var(--bar); color: var(--bar-fg); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; }
+header .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; padding-block: 12px; }
+.unit { display: grid; gap: 2px; min-width: 0; }
+.unit small { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #C9D1DE; }
+.unit strong { font-weight: 900; font-size: 18px; letter-spacing: .02em; text-transform: uppercase; }
+nav { display: flex; gap: 4px; flex-wrap: wrap; }
+nav button { background: transparent; color: #DCE2EC; border: 0; border-bottom: 3px solid transparent; padding: 8px 12px; font: 700 14px var(--font); cursor: pointer; }
+nav button[aria-current="page"] { color: #fff; border-bottom-color: var(--yellow); }
+.home { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.4); border-radius: 4px; padding: 6px 10px; font: 700 13px var(--font); cursor: pointer; }
+.home:hover { border-color: var(--yellow); }
+.four { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; }
+@media (max-width: 640px) { .four { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+.menu { display: grid; gap: 20px; }
+.menu-head h1 { margin: 0; font: 900 26px/1.2 var(--font); text-transform: uppercase; letter-spacing: .02em; }
+.progs { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.prog { display: grid; gap: 6px; text-align: left; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 16px 18px; font: inherit; color: inherit; cursor: pointer; }
+.prog:hover { border-color: var(--blue); }
+.prog strong { font: 900 19px/1.25 var(--font); }
+.bar { height: 6px; border-radius: 3px; background: var(--chip); overflow: hidden; }
+.bar span { display: block; height: 100%; background: var(--ok); }
+.newp { padding: 16px 18px; display: grid; gap: 12px; }
+.newp h4 { margin: 0; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; font-weight: 900; }
+.inline { display: flex; gap: 8px; flex-wrap: wrap; width: 100%; }
+.inline input { flex: 1 1 180px; width: auto; }
+.status { margin-left: auto; font-size: 12px; color: #C9D1DE; }
+main .wrap { padding-block: 20px 48px; }
+.cols { display: grid; grid-template-columns: minmax(260px, 340px) minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 820px) { .cols { grid-template-columns: minmax(0, 1fr); } }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; min-width: 0; }
+.list { max-height: calc(100vh - 140px); overflow: auto; }
+@media (max-width: 820px) { .list { max-height: 45vh; } }
+.group h3 { margin: 0; padding: 10px 14px 6px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); position: sticky; top: 0; background: var(--panel); }
+.row { display: grid; grid-template-columns: 52px minmax(0,1fr); gap: 2px 10px; width: 100%; text-align: left; background: none; border: 0; border-top: 1px solid var(--line); padding: 9px 14px; font: inherit; color: inherit; cursor: pointer; }
+.row:hover { background: var(--sel); }
+.row[aria-selected="true"] { background: var(--sel); box-shadow: inset 3px 0 0 var(--navy); }
+.row .when { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 1px; }
+.row .t { font-weight: 700; line-height: 1.3; }
+.row .pills { grid-column: 2; display: flex; gap: 4px; flex-wrap: wrap; }
+.pill { font-size: 10.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 1px 6px; border-radius: 3px; background: var(--chip); color: var(--muted); }
+.pill.done { color: var(--ok); }
+.pill.form { background: var(--cerise); color: #fff; }
+.pill.summ { background: var(--navy); color: #fff; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pill.summ { background: #3B5683; } }
+:root[data-theme="dark"] .pill.summ { background: #3B5683; }
+.listfoot { padding: 10px 14px; border-top: 1px solid var(--line); display: flex; gap: 8px; flex-wrap: wrap; }
+.ed { padding: 20px 22px 28px; display: grid; gap: 22px; }
+.ed-head { display: grid; gap: 6px; }
+.eyebrow { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+.ed-head input.title { font: 900 22px/1.25 var(--font); color: var(--fg); background: transparent; border: 0; border-bottom: 1px dashed var(--line); padding: 2px 0; width: 100%; }
+section.f { display: grid; gap: 8px; }
+section.f > h4 { margin: 0; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; font-weight: 900; color: var(--fg); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+section.f > h4 span.hint { font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--muted); font-size: 13px; }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+.three { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
+@media (max-width: 640px) { .two, .three { grid-template-columns: minmax(0,1fr); } }
+label { display: grid; gap: 4px; font-size: 13px; color: var(--muted); min-width: 0; }
+input, textarea, select { font: 15px/1.45 var(--font); color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 4px; padding: 7px 9px; width: 100%; box-sizing: border-box; min-width: 0; }
+textarea { resize: vertical; min-height: 70px; }
+input:focus-visible, textarea:focus-visible, select:focus-visible, button:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+.voice { border-left: 3px solid var(--blue); padding-left: 12px; }
+.voice.student { border-left-color: var(--yellow); }
+.btn { font: 700 13px var(--font); padding: 7px 12px; border-radius: 4px; border: 1px solid var(--line); background: var(--panel); color: var(--fg); cursor: pointer; }
+.btn:hover { border-color: var(--blue); }
+.btn.primary { background: var(--navy); color: #fff; border-color: var(--navy); }
+.btn.ai { border-color: var(--blue); }
+.btn[disabled] { opacity: .5; cursor: default; }
+.lv { display: grid; gap: 10px; }
+.lv label span { font-weight: 700; color: var(--fg); }
+.checks { display: grid; gap: 6px; }
+.checks label { display: flex; gap: 8px; align-items: flex-start; color: var(--fg); font-size: 14px; }
+.checks input { width: auto; margin-top: 4px; }
+.note { font-size: 13px; color: var(--muted); }
+.warn { background: color-mix(in srgb, var(--warn) 12%, transparent); border-left: 3px solid var(--warn); padding: 8px 12px; font-size: 14px; border-radius: 0 4px 4px 0; }
+.good { background: color-mix(in srgb, var(--ok) 12%, transparent); border-left: 3px solid var(--ok); padding: 8px 12px; font-size: 14px; border-radius: 0 4px 4px 0; }
+.links a { color: var(--focus); }
+.empty { padding: 48px 24px; text-align: center; color: var(--muted); display: grid; gap: 8px; justify-items: center; }
+.empty strong { color: var(--fg); font-size: 17px; }
+.blist { display: grid; }
+.bitem { display: grid; grid-template-columns: 34px minmax(0,1fr) auto; gap: 10px; align-items: center; padding: 8px 14px; border-top: 1px solid var(--line); }
+.bitem .n { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 13px; }
+.bitem .mv { display: flex; gap: 4px; }
+.bitem .mv button { width: 30px; padding: 4px 0; }
+.toast { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); background: var(--navy); color: #fff; padding: 10px 14px; border-radius: 4px; font-size: 14px; z-index: 20; max-width: 80vw; }
+@media (prefers-reduced-motion: no-preference) { .toast { transition: opacity .2s; } }
+</style>
+
+<header>
+  <div class="wrap">
+    <button class="home" id="home" type="button">All programs</button>
+    <div class="unit"><small id="unitSub">Year 9 Textiles · Unit 1</small><strong id="unitTitle">Tote-ally Textiles</strong></div>
+    <nav aria-label="Views">
+      <button id="nav-activities" data-view="activities">Activities</button>
+      <button id="nav-tasks" data-view="tasks">Tasks</button>
+      <button id="nav-booklets" data-view="booklets">Booklets</button>
+    </nav>
+    <div class="status" id="status">Loading…</div>
+  </div>
+</header>
+<main><div class="wrap"><div id="app"></div></div></main>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const TYPES = {
+  "instruction": ["Instruction", "LEARN"], "demonstration": ["Demonstration", "LEARN"], "worked-example": ["Worked example", "LEARN"],
+  "safety-induction": ["Safety induction", "LEARN"], "tutorial": ["Tutorial", "PRACTISE"], "skill-practice": ["Skill practice", "PRACTISE"],
+  "research": ["Research", "APPLY"], "idea-generation": ["Idea generation", "APPLY"], "production": ["Making and producing", "APPLY"],
+  "reflection": ["Reflection", "CHECK"], "review": ["Review and recall", "CHECK"]
+};
+const LEVELS = [
+  ["supplementary", "Supplementary", "Same task, easier access, plus one executive function support"],
+  ["substantial", "Substantial", "Essential content only, visual steps, adult check-ins"],
+  ["extensive", "Extensive", "Individual version with adult support"],
+  ["extension", "Extension / Newman", "More depth and complexity in the same task"],
+  ["lifeSkills", "Life Skills", "Concrete version on the same topic, linked to Life Skills outcomes"]
+];
+const HAND = { "": "Not handed in", show: "Show in class", submit: "Submit on Canvas", booklet: "In booklet" };
+
+const S = { entries: {}, tasks: {}, programs: {}, pid: null, view: "activities", sel: null, db: null, sample: null, downloads: null,
+  loaded: false, error: "", dirty: new Set(), pending: {}, timers: {}, busy: "" };
+const M = () => S.programs[S.pid] || null;
+const inProg = (x, pid = S.pid) => (x.unit || "tote") === pid;
+const E = () => E().filter((x) => inProg(x));
+const TK = () => TK().filter((x) => inProg(x));
+try { S.pid = localStorage.getItem("atb:program") || null; } catch (e) {}
+const $ = (s, r = document) => r.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const when = (e) => e.cycle ? `C${e.cycle} ${e.lesson === "hw" ? "HW" : "L" + (e.lesson || "?")}` : "—";
+const byWhen = (a, b) => (a.cycle || 99) - (b.cycle || 99) || lessonNum(a) - lessonNum(b) || (a.order || 0) - (b.order || 0);
+const lessonNum = (e) => e.lesson === "hw" ? 9 : Number(e.lesson) || 0;
+const lines = (s) => String(s || "").split("\n").map((x) => x.trim()).filter(Boolean);
+
+function toast(msg) { const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => (t.hidden = true), 3200); }
+function setStatus() {
+  const n = S.dirty.size;
+  $("#status").textContent = S.error ? S.error : !S.loaded ? "Loading…" : S.busy ? S.busy : n ? "Saving…" : "All changes saved";
+}
+
+/* ---------- data ---------- */
+function coll(id) { return S.tasks[id] ? "tasks" : "entries"; }
+function patch(id, field, value) {
+  const store = S.tasks[id] ? S.tasks : S.entries;
+  store[id][field] = value;
+  S.pending[id] = { ...(S.pending[id] || {}), [field]: value };
+  S.dirty.add(id); setStatus();
+  clearTimeout(S.timers[id]);
+  S.timers[id] = setTimeout(() => flush(id), 700);
+  renderList();
+}
+async function flush(id) {
+  const p = S.pending[id]; if (!p || !S.db) return;
+  delete S.pending[id];
+  try { await S.db.collection(coll(id)).doc(id).update(p); }
+  catch (e) { S.error = "Couldn't save: " + (e.message || e.code); toast("A change didn't save. Check you're signed in to claude.ai."); }
+  if (!S.pending[id]) S.dirty.delete(id);
+  setStatus();
+}
+function editorHasFocus() { const ed = $("#editor"); return ed && ed.contains(document.activeElement); }
+
+async function boot() {
+  route(); render();
+  const use = window.claude?.use;
+  if (!use) { S.error = "Open this page in claude.ai to load your unit"; render(); return; }
+  const timer = setTimeout(() => { if (!S.loaded) { S.error = "Your unit didn't load. Reload the page to try again."; render(); } }, 10000);
+  const db = await use("db");
+  if (!db) { clearTimeout(timer); S.error = "Sign in to claude.ai to load and save your unit"; render(); return; }
+  S.db = db;
+  let first = 0;
+  const arrived = () => { if (++first === 3) { S.loaded = true; clearTimeout(timer); } render(); };
+  const sub = (name, store) => {
+    let seen = false;
+    db.collection(name).onSnapshot((snap) => {
+      for (const d of snap.docs) if (!S.dirty.has(d.id)) store[d.id] = { id: d.id, ...d.data() };
+      for (const c of snap.docChanges()) if (c.type === "removed") delete store[c.doc.id];
+      if (!seen) { seen = true; arrived(); } else refresh();
+    }, (e) => { S.error = "Couldn't load " + name + ": " + e.code; render(); });
+  };
+  sub("entries", S.entries); sub("tasks", S.tasks); sub("programs", S.programs);
+  use("sample").then((s) => { S.sample = s; if (!editorHasFocus()) renderEditor(); });
+  use("downloads").then((d) => { S.downloads = d; if (!editorHasFocus()) renderEditor(); });
+}
+function refresh() { if (S.view === "programs") return render(); renderList(); if (!editorHasFocus()) renderEditor(); setStatus(); }
+
+/* ---------- routing ---------- */
+function route() {
+  const h = location.hash.replace("#", "");
+  S.view = ["activities", "tasks", "booklets", "programs"].includes(h) ? h : "programs";
+  if (S.view !== "programs" && S.loaded && !M()) S.view = "programs";
+  $("nav").hidden = S.view === "programs"; $("#home").hidden = S.view === "programs";
+  document.querySelectorAll("nav button").forEach((b) => b.setAttribute("aria-current", b.dataset.view === S.view ? "page" : "false"));
+}
+window.addEventListener("hashchange", () => { route(); S.sel = null; render(); });
+document.querySelectorAll("nav button").forEach((b) => b.addEventListener("click", () => { location.hash = b.dataset.view; }));
+$("#home").addEventListener("click", () => { location.hash = "programs"; });
+function openProgram(pid) {
+  S.pid = pid; S.sel = null;
+  try { localStorage.setItem("atb:program", pid); } catch (e) {}
+  if (location.hash === "#activities") { route(); render(); } else location.hash = "activities";
+}
+
+/* ---------- checks ---------- */
+function completeness(e) {
+  const lv = e.levels || {};
+  return {
+    student: !!(e.student && (e.steps || []).length),
+    levels: LEVELS.every(([k]) => (lv[k] || "").trim()),
+    canvas: !!(e.links && e.links.canvas)
+  };
+}
+function pills(e) {
+  const c = completeness(e);
+  return `<span class="pill ${c.student ? "done" : ""}">${c.student ? "✓ " : ""}Student</span>` +
+    `<span class="pill ${c.levels ? "done" : ""}">${c.levels ? "✓ " : ""}Levels</span>` +
+    `<span class="pill ${c.canvas ? "done" : ""}">${c.canvas ? "✓ " : ""}Canvas</span>`;
+}
+function taskChecks(t) {
+  const out = [];
+  const comps = E().filter((e) => e.taskId === t.id);
+  if (t.kind === "Formative") {
+    const len = (t.due || 0) - (t.start || 0) + 1;
+    if (t.start && t.due) out.push(len > 1
+      ? ["warn", `${t.code} runs over ${len} cycles (${len * 2} weeks), from cycle ${t.start} to cycle ${t.due}. You wanted a 2-week block for each formative task.`]
+      : ["good", `${t.code} sits in one 2-week block (cycle ${t.start}).`]);
+    const sum = S.tasks[t.rehearses];
+    if (!sum) out.push(["warn", `${t.code} isn't linked to a summative task yet. Choose the task it prepares students for.`]);
+    else if (!(t.practises || []).length) out.push(["warn", `Tick which ${sum.code} learning targets ${t.code} practises, so students get feedback they can use in ${sum.code}.`]);
+  }
+  if (t.kind === "Summative") {
+    const forms = TK().filter((f) => f.rehearses === t.id);
+    const covered = new Set(forms.flatMap((f) => f.practises || []));
+    const missed = (t.targets || []).filter((x) => !covered.has(x));
+    if ((t.targets || []).length && missed.length) out.push(["warn", `Not practised in any formative task first: ${missed.map(esc).join("; ")}.`]);
+    else if ((t.targets || []).length) out.push(["good", "Every learning target is practised in a formative task first."]);
+    const noTarget = comps.filter((c) => !(c.targets || []).length);
+    if (noTarget.length) out.push(["warn", `${noTarget.length} component${noTarget.length > 1 ? "s don't" : " doesn't"} show a learning target yet: ${noTarget.map((c) => esc(c.title)).join(", ")}.`]);
+  }
+  return out;
+}
+
+/* ---------- rendering ---------- */
+function render() {
+  setStatus();
+  const app = $("#app");
+  route();
+  if (S.view === "programs") { $("#unitTitle").textContent = "All programs"; $("#unitSub").textContent = "Program builder"; }
+  else if (M()) { $("#unitTitle").textContent = M().title || "Program"; $("#unitSub").textContent = M().sub || ""; }
+  if (S.error && !S.loaded) { app.innerHTML = `<div class="panel empty"><strong>${esc(S.error)}</strong><span>Your activities and tasks are saved with this page, so it needs claude.ai to load them.</span></div>`; return; }
+  if (!S.loaded) { app.innerHTML = `<div class="panel empty"><strong>Loading your unit…</strong></div>`; return; }
+  if (S.view === "programs") return renderMenu(app);
+  app.innerHTML = `<div class="cols"><div class="panel"><div class="list" id="list"></div><div class="listfoot" id="listfoot"></div></div><div class="panel" id="editor"></div></div>`;
+  renderList(); renderEditor();
+}
+
+function renderList() {
+  const el = $("#list"); if (!el) return;
+  const foot = $("#listfoot");
+  if (S.view === "activities") {
+    const acts = E().filter((e) => e.kind === "activity").sort(byWhen);
+    const groups = {};
+    for (const a of acts) (groups[a.cycle || 0] ||= []).push(a);
+    el.innerHTML = Object.entries(groups).map(([c, xs]) => `<div class="group"><h3>${+c ? "Cycle " + c : "Not placed"}</h3>${xs.map(row).join("")}</div>`).join("");
+    if (!acts.length) el.innerHTML = `<div class="empty"><span>No activities yet. Add the first one below.</span></div>`;
+    foot.innerHTML = `<button class="btn" id="addAct">Add an activity</button>`;
+    $("#addAct").onclick = () => addEntry("activity");
+  } else if (S.view === "tasks") {
+    const ts = TK().sort((a, b) => (a.start || 0) - (b.start || 0));
+    el.innerHTML = ts.map((t) => {
+      const comps = E().filter((e) => e.taskId === t.id).sort((a, b) => (a.n || 0) - (b.n || 0));
+      return `<div class="group"><h3>${esc(t.code)} · ${esc(t.kind)}</h3>
+        <button class="row" data-id="${t.id}" aria-selected="${S.sel === t.id}"><span class="when"><span class="pill ${t.kind === "Formative" ? "form" : "summ"}">${esc(t.code)}</span></span><span class="t">${esc(t.name)}</span>
+        <span class="pills"><span class="pill">Cycles ${t.start || "?"}–${t.due || "?"}</span><span class="pill">${comps.length} components</span></span></button>
+        ${comps.map(row).join("")}</div>`;
+    }).join("");
+    if (!ts.length) el.innerHTML = `<div class="empty"><span>No tasks yet. Add a formative or summative task below.</span></div>`;
+    foot.innerHTML = ts.map((t) => `<button class="btn" data-addc="${t.id}">Add a component to ${esc(t.code)}</button>`).join("") +
+      `<button class="btn" data-addt="Formative">Add a formative task</button><button class="btn" data-addt="Summative">Add a summative task</button>`;
+    foot.querySelectorAll("[data-addt]").forEach((b) => (b.onclick = () => addTask(b.dataset.addt)));
+    foot.querySelectorAll("[data-addc]").forEach((b) => (b.onclick = () => addEntry("component", b.dataset.addc)));
+  } else {
+    const bs = (M() && M().booklets) || [];
+    el.innerHTML = `<div class="group"><h3>Booklets</h3>${bs.map((b) => {
+      const n = E().filter((e) => e.booklet === b.id).length;
+      return `<button class="row" data-id="${b.id}" aria-selected="${S.sel === b.id}"><span class="when">${n}</span><span class="t">${esc(b.name)}</span><span class="pills"><span class="pill">${esc(b.used || "")}</span></span></button>`;
+    }).join("")}</div>`;
+    foot.innerHTML = `<form class="inline" id="addb"><input id="nb-name" placeholder="New booklet name" aria-label="New booklet name"><button class="btn" type="submit">Add booklet</button></form><span class="note">Each activity is its own document. A booklet puts them together in order.</span>`;
+    $("#addb").onsubmit = async (ev) => {
+      ev.preventDefault();
+      const name = $("#nb-name").value.trim(); if (!name || !S.db) return;
+      const id = name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") + "-" + Date.now().toString(36).slice(-4);
+      try { await S.db.collection("programs").doc(S.pid).update({ booklets: [...bs, { id, name, used: "", holds: "" }] }); toast("Booklet added"); }
+      catch (e) { toast("Couldn't add the booklet: " + (e.message || e.code)); }
+    };
+  }
+  el.querySelectorAll(".row").forEach((r) => (r.onclick = () => { S.sel = r.dataset.id; renderList(); renderEditor(); if (innerWidth <= 820) $("#editor").scrollIntoView({ behavior: "smooth" }); }));
+}
+function row(e) {
+  const label = e.kind === "component" ? `<span class="when">${S.tasks[e.taskId] ? esc(S.tasks[e.taskId].code) : ""} · ${e.n || "?"}</span>` : `<span class="when">${when(e)}</span>`;
+  return `<button class="row" data-id="${e.id}" aria-selected="${S.sel === e.id}">${label}<span class="t">${esc(e.title || "Untitled")}</span><span class="pills">${pills(e)}</span></button>`;
+}
+
+function renderEditor() {
+  const ed = $("#editor"); if (!ed) return;
+  if (S.view === "booklets") return renderBooklet(ed);
+  const t = S.tasks[S.sel], e = S.entries[S.sel];
+  if (t) return renderTask(ed, t);
+  if (!e || (S.view === "activities" && e.kind !== "activity")) {
+    ed.innerHTML = `<div class="empty"><strong>${S.view === "tasks" ? "Choose a task or one of its components" : "Choose an activity"}</strong><span>${S.view === "tasks" ? "A task is broken into components, like each page of a portfolio. Students show each component in class for feedback, then submit the whole task once." : "Each activity holds the program wording, the student instructions, the five adjustment levels and its links."}</span></div>`;
+    return;
+  }
+  renderEntry(ed, e);
+}
+
+function fieldVal(e, f) {
+  const [a, b] = f.split(".");
+  const v = b ? (e[a] || {})[b] : e[a];
+  return Array.isArray(v) ? v.join("\n") : v ?? "";
+}
+function bind(ed, obj) {
+  ed.querySelectorAll("[data-f]").forEach((inp) => {
+    inp.addEventListener("input", () => {
+      const f = inp.dataset.f, [a, b] = f.split(".");
+      let v = inp.value;
+      if (inp.dataset.list !== undefined) v = lines(v);
+      if (inp.type === "number") v = v === "" ? null : Number(v);
+      if (b) patch(obj.id, a, { ...(obj[a] || {}), [b]: v }); else patch(obj.id, a, v);
+    });
+  });
+}
+
+function renderEntry(ed, e) {
+  const isComp = e.kind === "component";
+  const task = isComp ? S.tasks[e.taskId] : null;
+  const ty = TYPES[e.type] || ["Activity", ""];
+  const bks = (M() && M().booklets) || [];
+  const ai = !!S.sample;
+  const lessonsFor = isComp ? E().filter((x) => x.kind === "activity" && x.componentId === e.id) : [];
+  ed.innerHTML = `<div class="ed">
+    <div class="ed-head">
+      <div class="eyebrow">${isComp ? `${esc(task ? task.code : "")} component ${e.n || ""} · ${esc(task ? task.kind : "")}` : `${esc(ty[1])} · ${esc(ty[0])} · ${when(e)}`}</div>
+      <input class="title" id="f-title" data-f="title" value="${esc(e.title)}" aria-label="Title">
+    </div>
+
+    <section class="f"><div class="${isComp ? "two" : "three"}">
+      ${isComp ? `<label>Component number<input id="f-n" type="number" min="1" data-f="n" value="${esc(e.n)}"></label>
+        <label>Shown in class in cycle<input id="f-cycle" type="number" min="1" data-f="cycle" value="${esc(e.cycle)}"></label>`
+      : `<label>Activity type<select id="f-type" data-f="type">${Object.entries(TYPES).map(([k, [n, s]]) => `<option value="${k}" ${k === e.type ? "selected" : ""}>${s} · ${n}</option>`).join("")}</select></label>
+        <label>Cycle and lesson<span style="display:flex;gap:6px"><input id="f-cycle" type="number" min="1" data-f="cycle" value="${esc(e.cycle)}" aria-label="Cycle"><select id="f-lesson" data-f="lesson" aria-label="Lesson">${["1","2","3","4","5","hw"].map((l) => `<option ${String(e.lesson) === l ? "selected" : ""} value="${l}">${l === "hw" ? "Homework" : "Lesson " + l}</option>`).join("")}</select></span></label>
+        <label>Minutes<input id="f-min" type="number" min="5" step="5" data-f="minutes" value="${esc(e.minutes)}"></label>`}
+    </div></section>
+
+    ${isComp && task ? `<section class="f"><h4>Learning targets this component shows <span class="hint">from ${esc(task.code)}</span></h4>
+      ${(task.targets || []).length ? `<div class="checks">${task.targets.map((x, i) => `<label><input type="checkbox" id="tg-${i}" data-tg="${esc(x)}" ${(e.targets || []).includes(x) ? "checked" : ""}> ${esc(x)}</label>`).join("")}</div>`
+        : `<p class="note">Add learning targets to ${esc(task.code)} first, then tick the ones this component shows.</p>`}
+    </section>` : ""}
+
+    <section class="f voice"><h4>Program wording <span class="hint">teacher language, goes into the program</span>
+      ${ai ? `<button class="btn ai" id="ai-teacher">Draft with Claude</button>` : ""}</h4>
+      <textarea id="f-teacher" data-f="teacher" rows="3" placeholder="What students do and how it's taught, for the program.">${esc(e.teacher)}</textarea>
+    </section>
+
+    <section class="f voice student"><h4>Student instructions <span class="hint">student language, goes on Canvas and in the booklet</span>
+      ${ai ? `<button class="btn ai" id="ai-student">Draft from the program wording</button>` : ""}</h4>
+      <label>What you will do<textarea id="f-student" data-f="student" rows="2" placeholder="One or two short sentences.">${esc(e.student)}</textarea></label>
+      <label>Steps, one per line<textarea id="f-steps" data-f="steps" data-list rows="5" placeholder="Start each step with a verb.">${esc(fieldVal(e, "steps"))}</textarea></label>
+    </section>
+
+    <section class="f"><h4>Adjustments by level ${ai ? `<button class="btn ai" id="ai-levels">Draft all five with Claude</button>` : ""}</h4>
+      <div class="lv">${LEVELS.map(([k, n, h]) => `<label><span>${n}</span><textarea id="lv-${k}" data-f="levels.${k}" rows="2" placeholder="${esc(h)}">${esc(fieldVal(e, "levels." + k))}</textarea></label>`).join("")}</div>
+    </section>
+
+    <section class="f"><h4>Where students find it</h4>
+      <div class="three">
+        <label>Canvas page<input id="l-canvas" type="url" data-f="links.canvas" value="${esc(fieldVal(e, "links.canvas"))}" placeholder="https://…instructure.com/…"></label>
+        <label>Printable (PDF or Word)<input id="l-print" type="url" data-f="links.print" value="${esc(fieldVal(e, "links.print"))}" placeholder="Link to the file"></label>
+        <label>Fillable or online version<input id="l-fill" type="url" data-f="links.fillable" value="${esc(fieldVal(e, "links.fillable"))}" placeholder="For students without their booklet"></label>
+      </div>
+      <p class="note">Students who use the fillable or online version copy it back into their booklet.</p>
+      <div class="two">
+        <label>Booklet<select id="f-booklet" data-f="booklet"><option value="">Not in a booklet</option>${bks.map((b) => `<option value="${b.id}" ${b.id === e.booklet ? "selected" : ""}>${esc(b.name)}</option>`).join("")}</select></label>
+        <label>Hand-in<select id="f-hand" data-f="hand">${Object.entries(HAND).map(([k, v]) => `<option value="${k}" ${k === (e.hand || "") ? "selected" : ""}>${v}</option>`).join("")}</select></label>
+      </div>
+      <div class="links">${["canvas", "print", "fillable"].filter((k) => e.links && e.links[k]).map((k) => `<a href="${esc(e.links[k])}" target="_blank" rel="noopener">Open ${k === "canvas" ? "Canvas page" : k === "print" ? "printable" : "fillable version"}</a>`).join(" · ")}</div>
+    </section>
+
+    ${isComp ? `<section class="f"><h4>Lessons that work on this component</h4>${lessonsFor.length ? `<p>${lessonsFor.sort(byWhen).map((x) => `${when(x)} ${esc(x.title)}`).join("<br>")}</p>` : `<p class="note">None linked yet.</p>`}</section>` : ""}
+
+    <section class="f"><h4>Documents</h4>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        ${S.downloads ? `<button class="btn primary" id="dl-one">Download this ${isComp ? "component" : "activity"} (.docx)</button>` : `<span class="note">Downloads aren't available in this view.</span>`}
+        <button class="btn" id="del">Delete</button>
+      </div>
+      <div id="delconfirm" hidden class="warn">Delete “${esc(e.title)}”? This can't be undone. <button class="btn" id="delyes">Delete it</button> <button class="btn" id="delno">Keep it</button></div>
+    </section>
+  </div>`;
+  bind(ed, e);
+  ed.querySelectorAll("[data-tg]").forEach((c) => c.addEventListener("change", () => {
+    const all = [...ed.querySelectorAll("[data-tg]")].filter((x) => x.checked).map((x) => x.dataset.tg);
+    patch(e.id, "targets", all);
+  }));
+  const on = (id, fn) => { const b = $("#" + id, ed); if (b) b.onclick = fn; };
+  on("ai-teacher", () => draftTeacher(e));
+  on("ai-student", () => draftStudent(e));
+  on("ai-levels", () => draftLevels(e));
+  on("dl-one", () => downloadDocs([e], e.title));
+  on("del", () => ($("#delconfirm", ed).hidden = false));
+  on("delno", () => ($("#delconfirm", ed).hidden = true));
+  on("delyes", async () => { try { await S.db.collection("entries").doc(e.id).delete(); delete S.entries[e.id]; S.sel = null; render(); toast("Deleted"); } catch (err) { toast("Couldn't delete: " + (err.message || err.code)); } });
+}
+
+function renderTask(ed, t) {
+  const sums = TK().filter((x) => x.kind === "Summative" && x.id !== t.id);
+  const sum = S.tasks[t.rehearses];
+  ed.innerHTML = `<div class="ed">
+    <div class="ed-head"><div class="eyebrow"><span class="pill ${t.kind === "Formative" ? "form" : "summ"}">${esc(t.code)}</span> ${esc(t.kind)} task</div>
+      <input class="title" id="t-name" data-f="name" value="${esc(t.name)}" aria-label="Task name"></div>
+    <section class="f">${taskChecks(t).map(([k, m]) => `<div class="${k}">${m}</div>`).join("")}</section>
+    <section class="f"><div class="four">
+      <label>Code<input id="t-code" data-f="code" value="${esc(t.code)}"></label>
+      <label>Set in cycle<input id="t-start" type="number" min="1" data-f="start" value="${esc(t.start)}"></label>
+      <label>Due in cycle<input id="t-due" type="number" min="1" data-f="due" value="${esc(t.due)}"></label>
+      <label>Hand-in<input id="t-submit" data-f="submit" value="${esc(t.submit)}"></label>
+    </div></section>
+    ${t.kind === "Summative" ? `<section class="f"><h4>Learning targets <span class="hint">one per line, what students must show in the final task</span></h4>
+      <textarea id="t-targets" data-f="targets" data-list rows="6">${esc((t.targets || []).join("\n"))}</textarea>
+      <p class="note">Formative tasks practise these first, and each component shows one or more of them.</p></section>`
+    : `<section class="f"><h4>Prepares students for</h4>
+      <label>Summative task<select id="t-reh" data-f="rehearses"><option value="">Choose a task</option>${sums.map((s) => `<option value="${s.id}" ${s.id === t.rehearses ? "selected" : ""}>${esc(s.code)} ${esc(s.name)}</option>`).join("")}</select></label>
+      ${sum ? `<h4>${esc(sum.code)} learning targets ${esc(t.code)} practises</h4>${(sum.targets || []).length ? `<div class="checks">${sum.targets.map((x, i) => `<label><input type="checkbox" id="pr-${i}" data-pr="${esc(x)}" ${(t.practises || []).includes(x) ? "checked" : ""}> ${esc(x)}</label>`).join("")}</div>` : `<p class="note">${esc(sum.code)} has no learning targets yet.</p>`}` : ""}
+    </section>`}
+    <section class="f"><h4>Notes</h4><textarea id="t-notes" data-f="notes" rows="3">${esc(t.notes)}</textarea></section>
+  </div>`;
+  bind(ed, t);
+  ed.querySelectorAll("[data-pr]").forEach((c) => c.addEventListener("change", () => {
+    patch(t.id, "practises", [...ed.querySelectorAll("[data-pr]")].filter((x) => x.checked).map((x) => x.dataset.pr));
+    renderEditor();
+  }));
+  ed.querySelectorAll("#t-start,#t-due,#t-targets,#t-reh").forEach((i) => i.addEventListener("change", () => renderEditor()));
+}
+
+function renderBooklet(ed) {
+  const bs = (M() && M().booklets) || [];
+  const b = bs.find((x) => x.id === S.sel);
+  if (!b) { ed.innerHTML = `<div class="empty"><strong>Choose a booklet</strong><span>Each activity is its own document. Choose a booklet to see its activities in order and download it as one Word file.</span></div>`; return; }
+  const items = E().filter((e) => e.booklet === b.id).sort(byWhen);
+  ed.innerHTML = `<div class="ed"><div class="ed-head"><div class="eyebrow">Booklet · ${esc(b.used || "")}</div><div style="font:900 22px var(--font)">${esc(b.name)}</div><p class="note">${esc(b.holds || "")}</p></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">${S.downloads ? `<button class="btn primary" id="dl-b">Download the booklet (.docx)</button>` : `<span class="note">Downloads aren't available in this view.</span>`}</div>
+    <div class="panel blist">${items.length ? items.map((e, i) => `<div class="bitem"><span class="n">${i + 1}</span><span><strong>${esc(e.title)}</strong><br><span class="note">${e.kind === "component" ? esc((S.tasks[e.taskId] || {}).code || "") + " component " + (e.n || "") : when(e)}${completeness(e).student ? "" : " · no student instructions yet"}</span></span>
+      <span class="mv"><button class="btn" data-mv="${e.id}" data-d="-1" aria-label="Move up" ${i === 0 ? "disabled" : ""}>↑</button><button class="btn" data-mv="${e.id}" data-d="1" aria-label="Move down" ${i === items.length - 1 ? "disabled" : ""}>↓</button></span></div>`).join("")
+      : `<div class="empty"><span>No activities in this booklet yet. Choose this booklet on an activity to add it.</span></div>`}</div></div>`;
+  ed.querySelectorAll("[data-mv]").forEach((btn) => (btn.onclick = () => {
+    const i = items.findIndex((x) => x.id === btn.dataset.mv), j = i + Number(btn.dataset.d);
+    if (j < 0 || j >= items.length) return;
+    const a = items[i], c = items[j];
+    if (a.cycle !== c.cycle || a.lesson !== c.lesson) { toast("Activities follow lesson order. Change the cycle or lesson to move one past another."); return; }
+    const oa = a.order || i, oc = c.order || j;
+    patch(a.id, "order", oc === oa ? oa + Number(btn.dataset.d) : oc); patch(c.id, "order", oa);
+    renderBooklet(ed);
+  }));
+  const dl = $("#dl-b", ed); if (dl) dl.onclick = () => downloadDocs(items, b.name);
+}
+
+/* ---------- add ---------- */
+async function addEntry(kind, taskId) {
+  if (!S.db) return;
+  const comps = E().filter((e) => e.taskId === taskId);
+  const doc = kind === "activity"
+    ? { unit: S.pid, kind, title: "New activity", type: "instruction", cycle: 1, lesson: "1", minutes: 50, teacher: "", student: "", steps: [], levels: {}, links: {}, booklet: "", hand: "" }
+    : { unit: S.pid, kind, taskId, n: comps.length + 1, title: "New component", cycle: (S.tasks[taskId] || {}).start || 1, targets: [], teacher: "", student: "", steps: [], levels: {}, links: {}, booklet: "", hand: "show" };
+  try { const ref = await S.db.collection("entries").add(doc); S.entries[ref.id] = { id: ref.id, ...doc }; S.sel = ref.id; render(); $("#f-title")?.select(); }
+  catch (e) { toast("Couldn't add it: " + (e.message || e.code)); }
+}
+
+async function addTask(kind) {
+  if (!S.db) return;
+  const n = TK().filter((t) => t.kind === kind).length + 1;
+  const doc = { unit: S.pid, code: (kind === "Formative" ? "FT" : "AT") + n, kind, name: "New task", start: 1, due: 1, submit: "", targets: [], practises: [], rehearses: "", notes: "" };
+  try { const ref = await S.db.collection("tasks").add(doc); S.tasks[ref.id] = { id: ref.id, ...doc }; S.sel = ref.id; render(); $("#t-name")?.select(); }
+  catch (e) { toast("Couldn't add the task: " + (e.message || e.code)); }
+}
+
+function renderMenu(app) {
+  const ps = Object.values(S.programs).sort((a, b) => (a.sub || "").localeCompare(b.sub || "") || (a.title || "").localeCompare(b.title || ""));
+  app.innerHTML = `<div class="menu"><div class="menu-head"><h1>All programs</h1><p class="note">Choose a program to build its activities, tasks and booklets.</p></div>
+    ${ps.length ? `<div class="progs">${ps.map((p) => {
+      const es = Object.values(S.entries).filter((e) => inProg(e, p.id));
+      const ts = Object.values(S.tasks).filter((t) => inProg(t, p.id));
+      const done = es.filter((e) => { const c = completeness(e); return c.student && c.levels; }).length;
+      const pct = es.length ? Math.round((done / es.length) * 100) : 0;
+      return `<button class="prog" data-pid="${esc(p.id)}"><span class="eyebrow">${esc(p.sub || "")}</span><strong>${esc(p.title || "Untitled program")}</strong>
+        <span class="note">${es.filter((e) => e.kind === "activity").length} activities · ${ts.length} tasks · ${es.filter((e) => e.kind === "component").length} components</span>
+        <span class="bar" aria-hidden="true"><span style="width:${pct}%"></span></span><span class="note">${done} of ${es.length} have student instructions and all five levels</span></button>`;
+    }).join("")}</div>` : `<div class="panel empty"><strong>No programs yet</strong><span>Create your first program below.</span></div>`}
+    <form class="panel newp" id="newp"><h4>New program</h4>
+      <div class="two"><label>Title<input id="np-title" required placeholder="For example, Fashion Forward"></label>
+      <label>Year, course and unit<input id="np-sub" placeholder="Year 10 Textiles Technology · Unit 2 · 2027"></label></div>
+      <div><button class="btn primary" type="submit">Create the program</button></div></form></div>`;
+  app.querySelectorAll("[data-pid]").forEach((b) => (b.onclick = () => openProgram(b.dataset.pid)));
+  $("#newp").onsubmit = async (ev) => {
+    ev.preventDefault();
+    const title = $("#np-title").value.trim(); if (!title || !S.db) return;
+    try {
+      const ref = await S.db.collection("programs").add({ title, sub: $("#np-sub").value.trim(), notes: "", booklets: [] });
+      S.programs[ref.id] = { id: ref.id, title, sub: $("#np-sub").value.trim(), notes: "", booklets: [] };
+      openProgram(ref.id);
+    } catch (e) { toast("Couldn't create the program: " + (e.message || e.code)); }
+  };
+}
+
+/* ---------- Claude ---------- */
+const CONTEXT = () => `Context: NSW Stage 5 Textiles Technology, ${M()?.sub || "Year 9"}, unit "${M()?.title || ""}". ${M()?.notes || ""} Use Australian spelling. No em dashes.`;
+function describe(e) {
+  const task = S.tasks[e.taskId];
+  return [`Title: ${e.title}`, e.kind === "component" ? `This is component ${e.n} of ${task?.code} ${task?.name} (${task?.kind}).` : `Activity type: ${(TYPES[e.type] || [""])[0]}, ${e.minutes || "?"} minutes, ${when(e)}.`,
+    (e.targets || []).length ? `Learning targets it shows: ${e.targets.join("; ")}` : "", e.teacher ? `Program wording: ${e.teacher}` : ""].filter(Boolean).join("\n");
+}
+async function ask(label, prompt, apply) {
+  if (S.busy) return;
+  S.busy = label; setStatus();
+  document.querySelectorAll(".btn.ai").forEach((b) => (b.disabled = true));
+  try { const out = await S.sample.json(prompt); apply(out); renderEditor(); toast("Draft added. Edit it as you need."); }
+  catch (e) { toast(e.code === "rate_limited" ? "Claude is busy. Try again in a minute." : e.code === "not_granted" ? "Claude drafting is switched off for this page." : "Claude couldn't draft that: " + (e.message || e.code)); }
+  S.busy = ""; setStatus();
+  document.querySelectorAll(".btn.ai").forEach((b) => (b.disabled = false));
+}
+function draftTeacher(e) {
+  ask("Claude is writing the program wording…", `${CONTEXT()}
+Write the program wording for this item in a NESA teaching program: one to three sentences in teacher language, saying what students do and the teaching strategy (for example explicit modelling, guided practice, retrieval). Present tense, students as the subject.
+${describe(e)}
+Reply with JSON only: {"teacher": "..."}`, (o) => o.teacher && patch(e.id, "teacher", String(o.teacher)));
+}
+function draftStudent(e) {
+  ask("Claude is writing the student instructions…", `${CONTEXT()}
+Write student instructions for this item. Many students have low literacy: short sentences, plain words, second person ("you"), no jargon without a quick meaning. Give one or two sentences on what they will do and why, then 3 to 7 steps that each start with a verb. If it is a task component, the last step says how to show it to the teacher for feedback.
+${describe(e)}
+Reply with JSON only: {"student": "...", "steps": ["..."]}`, (o) => {
+    if (o.student) patch(e.id, "student", String(o.student));
+    if (Array.isArray(o.steps)) patch(e.id, "steps", o.steps.map(String));
+  });
+}
+function draftLevels(e) {
+  ask("Claude is writing the five adjustment levels…", `${CONTEXT()}
+Write adjustments for this item at each NCCD level, one or two concrete sentences each, specific to this activity (not generic):
+- supplementary: same task and outcomes, easier access, and include one executive function support (a checklist, a timer, chunked steps or a worked example to keep).
+- substantial: essential content only, visual step cards, frequent adult check-ins.
+- extensive: an individual version with adult support and a simple record of what the student did.
+- extension: Extension / Newman students. Remove practice they have mastered and add depth or complexity inside the same task.
+- lifeSkills: a concrete, age-respectful version on the same topic, linked to Life Skills outcomes.
+${describe(e)}
+Student instructions: ${e.student || "(none yet)"} ${(e.steps || []).join(" / ")}
+Reply with JSON only: {"supplementary": "...", "substantial": "...", "extensive": "...", "extension": "...", "lifeSkills": "..."}`, (o) => {
+    const lv = { ...(e.levels || {}) };
+    for (const [k] of LEVELS) if (o[k]) lv[k] = String(o[k]);
+    patch(e.id, "levels", lv);
+  });
+}
+
+/* ---------- Word documents ---------- */
+async function downloadDocs(items, name) {
+  if (!window.docx) { toast("The Word library didn't load. Reload the page and try again."); return; }
+  const { Document, Packer, Paragraph, TextRun, PageBreak, BorderStyle } = window.docx;
+  const F = "Lato", NAVY = "001D3E";
+  const t = (text, o = {}) => new TextRun({ text, font: F, size: o.size || 22, bold: o.bold, color: o.color || NAVY, allCaps: o.caps });
+  const p = (runs, o = {}) => new Paragraph({ children: Array.isArray(runs) ? runs : [runs], spacing: { after: o.after ?? 120, before: o.before ?? 0 }, ...o.extra });
+  const linesBox = (n) => Array.from({ length: n }, () => new Paragraph({ border: { bottom: { style: BorderStyle.SINGLE, size: 4, color: "909DB2", space: 1 } }, spacing: { before: 280 }, children: [] }));
+  const body = [];
+  const multi = items.length > 1;
+  if (multi) {
+    body.push(p(t(M()?.title || "", { size: 20 })), p(t(name, { size: 48, bold: true, caps: true }), { after: 240 }),
+      p(t("Name: ________________________   Class: ________", { size: 22 }), { after: 360 }), p(t("Contents", { bold: true, caps: true, size: 22 })),
+      ...items.map((e, i) => p(t(`${i + 1}.  ${e.title}`, { size: 22 }), { after: 60 })));
+  }
+  items.forEach((e, i) => {
+    if (multi || i > 0) body.push(new Paragraph({ children: [new PageBreak()] }));
+    const task = S.tasks[e.taskId];
+    body.push(p(t(e.kind === "component" ? `${task?.code || ""} component ${e.n || ""}` : `${(TYPES[e.type] || [""])[0]} · Cycle ${e.cycle || "?"}`, { size: 18, caps: true })));
+    body.push(p(t(e.title || "", { size: 32, bold: true }), { after: 200 }));
+    if ((e.targets || []).length) { body.push(p(t("What I need to show", { bold: true, caps: true, size: 20 }))); e.targets.forEach((x) => body.push(p(t("•  " + x), { after: 60 }))); }
+    if (e.student) body.push(p(t(e.student), { before: 160, after: 200 }));
+    if ((e.steps || []).length) { body.push(p(t("Steps", { bold: true, caps: true, size: 20 }))); e.steps.forEach((s, k) => body.push(p(t(`${k + 1}.  ${s}`), { after: 100 }))); }
+    body.push(p(t("My work", { bold: true, caps: true, size: 20 }), { before: 240 }), ...linesBox(10));
+    if (e.links?.canvas) body.push(p(t("Canvas: " + e.links.canvas, { size: 18, color: "5A6577" }), { before: 240 }));
+  });
+  const doc = new Document({ creator: "Activity and Task Builder", title: name, sections: [{ properties: { page: { margin: { top: 850, bottom: 850, left: 850, right: 850 } } }, children: body }] });
+  try {
+    const blob = await Packer.toBlob(doc);
+    await S.downloads.save({ filename: `${name.replace(/[^\w\- ]+/g, "").trim() || "activity"}.docx`, data: blob });
+  } catch (err) { if (err && err.code !== "declined" && err.code !== "cancelled") toast("Couldn't save the file: " + (err.message || err.code || err)); }
+}
+
+boot();
+</script>
